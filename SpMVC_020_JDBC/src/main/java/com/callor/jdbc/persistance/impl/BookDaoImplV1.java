@@ -2,26 +2,42 @@ package com.callor.jdbc.persistance.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.callor.jdbc.model.BookVO;
 import com.callor.jdbc.persistance.BookDao;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Repository("bookDaoV1")
 public class BookDaoImplV1 implements BookDao {
 	
+	// Console로 log를 찍기 위하여 log 객체 생성
+	// lombok @Slf4j 를 사용하여 아래 코드를 대신한다
+	// private static Logger log = LoggerFactory.getLogger("SERVICE");
+	
 	// jdbc-comtext.xml 에 선언된 jdbcTemplate bean 사용하기
-	protected final JdbcTemplate JdbcTemplate;
+	protected final JdbcTemplate jdbcTemplate;
 	public BookDaoImplV1(JdbcTemplate jdbcTemplate) {
-		this.JdbcTemplate = jdbcTemplate;
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
 	@Override
 	public List<BookVO> selectAll() {
 		// TODO Auto-generated method stub
 		String sql = " SELECT * FROM tbl_books ";
-		List<BookVO> books = JdbcTemplate.query(sql, new BeanPropertyRowMapper<BookVO>(BookVO.class));
-		
+		/*
+		 * jdbcTemplate.query(sql, return type)
+		 * sql문을 실행한 후 return type 형태로 데이터를 변환하여
+		 * return 해달라
+		 */
+		List<BookVO> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<BookVO>(BookVO.class));
+		log.debug("SELECT {}", books.toString());
 		return null;
 	}
 
