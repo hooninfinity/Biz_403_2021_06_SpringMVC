@@ -1,7 +1,6 @@
 package com.callor.jdbc.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +21,11 @@ public class CompController {
 	public CompController(CompDao compDao, CompService compService) {
 		this.compDao = compDao;
 		this.compService = compService;
+	}
+	
+	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
+	public String list() {
+		return "comp/list";
 	}
 	
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수
