@@ -17,3 +17,7 @@ address {
 <footer>
 	<address>CopyRight &copy; hooninfinity@naver.com</address>
 </footer>
+
+<div id="modal">
+	<span>X</span>
+</div>

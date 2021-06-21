@@ -1,5 +1,7 @@
 package com.callor.jdbc.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -28,13 +30,26 @@ public class CompController {
 	
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public String list(HttpSession hSession, Model model) {
+		
 		// 다른 것들과는 달리 한줄로 써보자
 		if (hSession.getAttribute("USERVO") == null) {
 			model.addAttribute("MSG","LOGIN");
 			return "redirect:/member/login";
 		}
+		
+		List<CompVO> compList = compService.selectAll();
+		log.debug("출판사 정보 가져오기: {} ", compList.toString());
+		model.addAttribute("COMPS",compList); // compList 를 "COMPS" 이름으로 담아서 view로 보낸다
 		return "comp/list";
 	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String getList(Model model) {
+		List<CompVO> compList = compService.selectAll();
+		model.addAttribute("COMPS", compList);
+		return "comp/list";
+	}
+	
 	
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)

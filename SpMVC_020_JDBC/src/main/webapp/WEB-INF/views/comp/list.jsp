@@ -10,28 +10,39 @@
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
 	<h1 class="page_title">출판사정보</h1>
 	<section class="main_sec">
-	<table>
-		<tr>
-			<th>CODE</th>
-			<th>출판사명</th>
-			<th>대표</th>
-			<th>전화번호</th>
-			<th>주소</th>
-			<th>주요장르</th>
-		</tr>
-		<tr>
-			<td>CODE</td>
-			<td>출판사명</td>
-			<td>대표</td>
-			<td>전화번호</td>
-			<td>주소</td>
-			<td>주요장르</td>
-		</tr>
-	</table>
+		<table>
+			<tr>
+				<th>CODE</th>
+				<th>출판사명</th>
+				<th>대표</th>
+				<th>전화번호</th>
+				<th>주소</th>
+				<th>주요장르</th>
+			</tr>
+			<c:choose>
+				<c:when test="${empty COMPS}">
+					<tr>
+						<td colspan="6">데이터가 없음</td>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${COMPS}" var="COMP" varStatus="seq">
+						<tr>
+							<td>${COMP.cp_code}</td>
+							<td>${COMP.cp_title}</td>
+							<td>${COMP.cp_ceo}</td>
+							<td>${COMP.cp_tel}</td>
+							<td>${COMP.cp_addr}</td>
+							<td>${COMP.cp_genre}</td>
+						</tr>
 
-	<div class="btn_box">
-		<button class="btn_insert comp">출판사등록</button>
-	</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</table>
+
+		<div class="btn_box">
+			<button class="btn_insert comp">출판사등록</button>
+		</div>
 	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>

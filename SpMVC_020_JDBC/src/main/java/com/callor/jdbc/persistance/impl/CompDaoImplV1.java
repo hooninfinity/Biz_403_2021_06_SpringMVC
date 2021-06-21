@@ -47,20 +47,13 @@ public class CompDaoImplV1 implements CompDao {
 		return compList;
 	}
 
-	// 임시 작성중
 	@Override
-	public CompVO findById(String pk) {
+	public CompVO findById(String cp_code) {
 		// TODO Auto-generated method stub
-		
-		String sql = " SELECT * FROM tbl_company ";
-		sql += " WHERE cp_code ";
-		
-		Object[] params = new Object[] { pk };
-		
+		String sql = " SELECT * FROM tbl_company WHERE cp_code = ? ";
+		Object[] params = new Object[] { cp_code };
 		CompVO vo = (CompVO) jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<CompVO>(CompVO.class));		
-				
-		
-		return null;
+		return vo;
 	}
 
 	@Override
@@ -118,10 +111,20 @@ public class CompDaoImplV1 implements CompDao {
 		return 0;
 	}
 
+	/*
+	 * 출판사 이름으로 검색하기
+	 */
 	@Override
 	public List<CompVO> findByCname(String cname) {
 		// TODO Auto-generated method stub
-		return null;
+		String sql = " SELECT * FROM tbl_company ";
+		// WHERE cp_code LIKE '%' || '%' // 이건 오라클일 경우 이렇게 씀
+		sql += " WHERE cp_name LIKE CONCAT('%', ? '%' ) "; // mysql 일 경우
+		
+		// SELECT를 수행한 후 각각의 데이터를 CompVO에 담고
+		// List에 add하여 return 한 후 compList에 받기
+		List<CompVO> compList = jdbcTemplate.query(sql, new Object[] { cname }, new BeanPropertyRowMapper<CompVO>(CompVO.class));
+		return compList;
 	}
 
 	@Override
