@@ -10,5 +10,6 @@ public interface CompService {
 	public List<CompVO> findByCname(String cp_name); // 이름으로 검색하기
 	public List<CompVO> selectAll();
 	public CompVO findByCCode(String cp_code);
+	public List<CompVO> findByTitleAndCeoAndTel(String text);
 
 }

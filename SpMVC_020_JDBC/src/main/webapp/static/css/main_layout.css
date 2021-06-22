@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -27,8 +26,6 @@ header {
 	padding: 2rem;
 }
 
-
-
 /*
 style 지정을 할때
 tag에 id나 class를 부착하지 않고 지정하는 경우
@@ -43,24 +40,22 @@ tag에 id나 class를 부착하지 않고 지정하는 경우
 	대표적인 tag에 style을 지정하고
 	include 하여 사용하는 방법
 */
-
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	width:90%;
-	margin:0 auto;
+	width: 90%;
+	margin: 0 auto;
 }
 
 table th, td {
-	border-top : 1px solid #aaa;
+	border-top: 1px solid #aaa;
 	padding: 5px 8px;
 }
 
 table td {
-	margin-left : 30px;
+	margin-left: 30px;
 	text-align: left;
 	padding-left: 10px;
-	
 	max-width: 0;
 	overflow: hidden;
 	white-space: nowrap;
@@ -72,7 +67,6 @@ table td:hover {
 	overflow: visible;
 	text-overflow: inherit;
 }
-
 
 table tr:last-child td {
 	border-bottom: 1px solid #aaa;
@@ -92,21 +86,20 @@ table tr:hover {
 }
 
 div.btn_box {
-	width:90%;
-	margin:5px auto;
+	width: 90%;
+	margin: 5px auto;
 	text-align: right;
-	
 }
 
 button {
-	padding:10px 20px;
+	padding: 10px 20px;
 	outline: 0;
 	border: 0;
 	border-radius: 5px;
 }
 
 button:hover {
-	box-shadow: 2px 2px 2px rgba(0,0,0,0.7);
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 	cursor: pointer;
 }
 
@@ -115,7 +108,7 @@ button.btn_insert {
 	color: white;
 }
 
-button.btn_save{
+button.btn_save {
 	background-color: blue;
 	color: white;
 }
@@ -146,6 +139,7 @@ div#modal {
 	z-index: 100;
 	display: none;
 }
+
 div#modal span {
 	position: absolute;
 	display: inline-block;
@@ -158,7 +152,36 @@ div#modal span {
 	padding: 10px 20px;
 	transition: 0.6s;
 }
+
 div#modal span:hover {
 	background-color: white;
 	cursor: pointer;
+}
+
+section.search_sec {
+	/*
+		바깥쪽 box의 position이 fixed로 되어 있기 때문에
+		내부의 box를 바깥 box의 중앙에 배치하기 위하여
+		position을 absolute로 설정하고 위치를 지정하였다
+		 */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	/* 자기 몸체크기의 x,y 방향으로 50%만큼 후진 */
+	transform: translate(-50%, -50%);
+	background-color: white;
+	opacity: 1;
+	width: 80%;
+	height: 500px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	overflow: auto;
+	z-index: 1000;
+}
+
+section.search_sec table {
+	margin: 10px auto;
+	width: 95%;
+	opacity: 1;
 }
