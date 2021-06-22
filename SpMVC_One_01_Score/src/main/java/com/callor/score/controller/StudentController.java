@@ -30,7 +30,7 @@ public class StudentController {
 		model.addAttribute("STUDENT", stList);
 		
 		log.debug("Student Root");
-		return "home";
+		return "student/list";
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
