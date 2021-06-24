@@ -24,9 +24,9 @@ sc_score	INT	NOT NULL
 INSERT INTO tbl_score (sc_stnum, sc_sbcode, sc_score)
 VALUES('2021001','S001',90);
 INSERT INTO tbl_score (sc_stnum, sc_sbcode, sc_score)
-VALUES('2021001','S001',90);
+VALUES('2021002','S002',80);
 INSERT INTO tbl_score (sc_stnum, sc_sbcode, sc_score)
-VALUES('2021001','S001',90);
+VALUES('2021003','S003',70);
 
 CREATE TABLE tbl_subject(
 	sb_code	CHAR(4),	
@@ -40,7 +40,5 @@ INSERT INTO tbl_subject (sb_code, sb_name, sb_prof)
 VALUES('S002','영어','이몽룡');
 INSERT INTO tbl_subject (sb_code, sb_name, sb_prof)
 VALUES('S003','수학','성춘향');
-SELECT * FROM tbl_subject;
-DELETE FROM tbl_subject WHERE sb_code = 0001;
-SET SQL_SAFE_UPDATES = 0;
+
 
