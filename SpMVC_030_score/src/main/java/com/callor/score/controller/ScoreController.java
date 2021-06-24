@@ -26,7 +26,7 @@ public class ScoreController {
 		
 		List<ScoreDTO> scoreList = scService.scoreAllList();
 		log.debug("Score {} ", scoreList.toString());
-		// 뷰로 보내기 위해서 모델에 담는다
+		// 뷰로 보내기 위해서 모델에 담는다. scoreList를 "SCORES"라는 이름으로
 		model.addAttribute("SCORES", scoreList);
 		
 		// BODY라는 변수에 SCORE_VIEW라는 것을 열겠다. 앞으로는 리턴을 모두 home으로 예정

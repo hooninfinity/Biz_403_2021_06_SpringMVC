@@ -40,7 +40,6 @@
 					<td>${STD.st_tel}</td>
 					<td>${STD.st_addr}</td>
 				</tr>
-
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>

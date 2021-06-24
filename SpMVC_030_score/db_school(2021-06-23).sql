@@ -28,6 +28,7 @@ VALUES('2021002','S002',80);
 INSERT INTO tbl_score (sc_stnum, sc_sbcode, sc_score)
 VALUES('2021003','S003',70);
 
+drop TABLE tbl_subject;
 CREATE TABLE tbl_subject(
 	sb_code	CHAR(4),	
 	sb_name	VARCHAR(20)	NOT NULL,
