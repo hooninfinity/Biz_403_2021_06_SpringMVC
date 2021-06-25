@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.callor.score.model.ScoreInputVO;
 import com.callor.score.model.StudentVO;
 import com.callor.score.model.SubjectAndScoreDTO;
 import com.callor.score.service.ScoreService;
@@ -22,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class StudentController {
 	
 	protected final StudentService stService;
-	protected final ScoreService scService;
+	// protected final ScoreService scService;
 	
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public String list(Model model) {
@@ -67,16 +69,31 @@ public class StudentController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(String st_num, Model model) {
 		
-		List<SubjectAndScoreDTO> ssList = scService.selectScore(st_num);
+//		List<SubjectAndScoreDTO> ssList = scService.selectScore(st_num);
 		
-		// StudentVO stVO = stService.find
+		String ret = stService.detail(model, st_num);
 		
-		model.addAttribute("SSLIST", ssList);
+//		model.addAttribute("SSLIST", ssList); //home.jsp에 BODY == 'STUDENT_DETAIL'일 경우 include 되는 파일인 detail.jsp에 SSLIST가 있다
 		model.addAttribute("BODY", "STUDENT_DETAIL");
 		return "home";
 	}
 	
+	@RequestMapping(value = "/detail", method = RequestMethod.POST)
+//	public String detail(
+//		@RequestParam(name = "subject") List<String> subject,
+//		@RequestParam(name = "score") List<String> score) {
 	
+	public String detail(ScoreInputVO scInputVO) {
+		
+//		log.debug("Subject : {} ", subject.toString());
+//		log.debug("Score : {} ", score.toString());
+		
+		log.debug("Score Input {}", scInputVO.toString());
+		
+		String ret = stService.scoreInput(scInputVO);
+		
+		return "home";
+	}
 	
 
 }

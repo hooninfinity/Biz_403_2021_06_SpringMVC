@@ -41,7 +41,9 @@ section#main_sec {
 	width: 100wv;
 	display: flex;
 	flex-direction: column;
-	background: linear-gradient(to bottom, blue, red);
+	/* background: linear-gradient(to bottom, blue, red); */
+	background: url("${rootPath}/static/images/header_background.jpg")
+		no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
 	background-size: 100% 100%;
@@ -123,6 +125,48 @@ button:hover {
 	cursor: pointer;
 }
 
+button.save {
+	background-color: blue;
+	color: white;
+}
+
+button.reset {
+	background-color: olive;
+	color: white;
+}
+
+button.list {
+	background-color: green;
+	color: white;
+}
+
+button.home {
+	background-color: black;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+
+button.insert {
+	background-color: rgba(0, 0, 200, 1);
+	color: white;
+}
+
+button.update {
+	background-color: green;
+	color: white;
+}
+
+button.delete {
+	background-color: red;
+	color: yellow;
+}
+
+button.student.list {
+	background-color: orange;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+
 form {
 	width: 90%;
 	margin: 0 auto 10px auto;
@@ -158,27 +202,6 @@ form input {
 form input:hover {
 	background-color: #bbb;
 }
-
-form button.save {
-	background-color: blue;
-	color: white;
-}
-
-form button.reset {
-	background-color: olive;
-	color: white;
-}
-
-form button.list {
-	background-color: green;
-	color: white;
-}
-
-form button.home {
-	background-color: black;
-	color: white;
-}
-
 </style>
 
 <body>
@@ -208,35 +231,51 @@ form button.home {
 </body>
 <script>
 /*
-	JS 코드에서 event를 등록할때 현재 화면에 없는 DOM 요소에
-	addEvent를 설정하면 없는 함수라는 오류가 발생한다.
-	그 이유는 현재 화면에 없는 DOM 요소를 querySelector하면
-	그 결과값이 null 이기 때문에 발생하는 문제이다.
+JS 코드에서 event를 등록할때 현재 화면에 없는 DOM 요소에
+addEvent를 설정하면 없는 함수라는 오류가 발생한다.
+그 이유는 현재 화면에 없는 DOM 요소를 querySelector하면
+그 결과값이 null 이기 때문에 발생하는 문제이다.
  	
-	JS코드를 통합하여 모음으로 관리할때는
-	addEvent를 하려고 하는 요소가 있는지를 먼저 검사한 후
-	addEvent를 수행해 주어야 한다.
- */
- let std_list = document.querySelector("button.student.list");
- let std_insert = document.querySelector("button.student.insert");
- let home = document.querySelector("button.student.home") 
- // std_list가 있으면
- if(std_list) {
+JS코드를 통합하여 모음으로 관리할때는
+addEvent를 하려고 하는 요소가 있는지를 먼저 검사한 후
+addEvent를 수행해 주어야 한다.
+*/
+let std_list = document.querySelector("button.student.list");
+let std_insert = document.querySelector("button.student.insert");
+let home = document.querySelector("button.student.home") 
+// std_list가 있으면
+if(std_list) {
  	std_list.addEventListener("click",(e)=>{
  			location.href = "${rootPath}/student"
  	})
- }
- if(std_insert) {
- 	std_insert.addEventListener("click",(e)=>{
+}
+if(std_insert) {
+	std_insert.addEventListener("click",(e)=>{
  			location.href = "${rootPath}/student/insert"
  	})
- }
- if(home) {
+}
+if(home) {
  	home.addEventListener("click",(e)=>{
  			location.href = "${rootPath}/"
  	})
- 	
- }
+}
+ 
+ 
+let table = document.querySelector("table.detail")
+if(table) {
+	table.addEventListener("click",(e)=>{
+		
+		let target = e.target
+		let tagName = target.tagName
+		if(tagName === "TD") {
+			let tr = target.closest("TR")
+			let stNum = tr.dataset.stnum
+			
+			location.href = "${rootPath}/student/detail?st_num=" + stNum
+		}
+	})
+}
+ 
 </script>
 
 </html>

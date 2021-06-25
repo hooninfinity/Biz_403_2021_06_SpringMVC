@@ -1,5 +1,6 @@
 CREATE DATABASE db_school;
 USE db_school;
+
 DROP TABLE tbl_student;
 CREATE TABLE tbl_student (
 	st_num	CHAR(8)		PRIMARY KEY,
@@ -18,7 +19,7 @@ sc_sbcode	CHAR(4)	NOT NULL,
 sc_score	INT	NOT NULL	
 );
 
-drop TABLE tbl_subject;
+DROP TABLE tbl_subject;
 CREATE TABLE tbl_subject(
 	sb_code	CHAR(4),	
 	sb_name	VARCHAR(20)	NOT NULL,
@@ -42,8 +43,22 @@ FROM tbl_subject SB
 	LEFT JOIN
 		(SELECT * FROM tbl_score WHERE sc_stnum = "2021001") SC
 			ON SC.sc_sbcode = SB.sb_code;
-            
-        
+
+/*
+과목리스트를 전체 보여주고,
+학생의 성적 table을 JOIN하여
+학생의 점수가 있으면 점수를 보이고
+없으면 null로 보여주는 JOIN SQL문
+
+이 JOIN 명령문에 특정한 학번을 조건으로 부여하여
+한 학생의 성적여부를 조회하는 SQL 만들기
+
+순수한 JOIN을 사용하여 한 학생의 성적을 조회하는데
+학생의 성적이 tbl_score table에 있으면 점수를 보이고,
+없으면 NULL 로 표현하기 위하여
+WHERE 절에서 학번을 조건으로 부여하지 않고
+JOIN문의 ON 절에 학번을 조건으로 부여한다.
+*/
 SELECT SB.sb_code, SB.sb_name, SB.sb_prof,
 		SC.sc_stnum, SC.sc_score
 FROM tbl_subject SB
@@ -51,4 +66,7 @@ FROM tbl_subject SB
 			ON SC.sc_sbcode = SB.sb_code
             AND SC.sc_stnum = '2021001' LIMIT 5;
 
+SELECT COUNT(*) FROM tbl_score
+WHERE sc_stnum = '2021002';
 
+SELECT * FROM tbl_score;

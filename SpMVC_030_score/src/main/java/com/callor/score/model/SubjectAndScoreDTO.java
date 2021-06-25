@@ -12,7 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class SubjectAndScoreDTO {
-	
+	// mapper에서 as로 정해놓은 이름들
 	private String ss_code;// as ss_code, 
 	private String ss_stname;// as ss_stname, 
 	private String ss_prof;// as ss_prof,
