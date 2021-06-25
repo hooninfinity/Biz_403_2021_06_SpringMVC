@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.score.model.StudentVO;
+import com.callor.score.model.SubjectAndScoreDTO;
+import com.callor.score.service.ScoreService;
 import com.callor.score.service.StudentService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 public class StudentController {
 	
 	protected final StudentService stService;
+	protected final ScoreService scService;
 	
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public String list(Model model) {
@@ -40,6 +43,11 @@ public class StudentController {
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert(Model model) {
+		
+		StudentVO stVO = new StudentVO();
+		stVO.setSt_num( stService.makeStNum() );
+		// stVO를 STD라는 이름으로 셋팅
+		model.addAttribute("STD", stVO);
 		model.addAttribute("BODY", "STUDENT_INPUT");
 		return "home";
 	}
@@ -47,9 +55,24 @@ public class StudentController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(StudentVO studentVO, Model model) {
 		
+		log.debug("Req 학생정보 : {}", studentVO.toString());
 		
+		int ret = stService.insert(studentVO);
 		
 		model.addAttribute("BODY", "STUDENT_INPUT");
+		// 입력이 끝난 다음에는 리스트로 가라
+		return "redirect:/student";
+	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(String st_num, Model model) {
+		
+		List<SubjectAndScoreDTO> ssList = scService.selectScore(st_num);
+		
+		// StudentVO stVO = stService.find
+		
+		model.addAttribute("SSLIST", ssList);
+		model.addAttribute("BODY", "STUDENT_DETAIL");
 		return "home";
 	}
 	

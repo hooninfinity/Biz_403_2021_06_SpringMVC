@@ -9,5 +9,11 @@ public interface StudentService {
 	
 	public List<StudentVO> selectAll();
 	public Map<String, Object> selectMaps();
+	
+	public String makeStNum();
+	public String makeStNum(String prefix);
+	
+	public int insert(StudentVO stVO);
+	public int update(StudentVO stVO);
 
 }

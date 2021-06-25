@@ -174,6 +174,11 @@ form button.list {
 	color: white;
 }
 
+form button.home {
+	background-color: black;
+	color: white;
+}
+
 </style>
 
 <body>
@@ -191,6 +196,9 @@ form button.list {
 			</c:when>
 			<c:when test="${BODY == 'STUDENT_INPUT'}">
 				<%@ include file="/WEB-INF/views/student/input.jsp"%>
+			</c:when>
+			<c:when test="${BODY == 'STUDENT_DETAIL'}">
+				<%@ include file="/WEB-INF/views/student/detail.jsp"%>
 			</c:when>
 			<c:otherwise>
 				<%@ include file="/WEB-INF/views/main.jsp"%>
