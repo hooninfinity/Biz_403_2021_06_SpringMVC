@@ -31,8 +31,8 @@ public class HomeController {
 		List<StudentVO> stList = stService.selectAll();
 		Map<String,Object> maps = stService.selectMaps();
 		log.debug("Controller {} ", stList.toString());
-		// 프로젝트를 시작하면 성적리스트가 있는 화면으로 점프하기
-		return "redirect:/score";
+		// 프로젝트를 시작하면 학생정보가 있는 화면으로
+		return "redirect:/student";
 	}
 	
 	
