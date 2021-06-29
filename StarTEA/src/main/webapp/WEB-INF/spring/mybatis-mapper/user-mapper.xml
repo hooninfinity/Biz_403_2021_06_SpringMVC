@@ -11,9 +11,9 @@
 
 	<insert id="insert">
 		INSERT INTO tbl_user(
-			user_code, user_id, user_password, user_email)
+			user_id, user_password, user_email)
 		VALUES(
-			#{user_code}, #{user_id}, #{user_password}, #{user_email}
+			#{user_id}, #{user_password}, #{user_email}
 		)
 	</insert>
 

@@ -13,8 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class UserVO {
 	
-	private String user_code;	//	CHAR(5)
-	private String user_id;	//	VARCHAR(50)
+	private String user_id;	//	VARCHAR(20)
 	private String user_password;	//	VARCHAR(50)
 	private String user_email;	//	VARCHAR(50)
 
