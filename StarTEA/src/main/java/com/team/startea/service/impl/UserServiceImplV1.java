@@ -28,6 +28,12 @@ public class UserServiceImplV1 implements UserService {
 		return usDao.selectAll() ;
 	}
 
+	@Override
+	public String join(UserVO usVO) {
+		
+		return usDao.join(usVO);
+	}
+
 }
 
 

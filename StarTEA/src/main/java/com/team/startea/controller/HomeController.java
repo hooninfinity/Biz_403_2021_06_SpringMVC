@@ -31,7 +31,7 @@ public class HomeController {
 		
 		log.debug("User {} ", usList.toString());
 		
-		return "redirect:/user";
+		return "home";
 	}
 	
 }

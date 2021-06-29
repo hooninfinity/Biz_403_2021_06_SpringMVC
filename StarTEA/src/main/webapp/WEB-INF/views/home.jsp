@@ -12,7 +12,6 @@
 	<h2>유저 정보 리스트</h2>
 	<table>
 		<tr>
-			<th>고객번호</th>
 			<th>고객아이디</th>
 			<th>비밀번호</th>
 			<th>이메일</th>
@@ -26,7 +25,6 @@
 			<c:otherwise>
 				<c:forEach items="${USERS}" var="US">
 					<tr>
-						<td>${US.user_code}</td>
 						<td>${US.user_id}</td>
 						<td>${US.user_password}</td>
 						<td>${US.user_email}</td>
@@ -35,5 +33,15 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
+	<button class="join">회원가입</button>
+	
 </body>
+<script>
+let user_join = document.querySelector("button.join");
+if(user_join) {
+	user_join.addEventListener("click",(e)=>{
+		location.href = "${rootPath}/user/join"
+	})
+}
+</script>
 </html>
