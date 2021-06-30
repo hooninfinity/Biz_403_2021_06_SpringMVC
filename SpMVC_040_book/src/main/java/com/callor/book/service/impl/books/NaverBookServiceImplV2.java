@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  * gson을 사용하여 JSON parsing을 수행하는 코드로 작성하기
  */
 @Slf4j
-@Service("naverServiceV2")
+@Service("naverBookServiceV2")
 public class NaverBookServiceImplV2 extends NaverBookServiceImplV1 {
 	
 	// gson을 사용하여 jsonString을 parsing 하기

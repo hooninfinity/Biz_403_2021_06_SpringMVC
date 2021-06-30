@@ -18,8 +18,8 @@ import lombok.RequiredArgsConstructor;
 @Service("naverMainServiceV1")
 public class NaverMainServiceImpl {
 	
-	@Qualifier("naverServiceV2")
-	protected final NaverBookService<BookDTO> nBookService;
+	@Qualifier("naverBookServiceV2")
+	protected final NaverBookService nBookService;
 	
 	public void naverGetData(String cat, String search, Model model) throws MalformedURLException, IOException, ParseException {
 		

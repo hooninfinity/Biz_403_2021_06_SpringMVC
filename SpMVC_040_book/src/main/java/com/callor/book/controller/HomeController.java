@@ -23,8 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 	// naverServiceV1과 V2를 넘나드는
-	@Qualifier("naverServiceV2")
-	protected final NaverBookService<BookDTO> nBookService;
+	
+	@Qualifier("naverBookServiceV2")
+	protected final NaverBookService nBookService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
