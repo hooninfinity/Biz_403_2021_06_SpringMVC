@@ -11,6 +11,6 @@ public interface UserDao extends GenericDao<UserVO, String> {
 //			@Param("user_email") String user_email
 //			);
 
-	public String join(UserVO usVO);
+	public int join(UserVO usVO);
 
 }

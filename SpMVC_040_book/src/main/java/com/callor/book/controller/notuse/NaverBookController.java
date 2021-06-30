@@ -1,4 +1,4 @@
-package com.callor.book.controller;
+package com.callor.book.controller.notuse;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,23 +13,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.book.model.BookDTO;
-import com.callor.book.service.NaverService;
+import com.callor.book.service.NaverBookService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@RequestMapping(value = "/book")
-@Controller
+//@RequestMapping(value = "/book")
+//@Controller
 public class NaverBookController {
 
 	@Qualifier("naverServiceV1")
-	protected final NaverService<BookDTO> nBookService;
+	protected final NaverBookService<BookDTO> nBookService;
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
 	public String home(@RequestParam(name = "search", required = false, defaultValue = "") String search, Model model)
 			throws MalformedURLException, IOException, ParseException {
 
-		model.addAttribute("pHolder", "도서 검색어");
+//		model.addAttribute("pHolder", "도서 검색어");
+		model.addAttribute("CAT", "BOOK");
 
 		// search 변수가 null값이 아니고(혹시 모를 exception 방지를 위해), 빈값이 아니면 => 값이 담겨있으면
 		if (search != null && !search.equals("")) {

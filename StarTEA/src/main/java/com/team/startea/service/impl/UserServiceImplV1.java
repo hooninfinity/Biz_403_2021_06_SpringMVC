@@ -29,7 +29,7 @@ public class UserServiceImplV1 implements UserService {
 	}
 
 	@Override
-	public String join(UserVO usVO) {
+	public int join(UserVO usVO) {
 		
 		return usDao.join(usVO);
 	}
