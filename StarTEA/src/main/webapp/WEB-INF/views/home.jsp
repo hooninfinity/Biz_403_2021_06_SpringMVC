@@ -34,13 +34,19 @@
 		</c:choose>
 	</table>
 	<button class="join">회원가입</button>
+	<button class="login">로그인</button>
 	
 </body>
 <script>
-let user_join = document.querySelector("button.join");
+let user_join = document.querySelector("button.join")
+let user_login = document.querySelector("button.login")
 if(user_join) {
 	user_join.addEventListener("click",(e)=>{
 		location.href = "${rootPath}/user/join"
+	})
+} else if (user_login) {
+	user_join.addEventListener("click",(e)=>{
+		location.href = "${rootPath}/user/login"
 	})
 }
 </script>

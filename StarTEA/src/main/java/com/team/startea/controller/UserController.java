@@ -18,8 +18,8 @@ public class UserController {
 	protected final UserService usService;
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public void join() {
-		
+	public String join() {
+		return "/user/join";
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
