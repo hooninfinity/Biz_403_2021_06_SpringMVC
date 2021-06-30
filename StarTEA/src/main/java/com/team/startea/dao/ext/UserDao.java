@@ -1,7 +1,5 @@
 package com.team.startea.dao.ext;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.team.startea.dao.GenericDao;
 import com.team.startea.model.UserVO;
 

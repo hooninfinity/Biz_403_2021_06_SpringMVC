@@ -19,11 +19,19 @@ p b {
 	color: blue;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
 nav#main_nav {
 	background-color: #2DB400;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-size: 100% 100%;
+	
 }
 
 nav#main_nav form {
@@ -39,11 +47,33 @@ nav#main_nav input {
 	border-radius: 10px;
 }
 
+nav#main_nav select {
+	padding: 8px;
+	width: 20%;
+	border-radius: 10px;
+}
+
+
 section.content_box {
 	border: 1px solid green;
 	padding: 12px 16px;
 	display: flex;
 	flex-wrap: wrap;
+	
+	/*
+	검색 결과가 표시되는 영역은 scroll 지정하고
+	상단의 검색창(nav)은 화면에 고정하기
+	
+	1. body 에
+		display: flex
+		flex-direction: column
+		height: 100vh
+	2. 검색결과창에
+		flex: 1
+		overflow: auto
+	*/
+	flex: 1;
+	overflow: auto;
 }
 
 section.content_box div.content {
@@ -90,29 +120,30 @@ a:hover {
 </head>
 <body>
 	<nav id="main_nav">
+		<select name="category">
+			<option value="BOOK">도서검색</option>
+			<option value="MOVIE">영화검색</option>
+			<option value="NEWS">뉴스검색</option>
+		</select>
 		<form>
-			<input name="search" placeholder="도서명을 입력후 Enter...">
+			<input name="search" placeholder="${pHolder}를 입력후 Enter...">
 		</form>
 	</nav>
 	<section class="content_box">
-		<c:forEach items="${BOOKS}" var="BOOK">
-			<div class="content">
-				<img src="${BOOK.image}">
-				<div>
-					<p class="title">
-						<a href="${BOOK.link}" target="_NEW"> ${BOOK.title} </a>
-					</p>
-					<p class="desc">${BOOK.description}</p>
-					<p class="author">
-						<strong>저자 : </strong>${BOOK.author}
-					</p>
-					<p class="publisher">
-						<strong>출판사 : </strong>${BOOK.publisher}
-					</p>
-					<button class="insert">내 서재등록</button>
-				</div>
-			</div>
-		</c:forEach>
+		<%@ include file="/WEB-INF/views/book_list.jsp" %>
+		<%@ include file="/WEB-INF/views/movie_list.jsp" %>
+		<%@ include file="/WEB-INF/views/news_list.jsp" %>
 	</section>
 </body>
+<script>
+let category = document.querySelector("select[name='category']")
+category.addEventListener("change",(e)=>{
+	let value = category.value
+	// alert(value)
+	location.href = "${rootPath}/?category=" + value;
+})
+</script>
+
+
+
 </html>

@@ -16,46 +16,30 @@ import com.callor.book.model.BookDTO;
 import com.callor.book.service.NaverService;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
-@Slf4j
+@RequestMapping(value = "/book")
 @Controller
-public class HomeController {
-	// naverServiceV1과 V2를 넘나드는
-	@Qualifier("naverServiceV2")
+public class NaverBookController {
+
+	@Qualifier("naverServiceV1")
 	protected final NaverService<BookDTO> nBookService;
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(
-			@RequestParam(name = "category", required = false, defaultValue = "") String category, Model model) {
-		
-		// model.addAttribute("CAT", category);
-		if(category.equalsIgnoreCase("BOOK")) {
-			return "redirect:/book";
-		} else if ( category.equalsIgnoreCase("MOVIE")) {
-			return "redirect:/movie";
-		} else if ( category.equalsIgnoreCase("NEWS")) {
-			return "redirect:/news";
-		}
-		return "redirect:/book";
-	}
-	
-	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home1(@RequestParam(name = "search", required = false, defaultValue = "") String search, Model model) throws MalformedURLException, IOException, ParseException {
-		
+
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
+	public String home(@RequestParam(name = "search", required = false, defaultValue = "") String search, Model model)
+			throws MalformedURLException, IOException, ParseException {
+
+		model.addAttribute("pHolder", "도서 검색어");
+
 		// search 변수가 null값이 아니고(혹시 모를 exception 방지를 위해), 빈값이 아니면 => 값이 담겨있으면
-		if(search != null && !search.equals("")) {
-			
+		if (search != null && !search.equals("")) {
+
 			String queryURL = nBookService.queryURL(search.trim());
 			String jsonString = nBookService.getJsonString(queryURL);
 			List<BookDTO> bookList = nBookService.getNaverList(jsonString);
 			model.addAttribute("BOOKS", bookList);
-			
 		}
-		
 		return "home";
 	}
-	
+
 }
