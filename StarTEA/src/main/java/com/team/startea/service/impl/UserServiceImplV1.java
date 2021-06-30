@@ -18,20 +18,23 @@ public class UserServiceImplV1 implements UserService {
 	
 	protected final UserDao usDao;
 
+	
 	@Override
 	public List<UserVO> selectAll() {
-		
 		List<UserVO> usList = usDao.selectAll();
-		
 		log.debug("Service User {} ", usList.toString());
-		
 		return usDao.selectAll() ;
 	}
 
 	@Override
 	public int join(UserVO usVO) {
-		
 		return usDao.join(usVO);
+	}
+
+	@Override
+	public UserVO login(String user_id, String user_password) {
+		
+		return null;
 	}
 
 }

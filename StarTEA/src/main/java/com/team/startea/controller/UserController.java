@@ -17,8 +17,6 @@ public class UserController {
 	
 	protected final UserService usService;
 
-	
-
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public void join() {
 		
@@ -26,12 +24,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(UserVO usVO, Model model) {
-		
 		usService.join(usVO);
-		
-		
-		return "home";
-		
+		return "redirect:/";
 	}
 
 }
