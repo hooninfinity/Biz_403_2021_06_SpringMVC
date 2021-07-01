@@ -33,9 +33,15 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
-	<button class="join">회원가입</button>
-	<button class="login">로그인</button>
 	
+	<c:if test="${LOGIN == null }">
+		<button class="join">회원가입</button>
+		<button class="login">로그인</button>
+	</c:if>
+	
+	<c:if test="${LOGIN != null}">
+		<p>${LOGIN.user_id} 님 환영합니다</p>
+	</c:if>
 </body>
 <script>
 let user_join = document.querySelector("button.join")

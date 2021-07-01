@@ -32,10 +32,12 @@ public class UserServiceImplV1 implements UserService {
 	}
 
 	@Override
-	public UserVO login(String user_id, String user_password) {
-		
-		return null;
+	public UserVO login(UserVO usVO) {
+		return usDao.login(usVO);
 	}
+
+
+
 
 }
 

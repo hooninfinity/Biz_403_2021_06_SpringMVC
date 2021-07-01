@@ -15,7 +15,7 @@ form#login {
 	border-radius: 20px;
 }
 form#login h2 {
-	color: white;
+	color: black;
 	font-weight: 500;
 }
 form#login input {
@@ -24,7 +24,7 @@ form#login input {
 	width: 200px;
 	margin: 5px auto;
 	padding: 10px;
-	color: white;
+	color: black;
 	border: 2px solid #036635;
 	border-radius: 5px;
 	background: none;

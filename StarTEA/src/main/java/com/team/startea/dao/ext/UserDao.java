@@ -6,6 +6,8 @@ import com.team.startea.model.UserVO;
 public interface UserDao extends GenericDao<UserVO, String> {
 
 	public int join(UserVO usVO);
+
+	public UserVO login(UserVO usVO);
 	
 	
 	

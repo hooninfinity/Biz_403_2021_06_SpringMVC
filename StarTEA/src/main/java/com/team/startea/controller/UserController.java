@@ -1,5 +1,8 @@
 package com.team.startea.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +34,22 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "/user/login";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(UserVO usVO, HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		
+		UserVO loginInfo = usService.login(usVO);
+		
+		if (loginInfo == null) {
+			session.setAttribute("LOGIN", null);
+		} else {
+			session.setAttribute("LOGIN", loginInfo);
+		}
+		
+		return "redirect:/";
 	}
 
 }
