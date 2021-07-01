@@ -21,8 +21,8 @@ import lombok.RequiredArgsConstructor;
 public class NaverExitController {
 	// 테스트용 컨트롤러
 	
-	protected final NaverBookService<BookDTO> nBookService;
-	public NaverExitController(@Qualifier("naverServiceV1") NaverBookService<BookDTO> nBookService) {
+	protected final NaverBookService nBookService;
+	public NaverExitController(@Qualifier("naverServiceV1") NaverBookService nBookService) {
 		this.nBookService = nBookService;
 	}
 	

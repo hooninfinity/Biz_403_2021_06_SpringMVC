@@ -8,6 +8,10 @@
 	<select id="selectAll" resultType="UserVO">
 		SELECT * FROM tbl_user
 	</select>
+	
+	<select id="login">
+	
+	</select>
 
 	<insert id="join" parameterType="UserVO">
 		INSERT INTO tbl_user(
