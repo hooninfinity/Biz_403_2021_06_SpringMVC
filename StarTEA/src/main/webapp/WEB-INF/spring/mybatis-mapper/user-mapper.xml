@@ -9,8 +9,10 @@
 		SELECT * FROM tbl_user
 	</select>
 	
-	<select id="login">
-	
+	<select id="login" resultType="UserVO">
+		SELECT user_id, user_password
+		FROM tbl_user
+		WHERE user_id = #{user_id} AND user_password = #{user_password}
 	</select>
 
 	<insert id="join" parameterType="UserVO">

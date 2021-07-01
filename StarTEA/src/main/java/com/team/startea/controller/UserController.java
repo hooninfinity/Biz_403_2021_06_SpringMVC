@@ -27,5 +27,10 @@ public class UserController {
 		usService.join(usVO);
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
+		return "/user/login";
+	}
 
 }

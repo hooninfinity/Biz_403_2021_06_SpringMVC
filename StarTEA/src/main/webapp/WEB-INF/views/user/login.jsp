@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-form#login_form {
+form#login {
 	height: 100vh;
 	width: 350px;
 	padding: 60px;
@@ -14,11 +14,11 @@ form#login_form {
 	text-align: center;
 	border-radius: 20px;
 }
-form#login_form h2 {
+form#login h2 {
 	color: white;
 	font-weight: 500;
 }
-form#login_form input {
+form#login input {
 	outline: 0;
 	dispaly: block;
 	width: 200px;
@@ -31,11 +31,11 @@ form#login_form input {
 	text-align: center;
 	transition: 0.3s;
 }
-form#login_form input:focus {
+form#login input:focus {
 	width: 250px;
 	border-color: #036635;
 }
-form#login_form button {
+form#login button {
 	outline: none; /* 0 */
 	display: block;
 	background: #036635;
@@ -48,7 +48,7 @@ form#login_form button {
 	border-radius: 5px;
 	cursor: pointer;
 }
-form#login_form button:hover {
+form#login button:hover {
 	background-color: #036635;
 }
 
@@ -58,7 +58,7 @@ form#login_form button:hover {
 <title>스타벅스 커스텀 로그인</title>
 </head>
 <body>
-	<form id="login_form" method="POST">
+	<form id="login" method="POST">
 		<h2>로그인</h2>
 		<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
 		<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
@@ -101,11 +101,11 @@ const login_submit = () => {
 		return false;
 	}
 	
-	doc.querySelector("form#login_form").submit()
+	doc.querySelector("form#login").submit()
 	
 }
 
-document.querySelector("form#login_form").addEventListener("click",(e)=>{
+document.querySelector("form#login").addEventListener("click",(e)=>{
 	let target = e.target
 	
 	if(target.tagName === "BUTTON") {

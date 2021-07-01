@@ -44,8 +44,9 @@ if(user_join) {
 	user_join.addEventListener("click",(e)=>{
 		location.href = "${rootPath}/user/join"
 	})
-} else if (user_login) {
-	user_join.addEventListener("click",(e)=>{
+}  
+if (user_login) {
+	user_login.addEventListener("click",(e)=>{
 		location.href = "${rootPath}/user/login"
 	})
 }
