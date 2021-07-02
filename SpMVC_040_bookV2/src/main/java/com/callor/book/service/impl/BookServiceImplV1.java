@@ -15,7 +15,9 @@ import com.callor.book.service.BookService;
 import com.callor.book.service.NaverAbstractService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class BookServiceImplV1 implements BookService {
@@ -39,6 +41,17 @@ public class BookServiceImplV1 implements BookService {
 		book.setIsbn(isbn);
 		bookDao.insert(book);
 		return 0;
+	}
+
+
+	@Override
+	public List<BookDTO> selectAll() {
+
+		List<BookDTO> bookList = bookDao.selectAll();
+		
+//		log.debug("Service bookList {} ", bookList);
+		
+		return bookList;
 	}
 
 }
