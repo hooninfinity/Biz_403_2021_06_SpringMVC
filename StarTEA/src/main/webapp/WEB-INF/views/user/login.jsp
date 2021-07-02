@@ -62,11 +62,16 @@ form#login button:hover {
 		<h2>로그인</h2>
 		<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
 		<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
-		<button class="login">로그인</button>
-		<button class="home">취소</button>
+		<button type="submit" class="login">로그인</button>
+		<button type="button" class="home">취소</button>
 	</form>
 </body>
 <script>
+let fail = `${FAIL}`;
+if(fail){
+	alert("아이디 또는 비밀번호 확인!!")
+} 
+
 const login_submit = () => {
 	
 	let doc = document
@@ -95,14 +100,8 @@ const login_submit = () => {
 		return false;
 	}
 	
-	if(user_email.value === "") {
-		alert("이메일은 반드시 입력하세요")
-		user_email.focus()
-		return false;
-	}
 	
 	doc.querySelector("form#login").submit()
-	
 }
 
 document.querySelector("form#login").addEventListener("click",(e)=>{
@@ -111,7 +110,7 @@ document.querySelector("form#login").addEventListener("click",(e)=>{
 	if(target.tagName === "BUTTON") {
 		
 		if(target.className.includes("login")){
-			login_submit();
+			login_submit()
 			
 		} else if(target.className.includes("home")) {
 			location.href = "${rootPath}"

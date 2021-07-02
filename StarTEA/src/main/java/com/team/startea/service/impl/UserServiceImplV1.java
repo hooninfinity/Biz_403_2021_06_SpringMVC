@@ -18,7 +18,7 @@ public class UserServiceImplV1 implements UserService {
 	
 	protected final UserDao usDao;
 
-	
+	// 리스트 조회
 	@Override
 	public List<UserVO> selectAll() {
 		List<UserVO> usList = usDao.selectAll();
@@ -26,11 +26,13 @@ public class UserServiceImplV1 implements UserService {
 		return usDao.selectAll() ;
 	}
 
+	// 회원가입
 	@Override
 	public int join(UserVO usVO) {
 		return usDao.join(usVO);
 	}
 
+	// 로그인
 	@Override
 	public UserVO login(UserVO usVO) {
 		return usDao.login(usVO);

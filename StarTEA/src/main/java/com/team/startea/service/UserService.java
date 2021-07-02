@@ -5,7 +5,7 @@ import java.util.List;
 import com.team.startea.model.UserVO;
 
 public interface UserService {
-	
+	// 리스트 조회
 	public List<UserVO> selectAll();
 	
 	// 회원가입

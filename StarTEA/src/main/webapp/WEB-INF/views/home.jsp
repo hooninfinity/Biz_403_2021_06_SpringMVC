@@ -39,8 +39,13 @@
 		<button class="login">로그인</button>
 	</c:if>
 	
+
 	<c:if test="${LOGIN != null}">
-		<p>${LOGIN.user_id} 님 환영합니다</p>
+		<script type="text/javascript">
+			alert("로그인 되었습니다")
+		</script>
+			<p>${LOGIN.user_id} 님 환영합니다</p>
+			<a href="user/logout">로그아웃</a>
 	</c:if>
 </body>
 <script>
