@@ -13,9 +13,9 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/StarBucksDB" />
-		<property name="username" value="tdUser" />
-		<property name="password" value="tdUser" />
+			value="jdbc:mysql://localhost:3306/startea" />
+		<property name="username" value="gbUser" />
+		<property name="password" value="12345" />
 	</bean>
 	<!-- ssesionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -28,7 +28,7 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="ds" />
 	</bean>
-	<mybatis-spring:scan base-package="com.callor.book.dao.ext" />
+	<mybatis-spring:scan base-package="com.team.starbucks.dao.ext" />
 	
 	<!-- SessionTemplate -->
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
