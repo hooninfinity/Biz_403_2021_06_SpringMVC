@@ -1,0 +1,50 @@
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib
+	uri="http://java.sun.com/jsp/jstl/core"
+	prefix="c"%>
+<c:set
+	var="rootPath"
+	value="${pageContext.request.contextPath}" />
+<script>
+	var rootPath = "${rootPath}";
+	document.addEventListener("DOMContentLoaded", () => {
+		  const nav = document.querySelector("nav#main_nav");
+
+		  nav.addEventListener("click", (e) => {
+		    let tagName = e.target.tagName;
+		    let urlPath = `${rootPath}`;
+		    if (tagName === "LI") {
+		      let menuText = e.target.textContent;
+		      if (menuText === "HOME") {
+		        urlPath += "/";
+		      } else if (menuText === "CUSTOM") {
+		        urlPath += "/custom";
+		      } else if (menuText === "BOARD") {
+		        urlPath += "/board";
+		      } else if (menuText === "LOGIN") {
+		        urlPath += "/member";
+		      } else if (menuText === "JOIN") {
+		        urlPath += "/member/join";
+		      }
+		      location.href = urlPath;
+		    }
+		  });
+		});
+	</script>
+</head>
+<body>
+	<header id="home_header">
+		<h1 id="h1">STARBUCKS CUSTOM</h1>
+	<nav id="main_nav">
+		<ul>
+			<li>HOME</li>
+			<li>CUSTOM</li>
+			<li>BOARD</li>
+			<li>LOGIN</li>
+			<!-- <li>JOIN</li> -->
+		</ul>
+	</nav>
+	</header>

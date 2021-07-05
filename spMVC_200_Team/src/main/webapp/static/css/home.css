@@ -1,0 +1,139 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	flex: 1;
+	overflow: auto;
+	background-color: rgb(3, 102, 53);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-top: 3rem;
+	padding-bottom: 0;
+	border: 0;
+	z-index: 1;
+}
+
+body {
+	padding-top: 54px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+section#main {
+	flex: 1;
+	dispaly: flex;
+	height: 0;
+}
+
+header h1#h1 {
+	width: 100%;
+	text-align: center;
+	text-shadow: 1px 0px 0px #aaa;
+	color: #eee;
+	font-weight: 800;
+	margin: 0 auto;
+	top: 20px;
+	position: absolute;
+	/* bottom:-9px; */
+	font-size: 2rem;
+	text-align: center;
+	height: 2vh;
+	line-height: 2vh;
+	color: #fcedd8;
+	font-weight: 200;
+	text-shadow: 5px 5px 0px #eb452b, 10px 10px 0px #efa032, 15px 15px 0px
+		#46b59b, 20px 20px 0px #017e7f, 25px 25px 0px #052939, 30px 30px 0px
+		#c11a2b, 35px 35px 0px #c11a2b, 40px 40px 0px #c11a2b, 45px 45px 0px
+		#c11a2b;
+}
+
+nav#main_nav {
+	/* border: 1px solid green; */
+	/* 화면의 특정한 위치에 강제 고정하기 */
+	/* top, left, bottom, right 를 이용하여 고정할수 있다 */
+	flex: 1;
+	overflow: auto;
+	position: flex;
+	padding: 0 auto;
+	padding-top: 0 auto;
+	width: 100%;
+	background-color: white;
+}
+
+nav#main_nav ul {
+	/* border: 1px solid green; */
+	display: flex;
+	list-style: none;
+	font-size: 15px;
+	font-weight: 400;
+	color: rgb(3, 102, 53);
+	text-aline: center;
+	width: 100%;
+	margin: 0 auto;
+	justify-content: center;
+}
+
+nav#main_nav li {
+	text-aline: center;
+	margin-bottom: 0 auto;
+	height: 60px;
+	padding: 0 20px;
+}
+
+nav#main_nav li:first-child {
+	margin-left: auto;
+}
+
+nav#main_nav li:last-child {
+	margin-right: auto;
+}
+
+nav#main_nav li:hover {
+	height: 30px;
+	/* background-color: rgb(3, 102, 53); */
+	opacity: 0.3;
+	color: white;
+	cursor: pointer;
+	transform: translateY(30px);
+	transition: 1s;
+	padding: 0 auto;
+}
+
+section#main_sec {
+	padding: 10px 2px;
+	width: 50%;
+	height: 400px;
+	margin: 5px auto;
+	flex: 1;
+}
+
+section#main_sec article {
+	flex: 1;
+	margin: 6px 3px;
+	padding: 2px;
+	border-bottom: 1px solid #aaa;
+}
+
+section#main_sec article ul, ol {
+	margin: 0;
+	padding: 0;
+}
+
+section#main_sec article li {
+	list-style: none;
+	margin: 2px 15px;
+	padding: 3px 5px;
+}
+
+section#contents article img {
+	width: 300px;
+	height: 300px;
+	display: block;
+	margin: 0px auto;
+}

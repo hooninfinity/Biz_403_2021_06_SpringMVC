@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/* 기본스타일  */
+
+section#main_cal{
+/* 	border:1px solid green; */
+
+}
+table#calender {
+ 	/* border: 1px solid green; */
+ 	width:100%;
+ 	padding: 30px;
+}
+table#calender tr {
+	height: 50px;
+}
+
+table#calender td {
+	width: 100px;
+	text-align: right;
+	font-size: 12pt;
+	font-family: 'Song Myung', serif;
+}
+/* 타이틀 스타일 */
+table#calender th#title {
+	font-size: 15px;
+	font-weight: bold;
+	color: #036635;
+	font-family: 'Song Myung', serif;
+}
+
+/* 요일 스타일 */
+table#calender td.sunday {
+	text-align: center;
+	font-weight: 400;
+	color: red;
+	font-family: 'Song Myung', serif;
+}
+
+table#calender td.saturday {
+	text-align: center;
+	font-weight: 400;
+	color: blue;
+	font-family:'Song Myung', serif;
+}
+
+table#calender td.etcday {
+	text-align: center;
+	font-weight: 400;
+	color: black;
+	font-family:'Song Myung', serif;
+}
+
+/* 날짜 스타일 */
+table#calender td.sun {
+	text-align: right;
+	font-size: 15pt;
+	color: red;
+	font-family:'Song Myung', serif;
+	vertical-align: top;
+}
+
+table#calender td.sat {
+	text-align: right;
+	font-size: 15pt;
+	color: blue;
+	font-family: 'Song Myung', serif;
+	vertical-align: top;
+}
+
+table#calender td.etc {
+	text-align: right;
+	font-size: 15pt;
+	color: black;
+	font-family: 'Song Myung', serif;
+	vertical-align: top;
+}
+
+table#calender td.redbefore {
+	text-align: right;
+	font-size: 12pt;
+	color: red;
+	font-family:'Song Myung', serif;
+	vertical-align: top;
+}
+
+table#calender td.before {
+	text-align: right;
+	font-size: 12pt;
+	color: gray;
+	font-family: 'Song Myung', serif;
+	vertical-align: top;
+}

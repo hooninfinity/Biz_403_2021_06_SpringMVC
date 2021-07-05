@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<script>
+	var rootPath = "${rootPath}";
+</script>
+<script src="${rootPath}/static/js/main_nav.js?ver=2021-06-14-003"></script>
+</head>
+<body>
+	<header id="home_header">
+		<h1 id="h1">STARBUCKS CUSTOM</h1>
+	</header>
+	<nav id="main_nav">
+		<ul>
+			<li>HOME</li>
+			<li>EVENT</li>
+			<li>CUSTOM</li>
+			<li>BOARD</li>
+			<li>NOTICE</li>
+			<li>LOGIN</li>
+		</ul>
+	</nav>
