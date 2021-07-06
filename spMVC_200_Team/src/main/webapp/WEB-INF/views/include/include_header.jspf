@@ -23,12 +23,19 @@
 		      } else if (menuText === "LOGOUT") {
 		        urlPath += "/user/logout";
 		        alert("로그아웃 되었습니다")
+		      } else if (menuText === "JOIN") {
+		        urlPath += "/user/join";
 		      }
 		      location.href = urlPath;
 		    }
 		  });
 		});
-	</script>
+</script>
+<style>
+/* nav#main_nav li:nth-of-type(4) {
+	margin-left:auto;
+} */
+</style>
 </head>
 <body>
 	<header id="home_header">
@@ -40,6 +47,7 @@
 					<li>CUSTOM</li>
 					<li>BOARD</li>
 					<li>LOGIN</li>
+					<li>JOIN</li>
 				</ul>
 			</nav>
 		</c:if>
@@ -50,6 +58,7 @@
 					<li>CUSTOM</li>
 					<li>BOARD</li>
 					<li>LOGOUT</li>
+					<li>${LOGIN.user_id} 님 환영합니다</li>
 				</ul>
 				<script type="text/javascript">
 					alert("로그인 되었습니다")

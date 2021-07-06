@@ -52,6 +52,10 @@ form#join button:hover {
 	background-color: #036635;
 }
 
+label {
+	color: #036635;
+}
+
 </style>
 
 <head>
@@ -61,28 +65,29 @@ form#join button:hover {
 <body>
 <form id="join" method="POST">
 	<fieldset>
-		<div>
-			<br>
-			<label>아이디</label>
-			<br>
-			<input name="user_id" id="user_id" placeholder="아이디를 입력하세요"/>
-		</div>
-		<div>
-			<label>비밀번호</label>
-			<br>
-			<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
-		</div>
-		<div>
-			<label>이메일</label>
-			<br>
-			<input type="email" name="user_email" id="user_email" placeholder="이메일을 입력하세요"/>
-		</div>
-		
-		<div class="btn_box">
-			<button type="button" class="join">가입</button>
-			<button type="reset" class="reset">초기화</button>
-			<button type="button" class="home">처음으로</button>
-		</div>
+		<legend>JOIN</legend>
+			<div>
+				<br>
+				<label>아이디</label>
+				<br>
+				<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
+			</div>
+			<div>
+				<label>비밀번호</label>
+				<br>
+				<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
+			</div>
+			<div>
+				<label>이메일</label>
+				<br>
+				<input type="email" name="user_email" id="user_email" placeholder="이메일을 입력하세요"/>
+			</div>
+			
+			<div class="btn_box">
+				<button type="button" class="join">가입</button>
+				<button type="reset" class="reset">초기화</button>
+				<button type="button" class="home">처음으로</button>
+			</div>
 	</fieldset>
 </form>
 </body>

@@ -59,11 +59,13 @@ form#login button:hover {
 </head>
 <body>
 	<form id="login" method="POST">
-		<h2>로그인</h2>
-		<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
-		<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
-		<button type="submit" class="login">로그인</button>
-		<button type="button" class="home">취소</button>
+		<fieldset>
+			<legend>LOGIN</legend>
+			<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
+			<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
+			<button type="submit" class="login">로그인</button>
+			<button type="button" class="home">취소</button>
+		</fieldset>
 	</form>
 </body>
 <script>
