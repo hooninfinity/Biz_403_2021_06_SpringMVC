@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.gallery.model.FileDTO;
 import com.callor.gallery.model.GalleryDTO;
+import com.callor.gallery.model.GalleryFilesDTO;
 import com.callor.gallery.persistance.ext.FileDao;
 import com.callor.gallery.persistance.ext.GalleryDao;
 import com.callor.gallery.service.FileService;
@@ -41,7 +42,7 @@ public class GalleryServiceImplV1 implements GalleryService {
 	 * 		이미 생성되어 준비된 객체에 주입 등을 수행한다.
 	 */
 	/* 
-	 * Spring 공식 기능은 아니다.
+	 * Spring 공식 기능은 아니다. 일종의 트릭
 	 * 테이블이 없으면 create_table() method가 자동으로 생성해주는 부분. 
 	 * 생성자 파트에 작성하기 때문에 그냥 작동은 안되고 @Autowired를 사용해서 Spring을 속여보자.
 	 * 매개변수가 있어야 한다.
@@ -62,7 +63,8 @@ public class GalleryServiceImplV1 implements GalleryService {
 
 
 	@Override
-	public void input(GalleryDTO gaDTO, MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception {
+	public void input(GalleryDTO gaDTO,
+				MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception {
 		// TODO Auto-generated method stub
 		
 		// 대표이미지가 업로드 되면...
@@ -78,6 +80,7 @@ public class GalleryServiceImplV1 implements GalleryService {
 		// GalleryDTO에 담긴 데이터를 tbl_gallery table에 insert 하기
 		// mapper에서 insert를 수행한 후 새로 생성된 g_seq 값을
 		// 		selectKey 하여 gaDTO의 g_seq 변수에 담아놓은 상태이다.
+		// form에서 입력한 텍스트를 입력
 		gaDao.insert(gaDTO);
 		
 		log.debug(" INSERT 후 seq {}", gaDTO.getG_seq());
@@ -91,19 +94,23 @@ public class GalleryServiceImplV1 implements GalleryService {
 		// 원래 파일이름과 UUID 가 첨가된 파일이름을 추출하여
 		// FileDTO에 담고
 		// 다시 List에 담아 놓는다.
-		for(MultipartFile file : m_file.getFiles("m_file")) {
+		
+		List<MultipartFile> mFiles = m_file.getFiles("m_file");
+		for(MultipartFile file : mFiles) {
 			
 			String fileOriginName = file.getOriginalFilename();
 			String fileUUName = fService.fileUp(file);
 			
 			FileDTO fDto = FileDTO.builder()
-							.file_gseq(g_seq)
+							.file_gseq(g_seq) // 갤러리 데이터의 PK값
 							.file_original(fileOriginName)
 							.file_upname(fileUUName)
 							.build();
 			files.add(fDto);
 		}
 		log.debug("이미지 들 {}", files.toString());
+		
+		fDao.insertOrUpdateWithList(files);
 		
 	}
 
@@ -115,6 +122,12 @@ public class GalleryServiceImplV1 implements GalleryService {
 		List<GalleryDTO> gaList = gaDao.selectAll();
 		log.debug("갤러리 리스트 {}", gaList.toString());
 		return gaList;
+	}
+
+
+	@Override
+	public List<GalleryFilesDTO> findByIdGalleryFiles(Long g_seq) {
+		return gaDao.findByIdGalleryFiles(g_seq);
 	}
 
 }

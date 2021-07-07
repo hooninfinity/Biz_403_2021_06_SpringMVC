@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="btn_box">
-			<button class="btn_insert menu">메뉴 등록</button>
+			<button class="btn_insertmenu">메뉴 등록</button>
 		</div>
 		<table id="customlist">
 			<tr>
@@ -49,4 +49,9 @@
 	</fieldset>
 	<%@ include file="/WEB-INF/views/include/include_footer.jsp"%>
 </body>
+<script>
+document.querySelector("button.btn_insertmenu").addEventListener("click",(e)=>{
+	location.href = "${rootPath}/custom/insert"
+})
+</script>
 </html>
