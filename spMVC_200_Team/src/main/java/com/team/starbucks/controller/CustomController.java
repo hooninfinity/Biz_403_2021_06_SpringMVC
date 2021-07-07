@@ -21,7 +21,6 @@ public class CustomController {
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert(Model model) {
 		
-		List<>
 		
 		return "custom/input";
 	}
