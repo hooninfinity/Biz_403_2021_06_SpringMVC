@@ -1,6 +1,7 @@
 package com.team.starbucks.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,8 +19,9 @@ public class CustomController {
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public String insert() {
+	public String insert(Model model) {
 		
+		List<>
 		
 		return "custom/input";
 	}

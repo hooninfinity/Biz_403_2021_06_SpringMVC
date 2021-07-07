@@ -60,9 +60,6 @@
 					<li>LOGOUT</li>
 					<li>${LOGIN.user_id} 님 환영합니다</li>
 				</ul>
-				<script type="text/javascript">
-					alert("로그인 되었습니다")
-				</script>
 			</nav>
 		</c:if>
 	</header>

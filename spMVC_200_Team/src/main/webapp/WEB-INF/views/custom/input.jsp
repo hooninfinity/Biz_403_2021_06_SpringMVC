@@ -12,10 +12,10 @@
 	<form>
 		<fieldset>
 			<legend>커스텀등록</legend>
-			<span>분류1</span>
+			<span>분류</span>
 			<div>
 				<select>
-					<option value="coldbrew">콜드브루</option>
+					<option>콜드브루</option>
 					<option>브루드커피</option>
 					<option>에스프레소</option>
 					<option>프라푸치노</option>
@@ -24,6 +24,12 @@
 					<option>티(티바나)</option>
 					<option>기타제조음료</option>
 					<option>스타벅스주스(병음료)</option>
+				</select>
+				<select>
+					<option>분류2</option>
+					<c:forEach items="" var="list">
+					
+					</c:forEach>
 				</select>
 			</div>
 			<c:choose>

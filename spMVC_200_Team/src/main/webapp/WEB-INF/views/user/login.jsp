@@ -72,7 +72,7 @@ form#login button:hover {
 let fail = `${FAIL}`;
 if(fail){
 	alert("아이디 또는 비밀번호 확인!!")
-} 
+}
 
 const login_submit = () => {
 	
