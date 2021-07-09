@@ -18,6 +18,12 @@ public class FileServiceImplV2 extends FileServiceImplV1 {
 	@Override
 	public String fileUp(MultipartFile file) throws Exception {
 		
+		// 기본파일을 선택하지 않으면 noImage 뜨도록 
+		String originFileName = file.getOriginalFilename();
+		if(originFileName == null || originFileName.isEmpty()) {
+			return "";
+		}
+		
 		/*
 		 * 파일을 업로드 할때 사용할 path 가져오기
 		 * 
@@ -40,8 +46,7 @@ public class FileServiceImplV2 extends FileServiceImplV1 {
 			path.mkdirs();
 		}
 		
-		String originFileName = file.getOriginalFilename();
-		
+
 		String strUUID = UUID.randomUUID().toString();
 		strUUID += originFileName;
 		

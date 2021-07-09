@@ -46,22 +46,6 @@ nav li:hover:after {
 	width: 100%;
 }
 
-/* ul {
-	list-style: none;
-	width: 100%;
-	height: 50px;
-	background-color: #036635;
-}
-li {
-	display: flex;
-	padding: 15px;
-	color: white;
-	font-weight: bold;
-}
-li:hover {
-	cursor: pointer;
-	color: orange;
-} */
 </style>
 
 <nav id="main_nav">

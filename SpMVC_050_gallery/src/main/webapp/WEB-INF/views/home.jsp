@@ -50,7 +50,6 @@ button {
 	border: 1px solid #036635;
 	border-radius: 5px;
 	padding: 5px 10px 5px 10px;
-	/* margin-left: auto; */
 }
 </style>
 <body>
