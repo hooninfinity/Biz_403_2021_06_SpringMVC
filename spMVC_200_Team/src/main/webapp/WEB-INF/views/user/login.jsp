@@ -51,7 +51,13 @@ form#login button {
 form#login button:hover {
 	background-color: #036635;
 }
-
+div.msg.view {
+		color: yellow;
+		background-color: red;
+		font-size: 20px;
+		padding: 2rem;
+		border-radius: 20px;
+	}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -61,6 +67,8 @@ form#login button:hover {
 	<form id="login" method="POST">
 		<fieldset>
 			<legend>LOGIN</legend>
+			<div class="msg login error">
+			</div>
 			<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
 			<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
 			<button type="submit" class="login">로그인</button>

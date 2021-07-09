@@ -13,5 +13,8 @@ public interface UserService {
 	
 	// 로그인
 	public UserVO login(UserVO usVO);
+	
+	// 유효성 검사
+	public UserVO findById(String user_id);
 
 }

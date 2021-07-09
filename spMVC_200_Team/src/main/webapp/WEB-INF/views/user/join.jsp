@@ -92,6 +92,10 @@ label {
 </form>
 </body>
 <script>
+let fail = `${FAIL}`;
+if(fail){
+	alert("아이디 또는 비밀번호 확인!!")
+}
 //이벤트 핸들러에서 사용할 함수 등록
 const join_submit = () => {
 	

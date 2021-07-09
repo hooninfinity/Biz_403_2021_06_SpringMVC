@@ -8,12 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team.starbucks.model.UserVO;
 import com.team.starbucks.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping(value = "/user")
 @Controller
@@ -31,6 +34,23 @@ public class UserController {
 		usService.join(usVO);
 		return "redirect:/";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/id_check", method = RequestMethod.GET)
+	public String id_check(String user_id) {
+		
+		log.debug("중복 검사를 수행할 ID: {}", user_id);
+		UserVO userVO = usService.findById(user_id);
+		
+		if(userVO == null) {
+			return "NOT_USE_ID";
+		} else {
+			return "USE_ID";
+		}
+	}
+	
+	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(name = "MSG", required = false) String msg, Model model) {
 

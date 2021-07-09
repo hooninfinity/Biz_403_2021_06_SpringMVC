@@ -38,6 +38,22 @@ public class UserServiceImplV1 implements UserService {
 		return usDao.login(usVO);
 	}
 
+	// 유효성 검사
+	@Override
+	public UserVO findById(String user_id) {
+		
+		UserVO userVO = usDao.findById(user_id.trim());
+		
+		if(userVO == null) {
+			// 가입되지 않은 사용자 ID
+			log.debug("가입되지 않은 사용자 {} ", user_id);
+		} else {
+			log.debug("조회된 사용자 정보 : {}", userVO.toString());
+		}
+		
+		return userVO;
+	}
+
 
 
 

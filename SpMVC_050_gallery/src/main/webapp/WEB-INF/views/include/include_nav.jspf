@@ -27,7 +27,7 @@ nav li {
 }
 
 /* 특정한 nav 를 오른쪽으로 보낼때 */
-nav li#login, nav#logout {
+nav li#login, nav li#logout {
 	margin-left: auto;
 }
 
