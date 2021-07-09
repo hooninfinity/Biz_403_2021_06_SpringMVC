@@ -67,6 +67,7 @@ label {
 	<fieldset>
 		<legend>JOIN</legend>
 			<div>
+			<div class="msg join id"></div>
 				<br>
 				<label>아이디</label>
 				<br>
@@ -92,7 +93,76 @@ label {
 </form>
 </body>
 <script>
-let fail = `${FAIL}`;
+let users_id = document.querySelector("input[name='user_id']")
+let msg_user_id = document.querySelector("div.join.id")
+if(users_id) {
+	// lost focus
+	// input tag 에 입력하는 도중 다른 tag로 focus가 이동되는 경우
+	// blur, focusout event 코드에서
+	// 		alert를 사용하면 lost focus와 alert 사이에서 무한반복이 일어나는 현상이 발생한다.
+	// lost focus가 되었을때 메시지를 사용자에게 보이고 싶을 때는 
+	// 		alert를 사용하지 않고 다른 방법을 강구해야 한다.
+	// 		비어있는 div box를 하나 만들고
+	// 		그곳에 메시지를 표시하는 방법을 사용한 것
+	users_id.addEventListener("blur",(e)=>{
+		let user_id = e.currentTarget.value
+		
+		msg_user_id.innerText = ""
+		msg_user_id.style.padding = "0"
+		
+		// m_userid box에 사용자 ID를 입력한 상태로
+		// tab키를 누르거나, 다른 값을 입력하기 위하여 focus를 이동하면
+		// m_userid box에 입력된 값으로 Id 중복검사 수행 하기
+		if(user_id === "") {
+			msg_user_id.innerText = " * 사용자 ID는 반드시 입력하세요"
+			msg_user_id.style.padding = "5px";
+			
+			users_id.focus()
+			
+			return false;
+		}
+		
+		fetch( "${rootPath}/user/id_check?user_id=" + user_id )
+		// .then( (response)=>{
+		// 	return response.text()
+		// })
+		.then(response=>response.text())
+		.then(result=>{
+			if(result === "USE_ID") {
+				msg_user_id.innerText = " * 이미 가입된 ID 입니다"
+				users_id.focus()
+				return false
+			} else if(result === "NOT_USE_ID") {
+				msg_user_id.innerText = " * 가입 가능한 ID 입니다"
+				msg_user_id.style.color = "blue"
+				document.querySelector("input[name='user_password']").focus()
+			} else {
+				msg_user_id.innerText = " * 알수 없는 결과를 수신함"
+			}
+		})
+		
+	})
+	
+}
+
+
+document.querySelector("form#join").addEventListener("click",(e)=>{
+	let target = e.target
+	
+	if(target.tagName === "BUTTON") {
+		
+		if(target.className.includes("join")){
+			document.querySelector("form#join").submit()
+			
+		} else if(target.className.includes("home")) {
+			location.href = "${rootPath}"
+		}
+	}
+})
+
+
+
+/* let fail = `${FAIL}`;
 if(fail){
 	alert("아이디 또는 비밀번호 확인!!")
 }
@@ -132,20 +202,8 @@ const join_submit = () => {
 	}
 	
 	doc.querySelector("form#join").submit()
-}
+} */
 
-document.querySelector("form#join").addEventListener("click",(e)=>{
-	let target = e.target
-	
-	if(target.tagName === "BUTTON") {
-		
-		if(target.className.includes("join")){
-			join_submit();
-			
-		} else if(target.className.includes("home")) {
-			location.href = "${rootPath}"
-		}
-	}
-})
+
 </script>
 </html>
