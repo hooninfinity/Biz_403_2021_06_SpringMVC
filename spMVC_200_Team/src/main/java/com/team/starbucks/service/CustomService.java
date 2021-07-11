@@ -3,14 +3,10 @@ package com.team.starbucks.service;
 import java.util.List;
 
 import com.team.starbucks.model.CategoryDTO;
+import com.team.starbucks.model.CustomDTO;
 
-public interface CustomService {
+public interface CustomService{
 
-	public List<CategoryDTO> selectAll();
-	
-	public List<CategoryDTO> base1();
-	
-	public List<CategoryDTO> base2();
-	
-	
+	public List<CustomDTO> selectAll();
+	public List<CategoryDTO> findByMenukinds(int menu_kinds);
 }

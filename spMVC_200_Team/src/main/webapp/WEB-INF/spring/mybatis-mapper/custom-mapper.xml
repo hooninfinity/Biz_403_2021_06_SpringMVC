@@ -2,13 +2,63 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
  <mapper namespace="com.team.starbucks.dao.ext.CustomDao">
- 
- 	<select id="selectAll"></select>
- 	<select id="findById"></select>
- 	<insert id="insert"></insert>
- 	<update id="update"></update>
- 	<delete id="delete"></delete>
- 
+ 	<select id="selectAll" resultType="CustomDTO">
+ 	SELECT * FROM tbl_custom
+ 	</select>
+ 	<select id="findById" resultType="CustomDTO">
+ 	SELECT * FROM tbl_custom
+ 	WHERE menu_seq = #{menu_seq}
+ 	</select>
+ 	<select id="selectCustomAndFile">
+ 		SELECT 
+	 		C.menu_seq AS menu_seq,
+	 		C.menu_code AS menu_code,
+	 		C.user_id AS user_id,
+	 		C.menu_title AS menu_title,
+	 		C.menu_img AS menu_img,
+	 		C.menu_option AS menu_option,
+		 		F.file_seq AS f_seq,
+		 		F.file_original AS f_original,
+		 		F.file_upname AS f_uname,
+		 		L.custom_seq(COUNT) AS custom_seq
+		 		FROM tbl_custom C
+					LEFT JOIN tbl_file F
+						ON C.menu_seq = F.file_seq 
+								LEFT JOIN tbl_like L
+								 ON C.menu_seq = L.like_seq
+								 WHERE C.menu_seq = #{menu_seq}
+ 	</select>
+	<resultMap type="CustomDTO" id=""></resultMap>
+ 	
+ 	<insert id="insert" parameterType="CustomDTO">
+ 	INSERT INTO tbl_custom(menu_seq, menu_code, user_id, menu_title, menu_img, menu_option) 
+ 	VALUES( #{menu_seq}, #{menu_code}, #{menu_writer}, #{menu_title}, #{menu_img}, #{menu_option} )
+ 	</insert>
+ 	<update id="update">
+ 	INSERT INTO tbl_custom(
+ 	menu_seq, menu_code, user_id, menu_title, menu_img, menu_option) 
+ 	VALUES( #{menu_seq}, #{menu_code}, #{menu_writer}, #{menu_title}, #{menu_img}, #{menu_option} )
+	ON DUPLICATE KEY UPDATE
+	 	 menu_code=#{menu_code}, 
+	 	 menu_writer=#{menu_writer}, 
+	 	 menu_title=#{menu_title}, 
+	 	 menu_img=#{menu_img}, 
+	 	 menu_option=#{menu_option}
+ 	</update>
+ 	<delete id="delete">
+ 	DELETE FROM tbl_custom 
+ 	WHERE menu_seq = #{menu_seq}
+ 	</delete>
+	<update id="create_table">
+	CREATE TABLE IF NOT EXISTS tbl_custom(
+	menu_seq BIGINT AUTO_INCREMENT PRIMARY KEY, 
+	menu_code BIGINT NOT NULL, 
+	user_id VARCHAR(50) NOT NULL, 
+	menu_title VARCHAR(125) NOT NULL, 
+	menu_img VARCHAR(256), 
+	menu_option VARCHAR(256)
+	)
+	</update>
+
  </mapper> 

@@ -41,13 +41,6 @@ header h1#h1 {
 	top: 20px;
 	position: absolute;
 	/* bottom:-9px; */
-	font-size: 2rem;
-	text-align: center;
-	height: 2vh;
-	line-height: 2vh;
-	color: #fcedd8;
-	font-weight: 400;
-	
 }
 
 nav#main_nav {
@@ -69,7 +62,7 @@ nav#main_nav ul {
 	list-style: none;
 	font-size: 15px;
 	font-weight: 400;
-	color: rgb(3, 102, 53);
+/* 	color: rgb(3, 102, 53); */
 	text-aline: center;
 	width: 100%;
 	margin: 0 auto;
@@ -77,6 +70,7 @@ nav#main_nav ul {
 }
 
 nav#main_nav li {
+	color:#333333;
 	text-aline: center;
 	margin-bottom: 0 auto;
 	height: 60px;
