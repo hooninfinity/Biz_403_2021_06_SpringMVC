@@ -1,7 +1,6 @@
 package com.team.starbucks.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,14 +8,13 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
-@Builder
-public class CategoryVO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class LikeDTO {
 
-	private String menu_code;//
-	private String menu_name;//
-	private String menu_kinds;//
-
+	private Long like_seq;
+	private String user_id;
+	private String custom_seq;
+	
 }

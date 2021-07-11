@@ -14,7 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Builder
 public class CustomVO {
-	private String menu_seq;
+	private Long menu_seq;
 	private String user_id;
 	private String menu_code;
 	private String menu_title;

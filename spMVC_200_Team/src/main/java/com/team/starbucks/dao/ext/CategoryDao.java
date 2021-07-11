@@ -8,4 +8,5 @@ import com.team.starbucks.model.CategoryDTO;
 public interface CategoryDao extends GenericDao<CategoryDTO,String>{
 
 	public List<CategoryDTO> findByMenukinds(int menukinds);
+	public List<CategoryDTO> findBybase1();
 }

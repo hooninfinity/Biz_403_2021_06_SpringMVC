@@ -9,4 +9,5 @@ public interface CustomService{
 
 	public List<CustomDTO> selectAll();
 	public List<CategoryDTO> findByMenukinds(int menu_kinds);
+	public List<CategoryDTO> findBybase1();
 }

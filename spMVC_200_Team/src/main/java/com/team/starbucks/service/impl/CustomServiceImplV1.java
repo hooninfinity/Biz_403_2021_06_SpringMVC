@@ -1,6 +1,8 @@
 package com.team.starbucks.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,13 @@ public class CustomServiceImplV1 implements CustomService {
 	protected final CustomDao cusDao;
 	protected final FileDao fDao;
 
+	@Autowired
+	public void create_table() {
+		Map<String,String> maps = new HashMap<String, String>();
+		cusDao.create_table(maps);
+		fDao.create_table(maps);
+	}
+	
 	@Override
 	public List<CustomDTO> selectAll() {
 		return cusDao.selectAll();
@@ -60,10 +69,12 @@ public class CustomServiceImplV1 implements CustomService {
 		log.debug("bsList {} ", bsList.toString());
 		return bsList;
 	}
-	@Autowired
-	public int create_table(String dumy) {
-		return cusDao.create_table();
+
+	@Override
+	public List<CategoryDTO> findBybase1() {
+		return cateDao.findBybase1();
 	}
+	
 	
 
 }

@@ -5,10 +5,38 @@
   
  <mapper namespace="com.team.starbucks.dao.ext.EventDao">
  
- 	<select id="selectAll"></select>
- 	<select id="findById"></select>
- 	<insert id="insert"></insert>
- 	<update id="update"></update>
- 	<delete id="delete"></delete>
- 
+ 	<select id="selectAll">
+ 	SELECT * FROM tbl_event
+ 	
+ 	</select>
+ 	<select id="findById">
+ 	SELECT * FROM tbl_event
+ 	WHERE event_code = #{event_code}
+ 	</select>
+ 	<insert id="insert">
+ 	INSERT INTO tbl_event(event_code, event_date, event_text, event_user)
+ 	VALUES (#{event_code}, #{event_date}, #{event_text}, #{event_user})
+ 	</insert>
+ 	<update id="update">
+ 	INSERT INTO tbl_event(event_code,event_date, event_text, event_user)
+ 	VALUES (#{event_code},#{event_date}, #{event_text}, #{event_user})
+ 	ON DUPLICATE KEY UPDATE
+ 	event_date = #{event_date},
+ 	event_text = #{event_text},
+ 	event_user = #{event_user}
+ 	</update>
+ 	<delete id="delete">
+ 	DELETE FROM tbl_event
+ 	WHERE event_code = #{event_code}
+ 	
+ 	</delete>
+ 	<update id="create_table">
+ 	CREATE TABLE IF NOT EXISTS tbl_event(
+ 	event_code    BIGINT NOT NULL,
+    event_date    VARCHAR(30) NULL,
+    event_user    VARCHAR(20) NULL,
+    event_text    VARCHAR(200)    NULL
+ 	)
+ 	
+ 	</update>
  </mapper> 

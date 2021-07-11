@@ -15,7 +15,7 @@ import lombok.ToString;
 @Builder
 public class NoticeVO {
 
-	private String nt_code;
+	private Long nt_code;
 	private String nt_title;
 	private String nt_content;
 	private String nt_date;

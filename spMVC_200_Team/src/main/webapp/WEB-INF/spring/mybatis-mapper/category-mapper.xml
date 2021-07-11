@@ -9,15 +9,22 @@
 		SELECT * FROM tbl_category
 	</select>
 
-	<select id="findById" resultType="CategoryDTO">
-		SELECT menu_code FROM tbl_category
-		WHERE LEFT(menu_code,1) = '#{menu_code}';
+	<select id="findByMenukinds" resultType="CategoryDTO">
+		SELECT * FROM tbl_category
+		WHERE LEFT(menu_kinds,1) = #{menu_kinds};
 	</select>
+		
+	<select id="findBycode" resultType="CategoryDTO">
+		SELECT menu_code FROM tbl_category
+		WHERE LEFT(menu_code,1) = #{menu_code};
+	</select>
+	<select id="findBybase1" resultType="CategoryDTO">
+	 SELECT menu_name,menu_code FROM tbl_category
+	 WHERE menu_code%100 = 0;
+	</select>
+	
 	<insert id="insert"></insert>
-
 	<update id="update"></update>
-
-
 	<delete id="delete"></delete>
 
 </mapper> 

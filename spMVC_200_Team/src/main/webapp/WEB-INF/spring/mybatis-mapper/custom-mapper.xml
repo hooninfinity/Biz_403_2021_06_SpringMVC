@@ -33,15 +33,15 @@
  	
  	<insert id="insert" parameterType="CustomDTO">
  	INSERT INTO tbl_custom(menu_seq, menu_code, user_id, menu_title, menu_img, menu_option) 
- 	VALUES( #{menu_seq}, #{menu_code}, #{menu_writer}, #{menu_title}, #{menu_img}, #{menu_option} )
+ 	VALUES( #{menu_seq}, #{menu_code}, #{user_id}, #{menu_title}, #{menu_img}, #{menu_option} )
  	</insert>
  	<update id="update">
  	INSERT INTO tbl_custom(
  	menu_seq, menu_code, user_id, menu_title, menu_img, menu_option) 
- 	VALUES( #{menu_seq}, #{menu_code}, #{menu_writer}, #{menu_title}, #{menu_img}, #{menu_option} )
+ 	VALUES( #{menu_seq}, #{menu_code}, #{user_id}, #{menu_title}, #{menu_img}, #{menu_option} )
 	ON DUPLICATE KEY UPDATE
 	 	 menu_code=#{menu_code}, 
-	 	 menu_writer=#{menu_writer}, 
+	 	 user_id=#{user_id}, 
 	 	 menu_title=#{menu_title}, 
 	 	 menu_img=#{menu_img}, 
 	 	 menu_option=#{menu_option}

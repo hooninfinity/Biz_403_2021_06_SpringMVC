@@ -1,6 +1,7 @@
 package com.team.starbucks.dao;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GenericDao<VO, PK> {
 
@@ -11,6 +12,6 @@ public interface GenericDao<VO, PK> {
 	public int insert(VO vo);
 	public int update(VO vo);
 	public int delete(VO vo);
-	
+	public int create_table(Map<String,String> resultMaps);
 	
 }

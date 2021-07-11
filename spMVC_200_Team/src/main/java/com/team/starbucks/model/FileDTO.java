@@ -14,11 +14,7 @@ import lombok.ToString;
 @ToString
 @Builder
 public class FileDTO {
-	private Long g_seq;//	BIGINT
-	private String g_writer;//	VARCHAR(20)
-	private String g_date;//	VARCHAR(10)
-	private String g_time;//	VARCHAR(10)
-	private String g_subject;//	VARCHAR(50)
-	private String g_content;//	VARCHAR(1000)
-	private String g_image;//	VARCHAR(125)
+	private Long file_seq;
+	private String file_originalName;
+	private String file_upname;
 }
