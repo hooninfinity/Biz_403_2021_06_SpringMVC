@@ -22,8 +22,14 @@
 	 SELECT menu_name,menu_code FROM tbl_category
 	 WHERE menu_code%100 = 0;
 	</select>
-	
-	<insert id="insert"></insert>
+	<select id="findById" resultType="CategoryDTO">
+		SELECT * FROM tbl_category
+		WHERE menu_code = #{menu_code}
+	</select>
+	<insert id="insert" parameterType="CategoryDTO">
+		INSERT INTO tbl_category(mene_code,menu_kinds,menu_name)
+		VALUES (#{mene_code},#{menu_kinds},#{menu_name})
+	</insert>
 	<update id="update"></update>
 	<delete id="delete"></delete>
 

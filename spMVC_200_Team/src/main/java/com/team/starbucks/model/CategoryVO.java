@@ -15,8 +15,8 @@ import lombok.ToString;
 @Builder
 public class CategoryVO {
 
-	private String menu_code;//
+	private int menu_code;//
 	private String menu_name;//
-	private String menu_kinds;//
+	private int menu_kinds;//
 
 }

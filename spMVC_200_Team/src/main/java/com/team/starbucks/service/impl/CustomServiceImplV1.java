@@ -74,7 +74,17 @@ public class CustomServiceImplV1 implements CustomService {
 	public List<CategoryDTO> findBybase1() {
 		return cateDao.findBybase1();
 	}
-	
+
+	@Override
+	public List<CategoryDTO> findBymenuCode(int menu_code) {
+		return cateDao.findBycode(menu_code);
+	}
+
+	@Override
+	public CategoryDTO findByMenuName(int menu_code) {
+		// TODO Auto-generated method stub
+		return cateDao.findById(menu_code);
+	}
 	
 
 }
