@@ -16,7 +16,7 @@ import lombok.ToString;
 public class CustomDTO {
 	private Long menu_seq;
 	private String user_id;
-	private String menu_code;
+	private Long menu_code;
 	private String menu_title;
 	private String menu_option;
 	private String menu_img;

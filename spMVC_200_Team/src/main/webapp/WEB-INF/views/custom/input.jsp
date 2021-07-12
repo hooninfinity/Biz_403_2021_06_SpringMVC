@@ -58,7 +58,7 @@ if(base1){
 					let tr = td.closest("TR")
 					let menucode = tr.dataset.menucode
 					let sendcode = menucode/100
-					location.href="${rootPath}/custom/input/base1?menukinds=" + sendcode
+					location.href="${rootPath}/custom/input2?menukinds=" + sendcode
 			}
 		})
 }

@@ -54,7 +54,7 @@ public class CustomController {
 		return "custom/input";
 	}
 
-	@RequestMapping(value = "/input/{url}", method = RequestMethod.GET)
+	@RequestMapping(value = "/input2", method = RequestMethod.GET)
 		public String insert2(@RequestParam("menukinds") int menu_kinds,Model model) {
  		List<CategoryDTO> menukindsList = cuService.findByMenukinds(menu_kinds);
 		log.debug("munukindsList {}", menukindsList.toString());
@@ -67,39 +67,39 @@ public class CustomController {
 //	
 //		return "custom/input";
 //	}
-
-	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String saveMenu(@RequestParam("menucode") int menu_code,CustomVO cuVO,Model model) {
-		CategoryDTO cateDto = cuService.findByMenuName(menu_code);
-		log.debug(cateDto.toString());
-		model.addAttribute("CHOISEMENU", cateDto);
-		cuVO.builder().menu_code(menu_code).menu_option(cuVO.getMenu_option()).menu_title(cuVO.getMenu_title())
-				.menu_img(cuVO.getMenu_img()).user_id(cuVO.getUser_id()).build();
-		log.debug(cuVO.toString());
-		cuService.insert(cuVO);
-		return "redirect:/list";
-	}
 	
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/save", method = RequestMethod.GET)
 	public String saveMenu(@RequestParam("menucode") int menu_code,Model model) {
 		CategoryDTO cateDto = cuService.findByMenuName(menu_code);
 		model.addAttribute("CHOISEMENU", cateDto);
 		log.debug(cateDto.toString());
-		return "custom/insert";
+		return "custom/save";
 	}
 
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String dumy(Model model) {
-		List<CategoryDTO> allCate = cuService.findBybase1();
-		log.debug(" allCate {}", allCate.toString());
-		model.addAttribute("BASE1", allCate);
-
-		for (int i = 0; i < allCate.size(); i++) {
-			log.debug("검색된메뉴 {}", cuService.findByMenukinds(i));
-			List<CategoryDTO> onekinds = cuService.findByMenukinds(i);
-			log.debug("oneKinds {}", onekinds.toString());
-		}
-		return "custom/test";
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String saveMenu(@RequestParam("menucode") Long menu_code,CustomVO cuVO,Model model) {
+		log.debug(menu_code + "");
+		Long menu_seq = 0L;
+		cuVO.setMenu_code(menu_code);
+		
+		log.debug(cuVO.toString());
+		cuService.insert(cuVO);
+		
+		return "redirect:/custom";
 	}
+
+//	@RequestMapping(value = "/test", method = RequestMethod.GET)
+//	public String dumy(Model model) {
+//		List<CategoryDTO> allCate = cuService.findBybase1();
+//		log.debug(" allCate {}", allCate.toString());
+//		model.addAttribute("BASE1", allCate);
+//
+//		for (int i = 0; i < allCate.size(); i++) {
+//			log.debug("검색된메뉴 {}", cuService.findByMenukinds(i));
+//			List<CategoryDTO> onekinds = cuService.findByMenukinds(i);
+//			log.debug("oneKinds {}", onekinds.toString());
+//		}
+//		return "custom/test";
+//	}
 
 }

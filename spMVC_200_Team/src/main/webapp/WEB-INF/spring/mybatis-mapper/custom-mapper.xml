@@ -31,9 +31,9 @@
  	</select>
 	<resultMap type="CustomDTO" id=""></resultMap>
  	
- 	<insert id="insert" parameterType="CustomDTO">
- 	INSERT INTO tbl_custom(menu_seq, menu_code, user_id, menu_title, menu_img, menu_option) 
- 	VALUES( #{menu_seq}, #{menu_code}, #{user_id}, #{menu_title}, #{menu_img}, #{menu_option} )
+ 	<insert id="insert" parameterType="CustomVO">
+ 	INSERT INTO tbl_custom( menu_code, user_id, menu_title, menu_img, menu_option) 
+ 	VALUES(#{menu_code}, #{user_id}, #{menu_title}, #{menu_img,jdbcType=VARCHAR}, #{menu_option} )
  	</insert>
  	<update id="update">
  	INSERT INTO tbl_custom(

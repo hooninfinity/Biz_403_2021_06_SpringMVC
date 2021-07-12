@@ -54,7 +54,7 @@ if(base1){
 					let tr = td.closest("TR")
 					let menucode = tr.dataset.menucode
 					let sendcode = menucode/100
-					location.href="${rootPath}/custom/insert?menucode=" + menucode
+					location.href="${rootPath}/custom/save?menucode=" + menucode
 			}
 		})
 }
