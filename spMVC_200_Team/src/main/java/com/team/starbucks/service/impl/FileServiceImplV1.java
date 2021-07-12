@@ -21,27 +21,27 @@ public class FileServiceImplV1 implements FileService {
 
 	@Override
 	public String fileUp(MultipartFile file) throws Exception {
-		String originalFileName = file.getOriginalFilename();
-		if (originalFileName == null || originalFileName.isEmpty())
+		String originFileName = file.getOriginalFilename();
+		if (originFileName == null || originFileName.isEmpty())
 			return "";
 
-		String fileUploadPath = this.winPath;
+		String fileUpPath = this.winPath;
 		
-		File path = new File(winPath);
+		File path = new File(macPath);
 		if (path.exists()) {
-			fileUploadPath = this.macPath;
+			fileUpPath = this.macPath;
 		}
-		path = new File(fileUploadPath);
-
+		
+		path = new File(fileUpPath);
 		if(!path.exists()) {
 			path.mkdir();
 		}
 		
 		String strUUID = UUID.randomUUID().toString();
-		strUUID += originalFileName;
+		strUUID += originFileName;
 		
-		File upLoadPathAndFile = new File(fileUploadPath, strUUID);
-		file.transferTo(upLoadPathAndFile);
+		File uploadPathAndFile = new File(fileUpPath, strUUID);
+		file.transferTo(uploadPathAndFile);
 		
 		return strUUID;
 	}

@@ -15,7 +15,7 @@
 }
 </style>
 <fieldset>
-<form method="POST" id="savemenu">
+<form method="POST" id="savemenu" enctype="multipart/form-data">
 			<input name="menu_name" 
 			id="menu_name" value=<c:out value="${CHOISEMENU.menu_name}"/> readonly/>
 			<label for="user_id">게시자</label><input name="user_id" id="user_id">
@@ -26,7 +26,6 @@
 			<input type="file" name="menu_img">
 			<button	type="submit"
 				class="save" >저장</button>
-		</div>
 </form>
 </fieldset>
 <script>
@@ -34,7 +33,7 @@
 	let menu_title = document.querySelector("#menu_title").value
 	let menu_option = document.querySelector("#menu_option").value
 	let user_id = document.querySelector("#user_id").value
-	let munu_img = document.querySelector("#menu_img").value
+	let menu_img = document.querySelector("#menu_img").value
 	
 	if(menu_title===""){
 		alert("메뉴 이름은 반드시 정해주세요")

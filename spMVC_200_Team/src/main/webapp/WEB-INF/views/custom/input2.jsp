@@ -24,7 +24,7 @@
 }
 </style>
 <fieldset>
-<form id="bs1" method="GET">
+<form id="bs1" method="GET" >
 <table id="ch1">
 	<c:choose>
 		<c:when test="${empty KINDS}">

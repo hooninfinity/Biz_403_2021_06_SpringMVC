@@ -1,12 +1,16 @@
 package com.team.starbucks.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.starbucks.dao.ext.CategoryDao;
 import com.team.starbucks.dao.ext.CustomDao;
@@ -16,6 +20,7 @@ import com.team.starbucks.model.CustomDTO;
 import com.team.starbucks.model.CustomVO;
 import com.team.starbucks.model.FileDTO;
 import com.team.starbucks.service.CustomService;
+import com.team.starbucks.service.FileService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +33,9 @@ public class CustomServiceImplV1 implements CustomService {
 	protected final CategoryDao cateDao;
 	protected final CustomDao cusDao;
 	protected final FileDao fDao;
+	
+//	@Qualifier("fileServiceV2")
+	protected final FileService fService;
 
 	@Autowired
 	public void create_table() {
@@ -84,6 +92,36 @@ public class CustomServiceImplV1 implements CustomService {
 	public CategoryDTO findByMenuName(int menu_code) {
 		// TODO Auto-generated method stub
 		return cateDao.findById(menu_code);
+	}
+
+	@Override
+	public void input(CustomVO cuVO, MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception {
+		// TODO Auto-generated method stub
+		
+		String strUUID = fService.fileUp(one_file);
+		
+		cuVO.setMenu_img(strUUID);
+		
+		cusDao.insert(cuVO);
+		
+		Long menu_seq = cuVO.getMenu_seq();
+		
+		List<FileDTO> files = new ArrayList<FileDTO>();
+		
+		List<MultipartFile> mFiles = m_file.getFiles("m_file");
+		for(MultipartFile file : mFiles) {
+			
+			String fileOriginName = file.getOriginalFilename();
+			String fileUUName = fService.fileUp(file);
+			
+			FileDTO fDto = FileDTO.builder()
+							.file_seq(menu_seq)
+							.file_originalName(fileOriginName)
+							.file_upname(fileUUName)
+							.build();
+			files.add(fDto);
+		}
+		fDao.insertOrUpdateWithList(files);
 	}
 	
 

@@ -1,20 +1,19 @@
 package com.team.starbucks.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.starbucks.model.CategoryDTO;
-import com.team.starbucks.model.CategoryVO;
 import com.team.starbucks.model.CustomDTO;
 import com.team.starbucks.model.CustomVO;
 import com.team.starbucks.model.UserVO;
@@ -75,19 +74,40 @@ public class CustomController {
 		log.debug(cateDto.toString());
 		return "custom/save";
 	}
-
+// 여기가 원본
+//	@RequestMapping(value = "/save", method = RequestMethod.POST)
+//	public String saveMenu(@RequestParam("menucode") Long menu_code,CustomVO cuVO,Model model) {
+//		log.debug(menu_code + "");
+//		Long menu_seq = 0L;
+//		cuVO.setMenu_code(menu_code);
+//		
+//		log.debug(cuVO.toString());
+//		cuService.insert(cuVO);
+//		
+//		return "redirect:/custom";
+//	}
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveMenu(@RequestParam("menucode") Long menu_code,CustomVO cuVO,Model model) {
+	public String saveMenu(@RequestParam("menucode") Long menu_code,CustomVO cuVO,Model model,
+			MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception {
 		log.debug(menu_code + "");
 		Long menu_seq = 0L;
 		cuVO.setMenu_code(menu_code);
 		
 		log.debug(cuVO.toString());
-		cuService.insert(cuVO);
+		cuService.input(cuVO, one_file, m_file);
 		
 		return "redirect:/custom";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 //	@RequestMapping(value = "/test", method = RequestMethod.GET)
 //	public String dumy(Model model) {
 //		List<CategoryDTO> allCate = cuService.findBybase1();
