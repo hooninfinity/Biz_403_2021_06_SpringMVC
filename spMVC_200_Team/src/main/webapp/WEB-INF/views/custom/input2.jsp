@@ -27,12 +27,12 @@
 <form id="bs1" method="GET">
 <table id="ch1">
 	<c:choose>
-		<c:when test="${empty BASE1}">
-			<div></div>
+		<c:when test="${empty KINDS}">
+				<li>데이터 없음</li>
 		</c:when>
 		<c:otherwise>
 			<c:forEach
-				items="${BASE1}"
+				items="${KINDS}"
 				var="BS">
 				<tr
 					id="bs1"
@@ -54,7 +54,7 @@ if(base1){
 					let tr = td.closest("TR")
 					let menucode = tr.dataset.menucode
 					let sendcode = menucode/100
-					location.href="${rootPath}/custom/input/base1?menukinds=" + sendcode
+					location.href="${rootPath}/custom/insert?menucode=" + menucode
 			}
 		})
 }

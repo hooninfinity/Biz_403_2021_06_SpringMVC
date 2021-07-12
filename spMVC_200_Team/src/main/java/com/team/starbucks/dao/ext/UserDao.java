@@ -8,6 +8,8 @@ public interface UserDao extends GenericDao<UserVO, String> {
 	public int join(UserVO usVO);
 
 	public UserVO login(UserVO usVO);
+
+	public void insertOrUpdate(UserVO usVO);
 	
 	
 	

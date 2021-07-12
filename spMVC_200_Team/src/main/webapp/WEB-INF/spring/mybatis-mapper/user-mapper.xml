@@ -27,8 +27,34 @@
 			#{user_id}, #{user_password}, #{user_email}
 		)
 	</insert>
+	
+	<insert id="insertOrUpdate" parameterType="UserVO">
+ 		INSERT INTO tbl_user (
+ 			user_id, user_password, user_email, user_level
+ 		)
+ 		VALUES(
+ 			#{user_id}, #{user_password}, #{user_email},
+ 			#{user_level}
+ 		)
+ 		ON DUPLICATE KEY UPDATE
+ 			
+	 		user_password = user_password,
+	 		user_email = user_email,
+	 		user_level = user_level
+ 	</insert>
 
-
+	<update id="update"></update>
+ 	<delete id="delete"></delete>
+ 	
+ 	<update id="create_table">
+ 		CREATE TABLE IF NOT EXISTS tbl_user (
+ 			user_seq BIGINT AUTO_INCREMENT PRIMARY KEY, 
+ 			user_id VARCHAR(20) UNIQUE,
+ 			user_password VARCHAR(50) NOT NULL,
+ 			user_email VARCHAR(50) NOT NULL,
+ 			user_level INT DEFAULT 9
+ 		)
+ 	</update>
 
 
 

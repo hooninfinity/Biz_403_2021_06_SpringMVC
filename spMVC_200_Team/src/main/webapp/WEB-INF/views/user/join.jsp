@@ -130,6 +130,7 @@ if(users_id) {
 		.then(result=>{
 			if(result === "USE_ID") {
 				msg_user_id.innerText = " * 이미 가입된 ID 입니다"
+					msg_user_id.style.color = "red"
 				users_id.focus()
 				return false
 			} else if(result === "NOT_USE_ID") {

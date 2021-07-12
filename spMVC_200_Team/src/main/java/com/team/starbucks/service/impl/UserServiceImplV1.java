@@ -1,7 +1,10 @@
 package com.team.starbucks.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team.starbucks.dao.ext.UserDao;
@@ -17,6 +20,12 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImplV1 implements UserService {
 	
 	protected final UserDao usDao;
+	
+	@Autowired
+	public void create_user_table(UserDao dummy) {
+		Map<String, String> maps = new HashMap<String, String>();
+		usDao.create_table(maps);
+	}
 
 	// 리스트 조회
 	@Override
@@ -28,8 +37,17 @@ public class UserServiceImplV1 implements UserService {
 
 	// 회원가입
 	@Override
-	public int join(UserVO usVO) {
-		return usDao.join(usVO);
+	public UserVO join(UserVO usVO) {
+		List<UserVO> users = usDao.selectAll();
+		log.debug("Users {}", users.toString());
+		
+		if(users == null || users.size() < 1) {
+			usVO.setUser_level(0);
+		} else {
+			usVO.setUser_level(9);
+		}
+		usDao.insertOrUpdate(usVO);
+		return usVO;
 	}
 
 	// 로그인

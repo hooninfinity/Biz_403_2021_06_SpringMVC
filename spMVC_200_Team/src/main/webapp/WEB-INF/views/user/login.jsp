@@ -88,7 +88,6 @@ const login_submit = () => {
 	
 	let user_id = doc.querySelector("input#user_id")
 	let user_password = doc.querySelector("input#user_password")
-	let user_email = doc.querySelector("input#user_email")
 	
 	if(user_id.value === "") {
 		alert("아이디는 반드시 입력하세요")
@@ -98,11 +97,6 @@ const login_submit = () => {
 		return false;
 	}
 	
-	if(user_id.value.length < 4) {
-		alert("아이디는 4자리 이상으로 입력해야 합니다")
-		user_id.focus()
-		return false;
-	}
 	
 	if(user_password.value === "") {
 		alert("비밀번호는 반드시 입력하세요")

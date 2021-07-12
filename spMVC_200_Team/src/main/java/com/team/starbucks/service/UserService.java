@@ -9,7 +9,7 @@ public interface UserService {
 	public List<UserVO> selectAll();
 	
 	// 회원가입
-	public int join(UserVO usVO);
+	public UserVO join(UserVO usVO);
 	
 	// 로그인
 	public UserVO login(UserVO usVO);
