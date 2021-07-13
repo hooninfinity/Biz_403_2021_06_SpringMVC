@@ -22,8 +22,8 @@
 			<label for="menu_title">메뉴 이름</label><input name="menu_title" id="menu_title">
 			<label for="menu_option">추가된 퍼스널옵션</label>
 			<input name="menu_option" id="menu_option">
-			<label for="menu_img">이미지업로드</label>
-			<input type="file" name="menu_img">
+			<label for="one_file">이미지업로드</label>
+			<input type="file" name="one_file">
 			<button	type="submit"
 				class="save" >저장</button>
 </form>
@@ -33,7 +33,7 @@
 	let menu_title = document.querySelector("#menu_title").value
 	let menu_option = document.querySelector("#menu_option").value
 	let user_id = document.querySelector("#user_id").value
-	let menu_img = document.querySelector("#menu_img").value
+	let one_file = document.querySelector("#one_file").value
 	
 	if(menu_title===""){
 		alert("메뉴 이름은 반드시 정해주세요")

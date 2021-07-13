@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.team.starbucks.model.CategoryDTO;
 import com.team.starbucks.model.CustomDTO;
 import com.team.starbucks.model.CustomVO;
+import com.team.starbucks.model.FileDTO;
 
 public interface CustomService{
 
@@ -17,5 +18,6 @@ public interface CustomService{
 	public List<CategoryDTO> findBymenuCode(int menu_code);
 	public CategoryDTO findByMenuName(int menu_code);
 //	public int insert(CustomVO cuVO);
-	public void input(CustomVO cuVO, MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception;
+	public void input(CustomVO cuVO,MultipartFile one_file) throws Exception;
+
 }

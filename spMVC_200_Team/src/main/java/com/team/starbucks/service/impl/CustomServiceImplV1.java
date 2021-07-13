@@ -34,7 +34,7 @@ public class CustomServiceImplV1 implements CustomService {
 	protected final CustomDao cusDao;
 	protected final FileDao fDao;
 	
-//	@Qualifier("fileServiceV2")
+	@Qualifier("fileServiceV1")
 	protected final FileService fService;
 
 	@Autowired
@@ -94,35 +94,26 @@ public class CustomServiceImplV1 implements CustomService {
 		return cateDao.findById(menu_code);
 	}
 
+
 	@Override
-	public void input(CustomVO cuVO, MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception {
+	public void input(CustomVO cuVO, MultipartFile one_file)
+			throws Exception {
 		// TODO Auto-generated method stub
-		
+		FileDTO fDto = new FileDTO();
 		String strUUID = fService.fileUp(one_file);
 		
-		cuVO.setMenu_img(strUUID);
+		log.debug("strUUID {}", strUUID);
 		
+		fDto.setFile_seq(0L);
+		fDto.setFile_originalName(one_file.getOriginalFilename());
+		fDto.setFile_upname(strUUID);
+		log.debug("저장파일정보 {}",fDto.toString());
+		fDao.insertORUpdate(fDto);
 		cusDao.insert(cuVO);
-		
-		Long menu_seq = cuVO.getMenu_seq();
-		
-		List<FileDTO> files = new ArrayList<FileDTO>();
-		
-		List<MultipartFile> mFiles = m_file.getFiles("m_file");
-		for(MultipartFile file : mFiles) {
-			
-			String fileOriginName = file.getOriginalFilename();
-			String fileUUName = fService.fileUp(file);
-			
-			FileDTO fDto = FileDTO.builder()
-							.file_seq(menu_seq)
-							.file_originalName(fileOriginName)
-							.file_upname(fileUUName)
-							.build();
-			files.add(fDto);
-		}
-		fDao.insertOrUpdateWithList(files);
-	}
+
 	
+	
+	}
+
 
 }

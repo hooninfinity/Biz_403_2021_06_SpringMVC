@@ -16,10 +16,10 @@
 	 		C.menu_code AS menu_code,
 	 		C.user_id AS user_id,
 	 		C.menu_title AS menu_title,
-	 		C.menu_img AS menu_img,
+	 		C.file_seq AS file_seq,
 	 		C.menu_option AS menu_option,
 		 		F.file_seq AS f_seq,
-		 		F.file_original AS f_original,
+		 		F.file_originalName AS file_originalName,
 		 		F.file_upname AS f_uname,
 		 		L.custom_seq(COUNT) AS custom_seq
 		 		FROM tbl_custom C
@@ -32,18 +32,18 @@
 	<resultMap type="CustomDTO" id=""></resultMap>
  	
  	<insert id="insert" parameterType="CustomVO">
- 	INSERT INTO tbl_custom( menu_code, user_id, menu_title, menu_img, menu_option) 
- 	VALUES(#{menu_code}, #{user_id}, #{menu_title}, #{menu_img,jdbcType=VARCHAR}, #{menu_option} )
+ 	INSERT INTO tbl_custom( menu_code, user_id, menu_title, file_seq, menu_option) 
+ 	VALUES(#{menu_code}, #{user_id}, #{menu_title}, #{file_seq,jdbcType=VARCHAR}, #{menu_option} )
  	</insert>
  	<update id="update">
  	INSERT INTO tbl_custom(
- 	menu_seq, menu_code, user_id, menu_title, menu_img, menu_option) 
- 	VALUES( #{menu_seq}, #{menu_code}, #{user_id}, #{menu_title}, #{menu_img}, #{menu_option} )
+ 	menu_seq, menu_code, user_id, menu_title, file_seq, menu_option) 
+ 	VALUES( #{menu_seq}, #{menu_code}, #{user_id}, #{menu_title}, #{file_seq}, #{menu_option} )
 	ON DUPLICATE KEY UPDATE
 	 	 menu_code=#{menu_code}, 
 	 	 user_id=#{user_id}, 
 	 	 menu_title=#{menu_title}, 
-	 	 menu_img=#{menu_img}, 
+	 	 file_seq=#{file_seq}, 
 	 	 menu_option=#{menu_option}
  	</update>
  	<delete id="delete">
@@ -56,7 +56,7 @@
 	menu_code BIGINT NOT NULL, 
 	user_id VARCHAR(50) NOT NULL, 
 	menu_title VARCHAR(125) NOT NULL, 
-	menu_img VARCHAR(256), 
+	file_seq VARCHAR(256), 
 	menu_option VARCHAR(256)
 	)
 	</update>

@@ -19,5 +19,5 @@ public class CustomVO {
 	private Long menu_code;
 	private String menu_title;
 	private String menu_option;
-	private String menu_img;
+	private String file_seq;
 }

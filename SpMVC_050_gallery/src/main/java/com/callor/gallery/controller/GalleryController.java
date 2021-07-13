@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -161,10 +162,10 @@ public class GalleryController {
 		
 		// 삭제를 요구하면
 		// 1. 로그인이 되었나 확인
-		MemberVO memVO = (MemberVO) session.getAttribute("MEMBER");
-		if(memVO == null) {
-			return "redirect:/member/login";
-		}
+//		MemberVO memVO = (MemberVO) session.getAttribute("MEMBER");
+//		if(memVO == null) {
+//			return "redirect:/member/login";
+//		}
 		
 		Long g_seq = 0L;
 		try {
@@ -175,12 +176,18 @@ public class GalleryController {
 			return "redirect:/gallery";
 		}
 		
-		gaService.delete(g_seq);
+		int ret = gaService.delete(g_seq);
 		
 		return "redirect:/gallery";
-		
 	}
 	
+	// OK라는 문자열을 리턴해주기 위해 ResponseBody 붙임
+	@ResponseBody
+	@RequestMapping(value = "/file/delete/{seq}", method = RequestMethod.GET)
+	public String file_delete(
+			@PathVariable("seq") String seq) {
+		return "OK";
+	}
 	
 	
 

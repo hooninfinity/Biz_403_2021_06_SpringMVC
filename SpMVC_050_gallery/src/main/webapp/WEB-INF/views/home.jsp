@@ -43,14 +43,6 @@ legend {
 	color: white;
 	border-radius: 5px;
 }
-button {
-	display: flex;
-	background-color: #036635;
-	color: white;
-	border: 1px solid #036635;
-	border-radius: 5px;
-	padding: 5px 10px 5px 10px;
-}
 </style>
 <body>
 <h1>내 갤러리</h1>

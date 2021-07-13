@@ -1,10 +1,14 @@
 package com.team.starbucks.service.impl;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.starbucks.service.FileService;
 
@@ -18,23 +22,39 @@ public class FileServiceImplV1 implements FileService {
 	
 	protected final String winPath;
 	protected final String macPath;
+	
+	protected String fileUpPath;
+	
+	@Autowired
+	public void getFilePath(String winPath, String macPath) {
+		/*
+		 * 파일을 업로드 할때 사용할 path 가져오기
+		 * 
+		 * 1. 지정된 폴더를 윈도우 기반의 폴더로 설정
+		 * 2. mac 기반의 폴더가 있으면 해당 폴더로 변경
+		 */
+		this.fileUpPath = this.winPath;
+	}
 
 	@Override
 	public String fileUp(MultipartFile file) throws Exception {
+		// 기본파일을 선택하지 않으면 noImage 뜨도록 
 		String originFileName = file.getOriginalFilename();
 		if (originFileName == null || originFileName.isEmpty())
 			return "";
 
-		String fileUpPath = this.winPath;
-		
+		// 현재 시스템에 macPath로 설정된 폴더가 있는지 확인하고
+		// 있으면 업로드 폴더를 macPath에서 지정된 값으로 설정하기
 		File path = new File(macPath);
 		if (path.exists()) {
-			fileUpPath = this.macPath;
+			this.fileUpPath = this.macPath;
 		}
 		
+		// 다시한번 filePath 가 있는지 검사
+		// winPath일 경우는 폴더를 만들어라
 		path = new File(fileUpPath);
 		if(!path.exists()) {
-			path.mkdir();
+			path.mkdirs();
 		}
 		
 		String strUUID = UUID.randomUUID().toString();
@@ -42,8 +62,20 @@ public class FileServiceImplV1 implements FileService {
 		
 		File uploadPathAndFile = new File(fileUpPath, strUUID);
 		file.transferTo(uploadPathAndFile);
-		
 		return strUUID;
 	}
 
+//	@Override
+//	public List<String> filesUp(MultipartHttpServletRequest files) throws Exception {
+//
+//		List<String> fileNames = new ArrayList<String>();
+//		String tagName = "m_file";
+//		
+//		List<MultipartFile> fileList = files.getFiles(tagName);
+//		for(MultipartFile file : fileList) {
+//			String fileName = this.fileUp(file);
+//			fileNames.add(fileName);
+//		}
+//		return fileNames;
+//	}
 }

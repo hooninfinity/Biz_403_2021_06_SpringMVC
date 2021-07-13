@@ -14,4 +14,5 @@ public interface FileDao extends GenericDao<FileDTO,String>{
 	public int insertOrUpdateWithList(
 			@Param("filesList") List<FileDTO> files);
 
+	public int insertORUpdate(FileDTO fileDto);
 }
