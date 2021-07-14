@@ -1,8 +1,8 @@
 package com.team.starbucks.dao.ext;
 
 import com.team.starbucks.dao.GenericDao;
-import com.team.starbucks.model.EventVO;
+import com.team.starbucks.model.EventDTO;
 
-public interface EventDao extends GenericDao<EventVO,String>{
+public interface EventDao extends GenericDao<EventDTO,String>{
 
 }

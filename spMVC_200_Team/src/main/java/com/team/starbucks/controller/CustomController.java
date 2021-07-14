@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.starbucks.model.CategoryDTO;
 import com.team.starbucks.model.CustomDTO;
-import com.team.starbucks.model.CustomVO;
-import com.team.starbucks.model.FileDTO;
 import com.team.starbucks.model.UserVO;
 import com.team.starbucks.service.CustomService;
 import com.team.starbucks.service.FileService;
@@ -36,7 +33,7 @@ public class CustomController {
 	protected final FileService fService;
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String list(HttpSession session, Model model, CustomVO customVO) {
+	public String list(HttpSession session, Model model, CustomDTO customDTO) {
 
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 		List<CustomDTO> cuList = cuService.selectAll();
@@ -76,29 +73,22 @@ public class CustomController {
 		return "custom/save";
 	}
 
-	// 여기가 원본
-	//	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	//	public String saveMenu(@RequestParam("menucode") Long menu_code,CustomVO cuVO,Model model) {
-	//		log.debug(menu_code + "");
-	//		Long menu_seq = 0L;
-	//		cuVO.setMenu_code(menu_code);
-	//		
-	//		log.debug(cuVO.toString());
-	//		cuService.insert(cuVO);
-	//		
-	//		return "redirect:/custom";
-	//	}
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveMenu(@RequestParam("menucode") Long menu_code, CustomVO cuVO, Model model, MultipartFile one_file)
+	public String saveMenu(@RequestParam("menucode") Long menu_code, CustomDTO cuDTO, Model model, MultipartFile one_file)
 			throws Exception {
 		log.debug(menu_code + "");
 		Long menu_seq = 0L;
-		cuVO.setMenu_seq(menu_seq);
-		cuVO.setMenu_code(menu_code);
-		log.debug("갤러리 정보 {}", cuVO.toString());
+		cuDTO.setMenu_seq(menu_seq);
+		cuDTO.setMenu_code(menu_code);
+		log.debug("갤러리 정보 {}", cuDTO.toString());
 		log.debug("싱글 파일 {}", one_file.getOriginalFilename());
-		cuService.input(cuVO, one_file);
+		cuService.input(cuDTO, one_file);
 		return "redirect:/custom";
 	}
+	
 
 }
+
+
+
+

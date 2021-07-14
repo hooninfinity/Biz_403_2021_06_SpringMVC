@@ -44,6 +44,7 @@
 let menu_input = document.querySelector("button.btn_insert")
 		menu_input.addEventListener("click",()=>{
 			location.href = "${rootPath}/custom/input"
-	})
+})
+	
 	
 </script>

@@ -13,13 +13,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Builder
-public class NoticeVO {
+public class EventDTO {
+private String event_code;//
+private String event_date;//
+private String event_user;//
+private String event_text;//
 
-	private Long nt_code;
-	private String nt_title;
-	private String nt_content;
-	private String nt_date;
-	private String nt_time;
-	private String nt_img;
-	
 }

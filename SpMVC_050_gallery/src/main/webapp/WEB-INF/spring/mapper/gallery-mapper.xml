@@ -15,12 +15,12 @@
  	</select>
  	
  	<!-- 
- 	select된 결과를 DTO와 매칭하는 중간단계 RowMapper
- 	id : table select 했을때 PK지정된 값을
- 		property : DTO변수이름, column : SELECT 된 칼럼이름, AS 된 칼럼이름
- 	result : PK가 아닌 칼럼들
- 		property : 
- 	 -->
+	select된 결과를 DTO와 매칭하는 중간단계 RowMapper
+	id : table select 했을때 PK지정된 값을
+		property : DTO변수이름, column : SELECT 된 칼럼이름, AS 된 칼럼이름
+	result : PK가 아닌 칼럼들
+		property : DTO변수이름, column : SELECT 된 칼럼이름, AS 된 칼럼이름
+	-->
  	<resultMap type="GalleryDTO" id="galleryDTOResultMap">
  		<id property="g_seq" column="g_seq"/>
  		<result column="g_writer" property="g_writer"/>
