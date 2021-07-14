@@ -9,7 +9,11 @@
 <mapper namespace="com.callor.gallery.persistance.ext.FileDao">
  
  	<select id="selectAll"></select>
- 	<select id="findById"></select>
+ 	
+ 	<select id="findById" resultType="FileDTO">
+ 		SELECT * FROM tbl_files
+ 		WHERE file_seq = #{file_seq}
+ 	</select>
  	
  	<!-- 개별적으로 한개 데이터씩 Insert -->
  	<insert id="insert" parameterType="FileDTO">
@@ -74,6 +78,7 @@
  	</insert>
  	
  	<update id="update"></update>
+ 	
  	<delete id="delete">
  		DELETE FROM tbl_files
  		WHERE file_seq = #{file_seq}
