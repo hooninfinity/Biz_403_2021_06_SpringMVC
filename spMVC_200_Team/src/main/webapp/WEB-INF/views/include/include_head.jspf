@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>STARBUCKS CUSTOM 2021</title>
-<link href="${rootPath}/static/css/home.css?ver1" rel="stylesheet" />
+<link href="${rootPath}/static/css/home.css?ver=2021-07-14-003" rel="stylesheet" />
 <link href="${rootPath}/static/css/freenotice.css?" rel="stylesheet" />
 <link href="${rootPath}/static/css/publicnotice.css?" rel="stylesheet" />
 <link href="${rootPath}/static/css/contentscss.css?ver1" rel="stylesheet">
