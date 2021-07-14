@@ -18,7 +18,7 @@
 }
 body {
 	width: 100vw;
-	background-color: #fcedd8;
+	/* background-color: #fcedd8; */
 }
 div {
 	width: 80%;

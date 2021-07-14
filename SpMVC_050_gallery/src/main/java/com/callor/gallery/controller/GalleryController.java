@@ -70,6 +70,12 @@ public class GalleryController {
 		List<GalleryDTO> gaList = gaService.selectAllPage(intPageNum);
 		
 //		List<GalleryDTO> gaList = gaService.selectAll();
+		
+		// 전달받은 pageNum 값을 view에게 전달
+		if(intPageNum > 0) {
+			model.addAttribute("PAGE_NUM", intPageNum);
+		}
+		
 		model.addAttribute("GALLERYS", gaList);
 		model.addAttribute("BODY", "GA-LIST");
 		return "home";

@@ -38,4 +38,10 @@
 		</div>
 	</div>
 </c:forEach>
+<%@ include file="/WEB-INF/views/include/include_page_nav.jspf" %>
+
+
+
+
+
 

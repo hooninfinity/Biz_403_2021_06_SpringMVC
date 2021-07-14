@@ -184,6 +184,7 @@ public class GalleryServiceImplV1 implements GalleryService {
 
 	
 	/*
+	 * pagination 구현
 	 * pagaNum 를 매개변수로 받아서
 	 * selectAll 한 데이터를 잘라내고
 	 * pageNum에 해당하는 list 부분만 return 하기
@@ -201,8 +202,15 @@ public class GalleryServiceImplV1 implements GalleryService {
 		//    pageNum가 2 라면 list에서 10번째 요소 ~ 19번째 요소까지 추출하기
 		//    pageNum가 3 라면 list에서 20번째 요소 ~ 29번째 요소까지 추출하기
 		
+		int totalCount = gaListAll.size();
+		
 		int start = (pageNum -1) * 10;
 		int end = pageNum * 10;
+		
+		if(pageNum * 10 > totalCount - 10) {
+			end = totalCount;
+			start = end - 10;
+		}
 		
 		List<GalleryDTO> pageList = new ArrayList<>();
 		for(int i = start ; i < end ; i++) {
