@@ -46,6 +46,7 @@
 							<td>${CUS.menu_code}</td>
 							<td>${CUS.menu_title}</td>
 							<td>${CUS.user_id}</td>
+							<td>그림 : <img src = "${rootPath}/files/${CUS.file_upname}"></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>

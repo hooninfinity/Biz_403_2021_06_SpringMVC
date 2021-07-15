@@ -44,7 +44,12 @@ public class CustomController {
 	}
 
 	@RequestMapping(value = "/input", method = RequestMethod.GET)
-	public String insert(Model model) {
+	public String insert(Model model, HttpSession session) {
+		
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+		if(userVO == null) {
+			return "redirect:/user/login";
+		}
 		List<CategoryDTO> menukindsList = cuService.findBybase1();
 		log.debug("menuKinds{}", menukindsList.toString());
 		model.addAttribute("BASE1", menukindsList);
@@ -52,7 +57,8 @@ public class CustomController {
 	}
 
 	@RequestMapping(value = "/input2", method = RequestMethod.GET)
-	public String insert2(@RequestParam("menukinds") int menu_kinds, Model model) {
+	public String insert2(@RequestParam("menukinds") int menu_kinds, Model model, HttpSession session) {
+		
 		List<CategoryDTO> menukindsList = cuService.findByMenukinds(menu_kinds);
 		log.debug("munukindsList {}", menukindsList.toString());
 		model.addAttribute("KINDS", menukindsList);
