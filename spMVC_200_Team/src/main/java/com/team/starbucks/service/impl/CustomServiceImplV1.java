@@ -84,7 +84,6 @@ public class CustomServiceImplV1 implements CustomService {
 		
 		log.debug("strUUID {}", strUUID);
 		
-		cuDTO.setFile_seq(0L);
 		cuDTO.setFile_originalName(one_file.getOriginalFilename());
 		cuDTO.setFile_upname(strUUID);
 		log.debug("저장파일정보 {}",cuDTO.toString());

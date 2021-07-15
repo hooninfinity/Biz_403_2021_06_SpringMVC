@@ -29,7 +29,6 @@
 		FROM
 		tbl_custom C
 		LEFT JOIN tbl_file F
-		ON C.menu_seq = F.file_seq
 		WHERE
 		F.menu_seq = #{menu_seq}
 	</select>
@@ -80,15 +79,12 @@
 
 	<update id="create_table">
 		CREATE TABLE IF NOT EXISTS tbl_custom(
-		menu_seq BIGINT
-		AUTO_INCREMENT PRIMARY KEY,
+		menu_seq BIGINT AUTO_INCREMENT PRIMARY KEY,
 		menu_code BIGINT NOT NULL,
-		user_id
-		VARCHAR(50) NOT NULL,
+		user_id VARCHAR(50) NOT NULL,
 		menu_title VARCHAR(125) NOT NULL,
 		menu_option VARCHAR(256),
-		file_originalName
-		VARCHAR(256) NOT NULL,
+		file_originalName VARCHAR(256) NOT NULL,
 		file_upname VARCHAR(256) NOT NULL
 		)
 	</update>

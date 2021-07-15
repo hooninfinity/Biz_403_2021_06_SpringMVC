@@ -1,0 +1,41 @@
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib
+	uri="http://java.sun.com/jsp/jstl/core"
+	prefix="c"%>
+<c:set
+	var="rootPath"
+	value="${pageContext.request.contextPath}" />
+<style>
+#main_nav ul {
+	display: flex;
+	list-style: none;
+	padding: 12px 16px;
+}
+
+
+#main_nav ul li {
+	font-size: 50px;
+	margin: 0 auto;
+	/* 픽토그램으로 하는걸 생각해봄 */
+}
+#HOME{
+	content: "\f015";
+	font-family: "Font Awesome 5 Free";
+}
+</style>
+
+<body>
+	<nav id="main_nav">
+		<ul>
+			<div id="HOME">
+			<li>HOME</li>
+			</div>
+			<li><div id="CUSTOM"></div></li>
+			<li>BOARD</li>
+			<li>LOGIN</li>
+			<!-- <li>JOIN</li> -->
+		</ul>
+	</nav>

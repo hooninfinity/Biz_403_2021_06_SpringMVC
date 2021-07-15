@@ -1,14 +1,11 @@
 package com.team.starbucks.service.impl;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.team.starbucks.service.FileService;
 
@@ -64,18 +61,4 @@ public class FileServiceImplV1 implements FileService {
 		file.transferTo(uploadPathAndFile);
 		return strUUID;
 	}
-
-//	@Override
-//	public List<String> filesUp(MultipartHttpServletRequest files) throws Exception {
-//
-//		List<String> fileNames = new ArrayList<String>();
-//		String tagName = "m_file";
-//		
-//		List<MultipartFile> fileList = files.getFiles(tagName);
-//		for(MultipartFile file : fileList) {
-//			String fileName = this.fileUp(file);
-//			fileNames.add(fileName);
-//		}
-//		return fileNames;
-//	}
 }

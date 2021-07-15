@@ -4,20 +4,25 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <meta charset="UTF-8">
 <style>
+
 footer {
 	background-color: #036635;
 	color: white;
 	font-weight:400;
 	padding: 5px;
 	display:block;
-	
+	margin-bottom: 0 auto;	
 }
 
 address {
 	text-align: center;
 }
+footer{
+	min-height: calc(100vh - 90vh);
+}
 </style>
-
+<div id="footer">
+</div>
 <footer>
 	<address>CopyRight &copy; SSBuckKorea</address>
 </footer>

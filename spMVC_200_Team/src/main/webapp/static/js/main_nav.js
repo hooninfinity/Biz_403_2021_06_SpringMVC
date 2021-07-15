@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (menuText === "BOARD") {
         urlPath += "/board";
       } else if (menuText === "LOGIN") {
-        urlPath += "/member";
+        urlPath += "/user";
       } else if (menuText === "JOIN") {
-        urlPath += "/member/join";
+        urlPath += "/user/join";
       }
 
       location.href = urlPath;
