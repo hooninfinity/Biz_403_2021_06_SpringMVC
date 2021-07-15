@@ -20,10 +20,7 @@ body {
 	width: 100vw;
 	/* background-color: #fcedd8; */
 }
-div {
-	width: 80%;
-	margin: 10px auto;
-}
+
 h1 {
 	background-color: #036635;
 	text-align: center;

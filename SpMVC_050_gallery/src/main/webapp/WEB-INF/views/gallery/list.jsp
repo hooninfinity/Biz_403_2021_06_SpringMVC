@@ -4,19 +4,40 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />    
 
 <style>
-	div.ga_box {
-		display: flex;
+section#image_list_section {
+	width: 90vw;
+	margin: 20px auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+div.gallery_box {
+	flex: 1 0 30%;
+	display: flex;
+	border: 1px solid blue;
+	padding: 1rem;
+	margin: 1rem;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.3);
+}
+div.gallery_box div:first-of-type {
+	flex: 1;
+}
+div.gallery_box div:last-of-type {
+	flex: 3;
+}
+@media ( max-width :1500px) {
+	div.gallery_box {
+		flex: 1 45%;
 	}
-	
-	div.ga_box div:first-of-type {
-		flex: 1;	
+}
+@media ( max-width :1000px) {
+	div.gallery_box {
+		flex: 1 0 100%;
 	}
-	div.ga_box div:last-of-type {
-		flex: 2;
-	}
-	
+}
 	
 </style>
+<%@ include file="/WEB-INF/views/include/include_gallery_search.jspf" %>
 
 <c:forEach items="${GALLERYS}" var="GALLERY">
 	<div class="ga_box">

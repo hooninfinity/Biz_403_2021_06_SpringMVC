@@ -4,65 +4,70 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />    
 <style>
 	section.page_box {
-		width: 80%;
-		margin: 10px auto;
+		widht:80%;
+		margin:10px auto;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	
 	section.page_box ul {
-		width: 80%;
+		width:80%;
 		display: flex;
 		list-style: none;
 	}
 	
 	section.page_box li {
 		display: inline-block;
-		border: 1px solid rgba(0,0,255,0.7);
 		
-		padding: 0.5rem 1rem;
+		padding:0.5rem 1rem;
 		line-height: 1.25;
 		text-align: center;
 		
-		color: #007BFF;
-		background-color: #FFF;
-		border: 1px solid #DEE2E6;
+		color:#007BFF;
+		background-color:#FFF;
+		border:1px solid #DEE2E6;
 		cursor: pointer;
 		white-space: nowrap;
 	}
 	
 	section.page_box li:hover {
-		color: #0056B3;
-		font-weight: 400;
+		color:#0056B3;
+		font-weight:400;
 		background-color: #E9ECEF;
 		border-color: #DEE2E6;
 	}
 	
 	section.page_box li.active {
-		color: #FFF;
+		color:#FFF;
 		background-color: #007BFF;
 		border-color: #007BFF;
 	}
+	
 
-
-</style>
+</style>    
 <section class="page_box">
 	<ul class="page_nav_main">
 		<li data-num="1">처음</li>
 		<li data-num="${PAGE_NUM - 1}">&lt;</li>
-		<c:forEach begin="1" end="10" var="pageNum">
-		
+		<c:if test="${PAGE_NAV.startPage > 2}">
+			<li>....</li>
+		</c:if>
+		<c:forEach begin="${PAGE_NAV.startPage}" 
+						end="${PAGE_NAV.endPage}" 
+						var="pageNum">
+						
 			<li data-num="${pageNum}"
 			class="
 			<c:if test="${PAGE_NUM == pageNum}">active</c:if>
 			"
 			>${pageNum}</li>
-			
-			
 		</c:forEach>
+		<c:if test="${PAGE_NAV.endPage < PAGE_NAV.totalPages}">
+			<li>....</li>
+		</c:if>
 		<li data-num="${PAGE_NUM + 1}">&gt;</li>
-		<li data-num="99">끝</li>
+		<li data-num="${PAGE_NAV.totalPages}">끝</li>
 	</ul>
 </section>
 <script>
@@ -76,6 +81,8 @@ if(page_nav_main) {
 		}
 	})
 }
+
+
 
 
 </script>

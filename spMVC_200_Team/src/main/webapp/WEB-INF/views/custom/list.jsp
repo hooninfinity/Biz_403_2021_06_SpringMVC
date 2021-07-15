@@ -41,9 +41,7 @@
 					<td colspan="2">데이터없음</td>
 				</c:when>
 				<c:otherwise>
-					<c:forEach
-						items="${CustomList}"
-						var="CUS">
+					<c:forEach items="${CustomList}" var="CUS">
 						<tr>
 							<td>${CUS.menu_code}</td>
 							<td>${CUS.menu_title}</td>
