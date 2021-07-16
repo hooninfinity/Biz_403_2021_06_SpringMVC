@@ -6,6 +6,11 @@
 <!DOCTYPE html>
 <html>
 <style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 form#login {
 	height: 100vh;
 	width: 80%;
@@ -17,8 +22,9 @@ form#login {
 form#login input {
 	outline: 0;
 	dispaly: block;
-	width: 400px;
-	margin: 5px auto;
+	width: 300px;
+	height: 80px;
+	margin: 10px auto;
 	padding: 10px;
 	color: black;
 	border: 2px solid #036635;
@@ -26,10 +32,10 @@ form#login input {
 	background: none;
 	text-align: center;
 	transition: 0.3s;
-	font-size: 30px;
+	font-size: 25px;
 }
 form#login input:focus {
-	width: 250px;
+	width: 350px;
 	border-color: #036635;
 }
 form#login button {
@@ -44,6 +50,7 @@ form#login button {
 	border: 1px solid #036635;
 	border-radius: 5px;
 	cursor: pointer;
+	font-size: 40px;
 }
 form#login button:hover {
 	background-color: #036635;
@@ -55,6 +62,13 @@ div.msg.view {
 		padding: 2rem;
 		border-radius: 20px;
 	}
+fieldset {
+	width: 80%;
+	padding: 40px;
+	margin: 0 auto;
+	border: 1px soild blue;
+	border-radius: 20px;
+}
 legend {
 	font-size: 60px;
 	font-weight: 800;
@@ -68,8 +82,8 @@ legend {
 	<form id="login" method="POST">
 		<fieldset>
 			<legend>LOGIN</legend>
-			<div class="msg login error">
-			</div>
+			<div class="msg login error"></div>
+			<br>
 			<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
 			<br>
 			<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
