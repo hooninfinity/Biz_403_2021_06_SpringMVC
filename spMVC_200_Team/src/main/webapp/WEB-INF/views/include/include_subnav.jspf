@@ -1,0 +1,77 @@
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib
+	uri="http://java.sun.com/jsp/jstl/core"
+	prefix="c"%>
+<c:set
+	var="rootPath"
+	value="${pageContext.request.contextPath}" />
+<style>
+nav#subnav {
+	font-size: 3rem;
+	text-align: center;
+	height: 6%;
+	margin:30px auto;
+}
+
+#subnav ul {
+	margin: 0 auto;
+	padding: 10px auto;
+	list-style: none;
+	display: flex;
+}
+
+#subnav ul li {
+	margin: 0 auto;
+	opacity: 0.4;
+	font-size: 30px;
+}
+
+#subnav ul li h2#menu1:before {
+	content: ' \229E';
+	color: #aaa;
+}
+
+#subnav ul li h2#menu2:before {
+	content: ' \229F';
+	color: #aaa;
+}
+
+#subnav ul li h2#menu3:before {
+	content: ' \22A1';
+	color: #aaa;
+	padding: auto 0;
+}
+
+#mylist {
+	top: 0;
+}
+</style>
+<nav id="subnav">
+	<ul>
+		<li><h2 id="menu1"></h2>갤러리</li>
+		<li><h2 id="menu2"></h2>자세히</li>
+		<li id="mylist"><h2 id="menu3"></h2>내목록</li>
+	</ul>
+</nav>
+<script>
+	  const subnav = document.querySelector("nav#subnav")
+		subnav.addEventListener("click", (e) => {
+	    	let tagName = e.target.tagName;
+	    if (tagName === "LI") {
+	      let menuText = e.target.textContent;
+	      if (menuText === "갤러리") {
+	    	  
+	        location.href = "${rootPath}/custom/smallList";
+		  } else if(menuText === "자세히"){
+			  
+	        location.href = "${rootPath}/custom/";
+		  } else if(menuText === "내목록"){
+			  
+			  
+		  }
+	    }	  
+	});
+</script>

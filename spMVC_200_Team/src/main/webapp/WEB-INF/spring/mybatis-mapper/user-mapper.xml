@@ -21,11 +21,11 @@
 	</select>
 
 	<insert id="join" parameterType="UserVO">
-		INSERT INTO tbl_user(
-			user_id, user_password, user_email)
-		VALUES(
-			#{user_id}, #{user_password}, #{user_email}
-		)
+	INSERT INTO tbl_user(
+	user_id, user_password, user_email)
+	VALUES(
+	#{user_id}, #{user_password}, #{user_email}
+	)
 	</insert>
 	
 	<insert id="insertOrUpdate" parameterType="UserVO">
@@ -37,7 +37,6 @@
  			#{user_level}
  		)
  		ON DUPLICATE KEY UPDATE
- 			
 	 		user_password = user_password,
 	 		user_email = user_email,
 	 		user_level = user_level
@@ -55,9 +54,5 @@
  			user_level INT DEFAULT 9
  		)
  	</update>
-
-
-
-
 
 </mapper>

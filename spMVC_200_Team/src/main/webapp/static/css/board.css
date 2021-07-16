@@ -1,0 +1,82 @@
+fieldset {
+	border: 10px solid transparent;
+	width: 100%;
+	height: 100vh;
+	padding: 40px;
+	text-align: center;
+}
+
+table.board {
+	border-spacing: 0;
+	width: 100%;
+	margin: 0 auto;
+	font-size: 10px;
+	text-align: center;
+}
+
+#bdh1 {
+	color: #036635;
+	font-weight: 400;
+	text-decoration: letter-spacing: 2px;
+}
+
+table.board th, td {
+	border-top: 1px solid #aaa;
+	padding: 5px 8px;
+	text-align: center;
+}
+
+table.board td {
+	margin-left: 30px;
+}
+
+table tr, td:nth-of-type(1) {
+	width: 10px;
+}
+
+table tr, td:nth-of-type(2) {
+	width: 100px;
+}
+
+table tr, td:nth-of-type(3) {
+	width: 50%;
+}
+
+table tr, td:nth-of-type(4) {
+	width: 10%;
+}
+
+table tr, td:nth-of-type(6) {
+	width: 10%;
+}
+
+table tr:last-child (odd) {
+	border-bottom: 1px solid #ddd;
+}
+
+table tr:last-child(even) {
+	border-bottom: 1px solid #eee;
+}
+
+table.board tr:hover {
+	cursor: pointer;
+	background-color: #aaa;
+}
+
+div.btn_box {
+	width: 90%;
+	margin: 5px auto;
+	text-align: right;
+}
+
+button {
+	background-color: #036635;
+	color: whitesmoke;
+	outline: none;
+	border-radius: 10px;
+}
+
+button:hover {
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+	cursor: pointer;
+}

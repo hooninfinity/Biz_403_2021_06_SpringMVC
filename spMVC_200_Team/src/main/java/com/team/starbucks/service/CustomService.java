@@ -2,6 +2,7 @@ package com.team.starbucks.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.team.starbucks.model.CategoryDTO;
@@ -17,6 +18,8 @@ public interface CustomService{
 	public String findByCodeName(Long menu_code);
 	
 	public void input(CustomDTO cuDTO,MultipartFile one_file) throws Exception;
+	public CustomDTO findBySeq(Long menu_seq);
 	
+	public CustomDTO findBySearch(String search, String column,Model model);
 
 }

@@ -33,7 +33,8 @@ h1 {
 	font-weight: 700;
 	font-size: 8rem;
 	padding-top: 10px;
-	padding-bottom: 20px; color : white;
+	padding-bottom: 20px;
+	color: white;
 	text-shadow: 5px 5px 6px 7px #aaa;
 	height: 20%;
 	font-size: 8rem;
@@ -46,7 +47,7 @@ div.images {
 }
 
 body {
-	/* border: 1px solid transparent; */
+	border: 1px solid transparent;
 	padding-top: 50%;
 }
 
@@ -60,6 +61,7 @@ form {
 	<%@ include file="/WEB-INF/views/include/include_nav.jspf"%>
 </header>
 <body>
+	<%@ include file="/WEB-INF/views/include/include_subnav.jspf"%>
 	<section id="main_sec">
 		<c:choose>
 			<c:when test="${BODY eq 'INPUT-HOME'}">
@@ -71,16 +73,23 @@ form {
 			<c:when test="${BODY eq 'INPUT-SAVE'}">
 				<%@ include file="/WEB-INF/views/custom/save.jsp"%>
 			</c:when>
-			<c:when test="${BODY eq 'JOIN'}">
-				<%@ include file="/WEB-INF/views/user/join.jsp"%>
+			<c:when test="${BODY eq 'CUSTOM-LIST'}">
+				<%@ include file="/WEB-INF/views/custom/list.jsp"%>
+			</c:when>
+			<c:when test="${BODY eq 'CUSTOM-DETAIL'}">
+				<%@ include file="/WEB-INF/views/custom/detail.jsp"%>
+			</c:when>
+			<c:when test="${BODY eq 'SEARCH-LIST'}">
+				<%@ include file="/WEB-INF/views/custom/searchlist.jsp"%>
 			</c:when>
 			<c:when test="${BODY eq 'LOGIN'}">
 				<%@ include file="/WEB-INF/views/user/login.jsp"%>
 			</c:when>
+			<c:when test="${BODY eq 'JOIN'}">
+				<%@ include file="/WEB-INF/views/user/join.jsp"%>
+			</c:when>
 			<c:otherwise>
-				<%-- 	<c:when test="${BODY eq 'CUSTOM_LIST'}"> --%>
-				<%@ include file="/WEB-INF/views/custom/list.jsp"%>
-				<%-- </c:when> --%>
+				<%@ include file="/WEB-INF/views/custom/smallList.jsp"%>
 			</c:otherwise>
 		</c:choose>
 		<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
@@ -97,7 +106,7 @@ form {
 		    if (tagName === "LI") {
 		      let menuText = e.target.textContent;
 		      if (menuText === "HOME") {
-		        urlPath += "/custom";
+		        urlPath += "/";
 		      } else if (menuText === "CUSTOM") {
 		        urlPath += "/custom/input";
 		      } else if (menuText === "BOARD") {
@@ -106,8 +115,6 @@ form {
 		        urlPath += "/user/login";
 		      } else if (menuText === "LOGOUT") {
 		        urlPath += "/user/logout";
-		      } else if (menuText === "JOIN") {
-		        urlPath += "/user/join";
 		      }
 		      location.href = urlPath;
 		    }

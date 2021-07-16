@@ -13,15 +13,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Builder
-public class BoardVO {
-	
-	private String board_code;
-	private String user_id;
-	private String board_title;//
-	private String board_content;//
-	private String board_like;//
-	private String board_date;//
-	private String board_time;//
-	private String board_img;//
-
+public class FileDTO {
+	private Long file_seq;
+	private String file_originalName;
+	private String file_upname;
 }

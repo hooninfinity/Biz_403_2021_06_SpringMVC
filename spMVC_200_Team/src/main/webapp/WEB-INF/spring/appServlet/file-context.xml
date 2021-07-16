@@ -19,6 +19,6 @@
 		<constructor-arg value="c:/bizworks/files/"/>
 	</bean>
 	<bean id="macPath" class="java.lang.String">
-		<constructor-arg value="/Users/kimsojeong/Documents/work/files/ "/>
+		<constructor-arg value="/Users/kimsojeong/Documents/work/files/"/>
 	</bean>
 </beans>

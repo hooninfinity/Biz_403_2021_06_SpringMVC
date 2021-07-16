@@ -9,71 +9,72 @@
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
 <style>
-#custom {
+#SEARCH {
 	padding: 0;
 	margin: 20px auto;
 	width: 100%;
 	border: 1px solid transparent;
 }
 
-#customlist {
+#SEARCHlist {
 	display: flex;
 	margin: 19px auto;
 	padding: 0;
 	justify-content: center;
 }
 
-#customTr {
+#SEARCHTr {
 	margin: 30px auto;
 	margin-bottom: 100px;
 }
 
-#customlist td {
+#SEARCHlist td {
 	margin: 10px;
 	display: flex;
 	font-size: 50px;
 	font-weight: 400;
 }
 
-#customlist td:nth-of-type(1) {
+#SEARCHlist td:nth-of-type(1) {
 	margin-top: 80px;
 }
 
-#last {
+#SEARCHlast {
 	border-bottom: 1px double #aaa;
 	padding-bottom: 70px;
 }
 
-#customlist img {
+#SEARCHlist img {
 	display: inline-block;
 	border-radius: 30px;
 	width: 800px;
 	margin: 0 auto;
 }
 
-h3:before {
+#SEARCHH3:before {
 	content: ' \2730';
 	color: green;
 	font-size: 100px;
 }
 </style>
 <%@ include file="/WEB-INF/views/include/search.jsp" %>
-<fieldset id="custom">
-	<table id="customlist">
+<fieldset id="SEARCHFieldset">
+	<table id="SEARCHlist">
 		<c:choose>
-			<c:when test="${empty CustomList}">
+			<c:when test="${empty searchList}">
 				<td colspan="5">데이터없음</td>
 			</c:when>
 			<c:otherwise>
 				<c:forEach
-					items="${CustomList}"
-					var="CUS">
-					<tr id="customTr">
-						<td><h3>${CUS.user_id}</h3></td>
-						<td id="img"><img src="${rootPath}/files/${CUS.file_upname}"></td>
-						<td>메뉴 제목 	: ${CUS.menu_title}</td>
-						<td>퍼스널 옵션 :${CUS.menu_option}</td>
-						<td id="last">메뉴종류 : ${CUS.menu_name}</td>
+					items="${searchList}"
+					var="SEARCH">
+					<tr id="SEARCHTr">
+						<td><h3 id="SEARCHH3">${SEARCH.user_id}</h3></td>
+						<td id="SEARCHimg"><img
+							src="${rootPath}/files/${SEARCH.file_upname}"></td>
+						<td>메뉴 제목 : ${SEARCH.menu_title}</td>
+						<td>퍼스널 옵션 :${SEARCH.menu_option}</td>
+						<td id="SEARCHlast">메뉴종류 : ${SEARCH.menu_name}</td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>

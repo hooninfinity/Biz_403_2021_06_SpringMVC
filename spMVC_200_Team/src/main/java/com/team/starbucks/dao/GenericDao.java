@@ -3,6 +3,8 @@ package com.team.starbucks.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.team.starbucks.model.CustomDTO;
+
 public interface GenericDao<VO, PK> {
 
 	public List<VO> selectAll();

@@ -40,6 +40,5 @@
 			<c:if test="${not empty LOGIN}">
 				<li>LOGOUT</li>
 			</c:if>
-			
 		</ul>
 	</nav>

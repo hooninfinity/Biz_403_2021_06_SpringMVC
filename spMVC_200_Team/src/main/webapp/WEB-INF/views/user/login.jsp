@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-
-<!DOCTYPE html>
-<html>
 <style>
 * {
 	margin: 0;
@@ -74,10 +71,6 @@ legend {
 	font-weight: 800;
 }
 </style>
-<head>
-<meta charset="UTF-8">
-<title>스타벅스 커스텀 로그인</title>
-</head>
 <body>
 	<form id="login" method="POST">
 		<fieldset>
@@ -93,7 +86,6 @@ legend {
 			<button type="button" class="join">회원가입</button>
 		</fieldset>
 	</form>
-</body>
 <script>
 let fail = `${FAIL}`;
 if(fail){
@@ -141,6 +133,3 @@ document.querySelector("form#login").addEventListener("click",(e)=>{
 	}
 })
 </script>
-
-
-</html>

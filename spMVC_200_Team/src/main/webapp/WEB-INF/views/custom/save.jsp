@@ -29,7 +29,7 @@ div#inputlist {
 	border: 1px solid #aaa;
 	border-radius: 10px;
 	margin: 10px auto;
-	font-size: 30px;
+	font-size: 40px;
 	display: flex;
 	justify-content: center;
 }
@@ -52,13 +52,21 @@ button.save {
 			<input
 				name="menu_name"
 				id="menu_name"
-				value="${CHOISEMENU.menu_name}"	
+				value="${CHOISEMENU.menu_name}"
 				placeholder="${CHOISEMENU.menu_name}"
-				disabled="disabled"  />
+				disabled="disabled" />
+			<input
+				name="menu_kinds"
+				id="menu_kinds"
+				value="${CHOISEMENU.menu_kinds}"
+				placeholder="${CHOISEMENU.menu_kinds}"
+				disabled="disabled" />
 			<input
 				name="user_id"
 				id="user_id"
-				placeholder="게시자">
+				value="${USER}"
+				placeholder="${USER}"
+				disabled="disabled">
 			<input
 				name="menu_title"
 				id="menu_title"
@@ -72,9 +80,9 @@ button.save {
 				name="one_file"
 				placeholder="사진을 올려주세요">
 		</div>
-			<button
-				type="submit"
-				class="save">저장</button>
+		<button
+			type="submit"
+			class="save">저장</button>
 	</form>
 </fieldset>
 <script>
@@ -83,11 +91,12 @@ button.save {
 	let menu_option = document.querySelector("#menu_option").value
 	let user_id = document.querySelector("#user_id").value
 	let one_file = document.querySelector("#one_file").value
-
-	if (menu_title === "") {
-		alert("메뉴 이름은 반드시 정해주세요")
-		menu_title.focus()
-		return false;
-	}
+	/* 
+	 if (menu_title === "") {
+	 alert("메뉴 이름은 반드시 정해주세요")
+	 menu_title.focus()
+	 return false;
+	 }
+	 */
 	document.querySelector("form#savemenu").submit()
 </script>

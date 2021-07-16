@@ -1,9 +1,11 @@
 package com.team.starbucks.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.team.starbucks.dao.ext.BoardDao;
 import com.team.starbucks.model.BoardDTO;

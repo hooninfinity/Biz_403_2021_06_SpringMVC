@@ -18,9 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Service("userServiceV1")
 public class UserServiceImplV1 implements UserService {
-	
+
 	protected final UserDao usDao;
-	
+
 	@Autowired
 	public void create_user_table(UserDao dummy) {
 		Map<String, String> maps = new HashMap<String, String>();
@@ -32,7 +32,7 @@ public class UserServiceImplV1 implements UserService {
 	public List<UserVO> selectAll() {
 		List<UserVO> usList = usDao.selectAll();
 		log.debug("Service User {} ", usList.toString());
-		return usDao.selectAll() ;
+		return usDao.selectAll();
 	}
 
 	// 회원가입
@@ -40,8 +40,8 @@ public class UserServiceImplV1 implements UserService {
 	public UserVO join(UserVO usVO) {
 		List<UserVO> users = usDao.selectAll();
 		log.debug("Users {}", users.toString());
-		
-		if(users == null || users.size() < 1) {
+
+		if (users == null || users.size() < 1) {
 			usVO.setUser_level(0);
 		} else {
 			usVO.setUser_level(9);
@@ -59,23 +59,17 @@ public class UserServiceImplV1 implements UserService {
 	// 유효성 검사
 	@Override
 	public UserVO findById(String user_id) {
-		
+
 		UserVO userVO = usDao.findById(user_id.trim());
-		
-		if(userVO == null) {
+
+		if (userVO == null) {
 			// 가입되지 않은 사용자 ID
 			log.debug("가입되지 않은 사용자 {} ", user_id);
 		} else {
 			log.debug("조회된 사용자 정보 : {}", userVO.toString());
 		}
-		
+
 		return userVO;
 	}
 
-
-
-
 }
-
-
-

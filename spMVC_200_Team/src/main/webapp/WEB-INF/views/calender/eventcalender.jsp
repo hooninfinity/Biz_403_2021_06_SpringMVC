@@ -9,17 +9,18 @@
 <%@ include file="/WEB-INF/views/include/include_head.jspf"%>
 <style>
 table#calender {
-	font-family: 'Song Myung', serif;
 	background-repeat: no-repeat;
 	background-position: center;
 	position: relative;
 	z-index: 1;
-	background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;
+	padding:0;
+	margin:0;
+	box-sizing: border-box;
 }
 
 table#calender::after {
-	width: 100%;
-	height: 100%;
 	content: "";
 	position: absolute;
 	background-image: url("${rootPath}/static/img/background/june.jpg");
@@ -29,7 +30,6 @@ table#calender::after {
 	left: 0;
 	z-index: -1;
 	opacity: 0.3;
-	top: 0;
 }
 
 input {

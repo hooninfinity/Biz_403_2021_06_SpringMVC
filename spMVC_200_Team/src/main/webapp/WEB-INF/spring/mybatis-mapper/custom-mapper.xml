@@ -5,12 +5,38 @@
 <mapper namespace="com.team.starbucks.dao.ext.CustomDao">
 	<select id="selectAll" resultType="CustomDTO">
 		SELECT * FROM tbl_custom
+		ORDER
+		BY menu_seq DESC
 	</select>
 
-	<select id="findById" resultType="CustomDTO">
+	<select id="findBySeq" resultType="CustomDTO">
 		SELECT * FROM tbl_custom
 		WHERE
 		menu_seq = #{menu_seq}
+		ORDER BY menu_seq DESC
+	</select>
+
+	<select id="findByWriter" resultType="CustomDTO">
+
+		SELECT * FROM tbl_custom
+		WHERE user_id LIKE #{user_id}
+
+	</select>
+	<select id="findBySearch" resultType="CustomDTO">
+		SELECT * FROM tbl_custom
+		<if test="text != null and text != 'NONE' ">
+			<if test="column == 'user_id' ">
+				WHERE user_id LIKE CONCAT('%', #{text},'%')
+			</if>
+
+			<if test="column == 'menu_name' ">
+				WHERE menu_name LIKE CONCAT('%', #{text},'%')
+			</if>
+
+			<if test="column == 'menu_title' ">
+				WHERE menu_title LIKE CONCAT('%', #{text},'%')
+			</if>
+		</if>
 	</select>
 
 	<insert id="insert" parameterType="CustomDTO">

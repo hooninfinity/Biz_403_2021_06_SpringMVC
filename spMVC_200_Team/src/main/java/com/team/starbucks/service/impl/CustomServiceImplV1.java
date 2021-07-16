@@ -27,29 +27,28 @@ public class CustomServiceImplV1 implements CustomService {
 
 	protected final CategoryDao cateDao;
 	protected final CustomDao cusDao;
-	
+
 	@Qualifier("fileServiceV1")
 	protected final FileService fService;
+	private Model model;
 
 	@Autowired
 	public void create_table() {
-		Map<String,String> maps = new HashMap<String, String>();
+		Map<String, String> maps = new HashMap<String, String>();
 		cusDao.create_table(maps);
 	}
-	
+
 	@Override
 	public List<CustomDTO> selectAll() {
 		return cusDao.selectAll();
 	}
 
-	public String detail(Model model, Long menu_seq, Long file_seq) {
+	@Override
+	public CustomDTO findBySeq(Long menu_seq) {
+		CustomDTO customDTO = cusDao.findBySeq(menu_seq);
 
-		CustomDTO customDTO = cusDao.findById(menu_seq);
-
-		return null;
+		return customDTO;
 	}
-
-	
 
 	@Override
 	public List<CategoryDTO> findByMenukinds(Long menu_kinds) {
@@ -74,30 +73,36 @@ public class CustomServiceImplV1 implements CustomService {
 		// TODO Auto-generated method stub
 		return cateDao.findById(menu_code);
 	}
-	
+
 	public String findByCodeName(Long menu_code) {
-	
+
 		String menu_name = cateDao.findByCodeName(menu_code);
-		 
+
 		return menu_name;
 	}
 
-
 	@Override
-	public void input(CustomDTO cuDTO, MultipartFile one_file)
-			throws Exception {
+	public void input(CustomDTO cuDTO, MultipartFile one_file) throws Exception {
 		// TODO Auto-generated method stub
 		String strUUID = fService.fileUp(one_file);
-		
+
 		log.debug("strUUID {}", strUUID);
-		
+
 		cuDTO.setFile_originalName(one_file.getOriginalFilename());
 		cuDTO.setFile_upname(strUUID);
-		log.debug("저장파일정보 {}",cuDTO.toString());
+		log.debug("저장파일정보 {}", cuDTO.toString());
 		cusDao.insert(cuDTO);
 	}
 
-
-
+	@Override
+	public CustomDTO findBySearch(String search_text, String search_column,Model model) {
+		// TODO Auto-generated method stub
+		
+		List<CustomDTO> searchList = cusDao.findBySearch(search_column, search_text);
+		
+		model.addAttribute("searchList", searchList);
+		
+		return null;
+	}
 
 }
