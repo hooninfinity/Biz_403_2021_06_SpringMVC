@@ -115,13 +115,11 @@ const login_submit = () => {
 		return false;
 	}
 	
-	
 	if(user_password.value === "") {
 		alert("비밀번호는 반드시 입력하세요")
 		user_password.focus()
 		return false;
 	}
-	
 	
 	doc.querySelector("form#login").submit()
 }
