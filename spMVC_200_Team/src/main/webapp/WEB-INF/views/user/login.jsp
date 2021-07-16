@@ -8,20 +8,16 @@
 <style>
 form#login {
 	height: 100vh;
-	width: 350px;
+	width: 80%;
 	padding: 60px;
 	margin: 80px auto;
 	text-align: center;
 	border-radius: 20px;
 }
-form#login h2 {
-	color: black;
-	font-weight: 500;
-}
 form#login input {
 	outline: 0;
 	dispaly: block;
-	width: 200px;
+	width: 400px;
 	margin: 5px auto;
 	padding: 10px;
 	color: black;
@@ -30,6 +26,7 @@ form#login input {
 	background: none;
 	text-align: center;
 	transition: 0.3s;
+	font-size: 30px;
 }
 form#login input:focus {
 	width: 250px;
@@ -58,6 +55,10 @@ div.msg.view {
 		padding: 2rem;
 		border-radius: 20px;
 	}
+legend {
+	font-size: 60px;
+	font-weight: 800;
+}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -70,9 +71,12 @@ div.msg.view {
 			<div class="msg login error">
 			</div>
 			<input name="user_id" id="user_id" placeholder="ID를 입력하세요"/>
+			<br>
 			<input type="password" name="user_password" id="user_password" placeholder="비밀번호를 입력하세요"/>
 			<button type="submit" class="login">로그인</button>
 			<button type="button" class="home">취소</button>
+			<br>
+			<button type="button" class="join">회원가입</button>
 		</fieldset>
 	</form>
 </body>
@@ -115,6 +119,9 @@ document.querySelector("form#login").addEventListener("click",(e)=>{
 		
 		if(target.className.includes("login")){
 			login_submit()
+			
+		} else if(target.className.includes("join")) {
+			location.href = "${rootPath}/user/join"
 			
 		} else if(target.className.includes("home")) {
 			location.href = "${rootPath}"

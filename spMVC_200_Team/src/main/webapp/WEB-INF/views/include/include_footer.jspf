@@ -9,8 +9,9 @@ footer {
 	background-color: #036635;
 	color: white;
 	font-weight:400;
+	font-size: 50px;
 	padding: 5px;
-	display:block;
+	display:fixed;
 	margin-bottom: 0 auto;	
 }
 
@@ -18,7 +19,8 @@ address {
 	text-align: center;
 }
 footer{
-	min-height: calc(100vh - 90vh);
+	min-height: calc(100vh - 95vh);
+	bottom:0;
 }
 </style>
 <div id="footer">

@@ -9,44 +9,58 @@
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
 <style>
-#bs1 {
-	list-style: none;
-	display: flex;
-	float: left;
-	margin: 3px auto;
-	padding: 3px auto;
+#ch2 {
+	text-align: center;
+	margin: 5px auto;
+	padding: 0px auto;
+	height: 100%;
 }
 
-#bs1 td:hover {
+#bs2tr {
+	list-style: none;
+	text-align: center;
+}
+
+td {
+	font-size: 60px;
+	padding: 30px;
+	border: 1px dotted #aaa;
+	border-radius: 10px;
+}
+
+td:hover {
 	cursor: pointer;
 	outline: 1px dotted #aaa;
-	transition: 0.3s
+	transition: 0.3s;
+	background-color: #aaa;
 }
 </style>
 <fieldset>
-<form id="bs1" method="GET" >
-<table id="ch1">
-	<c:choose>
-		<c:when test="${empty KINDS}">
-				<li>데이터 없음</li>
-		</c:when>
-		<c:otherwise>
-			<c:forEach
-				items="${KINDS}"
-				var="BS">
-				<tr
-					id="bs1"
-					data-menucode="${BS.menu_code}">
-					<td>${BS.menu_name}</td>
-				</tr>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
-</table>
-</form>
+	<form
+		id="bs2form"
+		method="GET">
+		<table id="ch2">
+			<c:choose>
+				<c:when test="${empty KINDS}">
+					<li>데이터 없음</li>
+				</c:when>
+				<c:otherwise>
+					<c:forEach
+						items="${KINDS}"
+						var="BS">
+						<tr
+							id="bs2tr"
+							data-menucode="${BS.menu_code}">
+							<td>${BS.menu_name}</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</table>
+	</form>
 </fieldset>
 <script>
-let base1 = document.querySelector("table#ch1")
+let base1 = document.querySelector("table#ch2")
 if(base1){
 	base1.addEventListener("click",(e)=>{
 			let td = e.target

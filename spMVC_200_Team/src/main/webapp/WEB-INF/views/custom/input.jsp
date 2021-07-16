@@ -9,45 +9,54 @@
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
 <style>
-#custominputbox {
-	margin: 0 auto;
-	padding: 0 auto;
-}
-#bs1 {
-	list-style: none;
-	display: flex;
-	float: left;
-	margin: 3px auto;
-	padding: 3px auto;
+#ch1 {
+	text-align: center;
+	margin: 0px auto;
+	padding: 0px auto;
+	border: 1px solid transparent;
+	height: 100%;
 }
 
-#bs1 td:hover {
+tr#bs1 {
+	list-style: none;
+	font-size: 60px;
+	text-align: center;
+}
+
+td {
+	font-size: 60px;
+	padding: 30px;
+	border: 1px dotted #aaa;
+	border-radius: 10px;
+}
+
+td:hover {
 	cursor: pointer;
 	outline: 1px dotted #aaa;
-	transition: 0.3s
+	transition: 0.3s;
+	background-color: #aaa;
 }
 </style>
 <fieldset>
-<form id="bs1" method="GET" >
-<table id="ch1">
-	<c:choose>
-		<c:when test="${empty BASE1}">
-			<div></div>
-		</c:when>
-		<c:otherwise>
-			<c:forEach
-				items="${BASE1}"
-				var="BS">
-				<tr
-					id="bs1"
-					data-menucode="${BS.menu_code}">
-					<td>${BS.menu_name}</td>
-				</tr>
-			</c:forEach>
-		</c:otherwise>
-	</c:choose>
-</table>
-</form>
+	<form method="GET">
+		<table id="ch1">
+			<c:choose>
+				<c:when test="${empty BASE1}">
+				</c:when>
+				<c:otherwise>
+					<c:forEach
+						items="${BASE1}"
+						var="BS">
+						<tr
+							id="bs1"
+							data-menucode="${BS.menu_code}">
+							<td id="bs1list">${BS.menu_name}</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</table>
+	</form>
 </fieldset>
 <script>
 let base1 = document.querySelector("table#ch1")

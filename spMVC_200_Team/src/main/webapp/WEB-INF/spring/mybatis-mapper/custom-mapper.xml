@@ -13,50 +13,26 @@
 		menu_seq = #{menu_seq}
 	</select>
 
-	<select id="selectCustomAndFile">
-		SELECT
-		C.menu_seq AS menu_seq,
-		C.menu_code AS
-		menu_code,
-		C.user_id AS user_id,
-		C.menu_titleAS
-		menu_title,
-		C.file_seq AS
-		file_seq,
-		C.menu_option AS menu_option,
-		F.file_originalName AS f_original,
-		F.file_upname AS f_uname,
-		FROM
-		tbl_custom C
-		LEFT JOIN tbl_file F
-		WHERE
-		F.menu_seq = #{menu_seq}
-	</select>
-
-	<!-- <resultMap id="selectCustomAndFile" type="CustomDTO"> <id property="menu_seq" 
-		column="menu_seq"/> <result property="menu_code" column="menu_code"/> <result 
-		property="user_id" column="user_id"/> <result property="file_seq" column="menu_title"/> 
-		<result property="menu_option" column="menu_option"/> <collection property="fileList" 
-		ofType="FileDTO"> <id property="file_seq" column="file_seq"/> <result property="file_originalName" 
-		column="f_original"/> <result property="file_upname" column="file_upname"/> 
-		</collection> </resultMap> -->
 	<insert id="insert" parameterType="CustomDTO">
 		INSERT INTO tbl_custom
 		(
-		menu_code, user_id, menu_title, menu_option, file_originalName,
+		menu_code, menu_name, user_id, menu_title, menu_option,
+		file_originalName,
 		file_upname)
 		VALUES
 		(#{menu_code},
+		#{menu_name},
 		#{user_id},
 		#{menu_title},
 		#{menu_option},
-		#{file_originalName}, #{file_upname} )
+		#{file_originalName},
+		#{file_upname} )
 	</insert>
 
 	<update id="update">
 		INSERT INTO tbl_custom(
 		menu_seq, menu_code, user_id,
-		menu_title, file_seq, menu_option)
+		menu_title, menu_name, menu_option)
 		VALUES(
 		#{menu_seq}, #{menu_code},
 		#{user_id}, #{menu_title},
@@ -64,7 +40,9 @@
 		ON DUPLICATE
 		KEY UPDATE
 		menu_code = #{menu_code},
-		user_id = #{user_id},
+		menu_name = #{menu_name},
+		user_id =
+		#{user_id},
 		menu_title =
 		#{menu_title},
 		menu_option = #{menu_option},
@@ -79,12 +57,17 @@
 
 	<update id="create_table">
 		CREATE TABLE IF NOT EXISTS tbl_custom(
-		menu_seq BIGINT AUTO_INCREMENT PRIMARY KEY,
+		menu_seq BIGINT
+		AUTO_INCREMENT PRIMARY KEY,
 		menu_code BIGINT NOT NULL,
+		menu_name
+		VARCHAR(256) NOT NULL,
 		user_id VARCHAR(50) NOT NULL,
-		menu_title VARCHAR(125) NOT NULL,
+		menu_title
+		VARCHAR(125) NOT NULL,
 		menu_option VARCHAR(256),
-		file_originalName VARCHAR(256) NOT NULL,
+		file_originalName
+		VARCHAR(256) NOT NULL,
 		file_upname VARCHAR(256) NOT NULL
 		)
 	</update>

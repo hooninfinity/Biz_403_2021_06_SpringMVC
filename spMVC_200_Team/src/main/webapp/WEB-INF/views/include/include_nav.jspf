@@ -8,32 +8,31 @@
 <c:set
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
+		<script src="https://kit.fontawesome.com/a0b991b540.js" crossorigin="anonymous"></script>
 <style>
 #main_nav ul {
 	display: flex;
 	list-style: none;
 	padding: 12px 16px;
+	border-top: 4px double white;
 }
-
 
 #main_nav ul li {
 	font-size: 50px;
 	margin: 0 auto;
+	font-size: 60px;
+	color: whitesmoke;
 	/* 픽토그램으로 하는걸 생각해봄 */
 }
-#HOME{
-	content: "\f015";
-	font-family: "Font Awesome 5 Free";
+
+#main_nav ul li:hover {
+	cursor: pointer;
 }
 </style>
-
-<body>
 	<nav id="main_nav">
-		<ul>
-			<div id="HOME">
+		<ul>	
 			<li>HOME</li>
-			</div>
-			<li><div id="CUSTOM"></div></li>
+			<li>CUSTOM</li>
 			<li>BOARD</li>
 			<li>LOGIN</li>
 			<!-- <li>JOIN</li> -->

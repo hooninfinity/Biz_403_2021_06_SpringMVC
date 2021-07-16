@@ -10,10 +10,11 @@ import com.team.starbucks.model.CustomDTO;
 public interface CustomService{
 
 	public List<CustomDTO> selectAll();
-	public List<CategoryDTO> findByMenukinds(int menu_kinds);
+	public List<CategoryDTO> findByMenukinds(Long menu_kinds);
 	public List<CategoryDTO> findBybase1();
-	public List<CategoryDTO> findBymenuCode(int menu_code);
-	public CategoryDTO findByMenuName(int menu_code);
+	public List<CategoryDTO> findBymenuCode(Long menu_code);
+	public CategoryDTO findByMenuName(Long menu_code); 
+	public String findByCodeName(Long menu_code);
 	
 	public void input(CustomDTO cuDTO,MultipartFile one_file) throws Exception;
 	

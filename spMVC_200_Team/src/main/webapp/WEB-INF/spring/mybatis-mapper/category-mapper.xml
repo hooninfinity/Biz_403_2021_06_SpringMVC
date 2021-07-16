@@ -8,32 +8,34 @@
 	<select id="selectAll" resultType="CategoryDTO">
 		SELECT * FROM tbl_category
 	</select>
+	<select id="findByCodeName" resultType="String">
+		SELECT menu_name FROM tbl_category
+		WHERE menu_code = #{menu_code}
+	</select>
 
 	<select id="findByMenukinds" resultType="CategoryDTO">
 		SELECT * FROM tbl_category
-		WHERE LEFT(menu_kinds,1) = #{menu_kinds};
+		WHERE LEFT(menu_kinds,1) = #{menu_kinds}
 	</select>
 		
 	<select id="findBycode" resultType="CategoryDTO">
 		SELECT menu_code FROM tbl_category
-		WHERE LEFT(menu_code,1) = #{menu_code};
+		WHERE LEFT(menu_code,1) = #{menu_code}
 	</select>
 	<select id="findBybase1" resultType="CategoryDTO">
-	 SELECT menu_name,menu_code FROM tbl_category
-	 WHERE menu_code%100 = 0;
+		SELECT menu_name,menu_code FROM tbl_category
+		WHERE menu_code%100 = 0;
 	</select>
 	<select id="findById" resultType="CategoryDTO">
 		SELECT * FROM tbl_category
 		WHERE menu_code = #{menu_code}
 	</select>
 	<insert id="insert" parameterType="CategoryDTO">
-		INSERT INTO tbl_category(mene_code,menu_kinds,menu_name)
-		VALUES (#{mene_code},#{menu_kinds},#{menu_name})
+		INSERT INTO tbl_category
+		(mene_code,menu_kinds,menu_name)
+		VALUES
+		(#{mene_code},#{menu_kinds},#{menu_name})
 	</insert>
-	
-	
-	
-	
 	<update id="update"></update>
 	<delete id="delete"></delete>
 

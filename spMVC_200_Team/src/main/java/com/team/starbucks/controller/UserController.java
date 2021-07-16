@@ -25,7 +25,8 @@ public class UserController {
 	protected final UserService usService;
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join() {
+	public String join(Model model) {
+		model.addAttribute("BODY","JOIN");
 		return "/user/join";
 	}
 	
@@ -61,6 +62,7 @@ public class UserController {
 		} else if (msg.equals("LOGIN_FAIL")) {
 			model.addAttribute("MSG", "아이디 비번 확인 !!!");
 		}
+		model.addAttribute("BODY", "LOGIN");
 		return "user/login";
 	}
 	

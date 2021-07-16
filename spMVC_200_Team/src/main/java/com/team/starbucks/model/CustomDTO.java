@@ -16,6 +16,7 @@ public class CustomDTO {
 	private Long menu_seq;
 	private String user_id;
 	private Long menu_code;
+	private String menu_name;
 	private String menu_title;
 	private String menu_option;
 	
