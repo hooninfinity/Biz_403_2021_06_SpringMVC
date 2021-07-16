@@ -25,8 +25,7 @@ public class UserController {
 	protected final UserService usService;
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join(Model model) {
-		model.addAttribute("BODY","JOIN");
+	public String join() {
 		return "/user/join";
 	}
 	
@@ -62,7 +61,6 @@ public class UserController {
 		} else if (msg.equals("LOGIN_FAIL")) {
 			model.addAttribute("MSG", "아이디 비번 확인 !!!");
 		}
-		model.addAttribute("BODY", "LOGIN");
 		return "user/login";
 	}
 	
@@ -74,9 +72,7 @@ public class UserController {
 //	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(UserVO usVO, HttpServletRequest req, Model model) {
-		
-		HttpSession session = req.getSession();
+	public String login(UserVO usVO, Model model, HttpSession session) {
 		
 		UserVO loginInfo = usService.login(usVO);
 		
@@ -88,18 +84,11 @@ public class UserController {
 			session.setAttribute("LOGIN", loginInfo);
 		}
 		return "redirect:/";
-		
-		
-	
-		
-		
 	}
 	
-	@RequestMapping(value = "logout")
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		
-		session.invalidate();
-		
+		session.removeAttribute("LOGIN");
 		return "redirect:/";
 	}
 

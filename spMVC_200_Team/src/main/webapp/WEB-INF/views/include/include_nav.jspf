@@ -34,7 +34,12 @@
 			<li>HOME</li>
 			<li>CUSTOM</li>
 			<li>BOARD</li>
-			<li>LOGIN</li>
-			<!-- <li>JOIN</li> -->
+			<c:if test="${empty LOGIN}">
+				<li>LOGIN</li>
+			</c:if>
+			<c:if test="${not empty LOGIN}">
+				<li>LOGOUT</li>
+			</c:if>
+			
 		</ul>
 	</nav>

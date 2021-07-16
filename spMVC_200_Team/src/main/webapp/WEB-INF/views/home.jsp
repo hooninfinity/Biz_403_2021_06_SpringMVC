@@ -104,6 +104,8 @@ form {
 		        urlPath += "/board";
 		      } else if (menuText === "LOGIN") {
 		        urlPath += "/user/login";
+		      } else if (menuText === "LOGOUT") {
+		        urlPath += "/user/logout";
 		      } else if (menuText === "JOIN") {
 		        urlPath += "/user/join";
 		      }
