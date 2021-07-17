@@ -13,19 +13,20 @@ nav#subnav {
 	font-size: 3rem;
 	text-align: center;
 	height: 6%;
-	margin:30px auto;
+	display: flex;
+	margin: 35px auto;
 }
 
 #subnav ul {
 	margin: 0 auto;
-	padding: 10px auto;
 	list-style: none;
 	display: flex;
+	width: 100%;
 }
 
 #subnav ul li {
 	margin: 0 auto;
-	opacity: 0.4;
+	opacity: 0.5;
 	font-size: 30px;
 }
 
@@ -42,7 +43,6 @@ nav#subnav {
 #subnav ul li h2#menu3:before {
 	content: ' \22A1';
 	color: #aaa;
-	padding: auto 0;
 }
 
 #mylist {
@@ -71,6 +71,7 @@ nav#subnav {
 		  } else if(menuText === "내목록"){
 			  
 			  
+	        location.href = "${rootPath}/custom/mylist";
 		  }
 	    }	  
 	});

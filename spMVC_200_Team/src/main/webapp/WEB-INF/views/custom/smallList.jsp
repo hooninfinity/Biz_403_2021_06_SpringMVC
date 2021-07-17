@@ -17,31 +17,33 @@ table#sList tr {
 	text-align: center;
 }
 
-table#sList tr td2 {
-	width: 150px;
-	height: 150px;
+table#sList tr td {
+	width: 300px;
+	height: 300px;
+	overflow:hidden;
 	margin: 0px auto;
 	position: relative;
 }
 
 table#sList tr td img {
+	/* flex:3; */
+	width: 100%;
+	height: 100%;
 	border-radius: 20px;
-	width: 300px;
-	height: 300px;
-	
+	padding: 4px;
+	background-color: whitesmoke;
 }
 
-table#sList tr td img:hover {
-	cursor: pointer;
-}
-
-table#sList tr td img:before {
+h2#dot:before{
+	height:100%;
 	content: ' \205D';
-	position: absolute;
 	bottom: 10;
 	right: 20;
-	font-size: 150px;
+	font-size: 80px;
+	font-weight: 500;
 	color: whitesmoke;
+	position: absolute;
+	z-index: 0;
 }
 </style>
 <c:set
@@ -62,8 +64,10 @@ table#sList tr td img:before {
 				items="${CustomList}"
 				var="CUS">
 				<tr>
-					<td data-seq="${CUS.menu_seq}"><img
-						src="${rootPath}/files/${CUS.file_upname}"></td>
+					<td data-seq="${CUS.menu_seq}">
+					<img
+						src="${rootPath}/files/${CUS.file_upname}"><h2 id="dot"></h2></td>
+					
 				</tr>
 			</c:forEach>
 		</c:otherwise>

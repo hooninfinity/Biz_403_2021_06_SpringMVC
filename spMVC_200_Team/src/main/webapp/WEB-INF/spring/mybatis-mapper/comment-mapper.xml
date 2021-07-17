@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.starbucks.dao.ext.CommentDao">
+
+	<select id="selectAll" resultType="CommentDTO">
+		SELECT * FROM tbl_comment
+		ORDER BY date DESC
+	</select>
+	<select id="findById" resultType="CommentDTO">
+		SELECT * FROM tbl_commnet
+		WHERE
+		commnet_seq = #{commnet_seq}
+	</select>
+	<select id="selectByMenuseq" resultType="CommentDTO">
+		SELECT * FROM
+		tbl_comment
+		WHERE menu_seq = #{menu_seq}
+	</select>
+	<insert id="insert" parameterType="CommentDTO">
+		INSERT INTO
+		tbl_comment(comment_seq,comment,user_id,menu_seq,date)
+		VALUES
+		(#{comment_seq},#{comment},#{user_id},#{menu_seq},#{date})
+	</insert>
+	<update id="update">
+		INSERT INTO
+		tbl_comment(comment_seq,comment,user_id,menu_seq,date)
+		VALUES
+		(#{comment_seq},#{comment},#{user_id},#{menu_seq},#{date})
+		ON DUPLICATE
+		KEY UPDATE
+		menu_seq = menu_seq,
+		comment = comment,
+		date = date
+	</update>
+	<delete id="delete" parameterType="LONG">
+		DELETE FROM tbl_comment
+		WHERE
+		comment_seq = #{comment_seq}
+	</delete>
+	<update id="create_table">
+		CREATE TABLE IF NOT EXISTS tbl_comment(
+		comment_seq
+		BIGINT AUTO_INCREMENT PRIMARY KEY,
+		comment VARCHAR(256) NOT NULL,
+		user_id VARCHAR(50),
+		menu_seq BIGINT NOT NULL,
+		date VARCHAR(50)
+		)
+	</update>
+	<!-- CONSTRAINT FOREIGN KEY (menu_seq) REFERENCES tbl_custom(menu_seq) ON 
+		DELETE CASCADE -->
+</mapper> 

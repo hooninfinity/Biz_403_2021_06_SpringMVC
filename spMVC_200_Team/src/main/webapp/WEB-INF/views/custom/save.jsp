@@ -56,12 +56,6 @@ button.save {
 				placeholder="${CHOISEMENU.menu_name}"
 				disabled="disabled" />
 			<input
-				name="menu_kinds"
-				id="menu_kinds"
-				value="${CHOISEMENU.menu_kinds}"
-				placeholder="${CHOISEMENU.menu_kinds}"
-				disabled="disabled" />
-			<input
 				name="user_id"
 				id="user_id"
 				value="${USER}"

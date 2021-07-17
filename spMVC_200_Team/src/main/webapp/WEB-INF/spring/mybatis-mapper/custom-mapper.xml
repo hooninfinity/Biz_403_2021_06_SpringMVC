@@ -16,7 +16,7 @@
 		ORDER BY menu_seq DESC
 	</select>
 
-	<select id="findByWriter" resultType="CustomDTO">
+	<select id="findByUser_id" resultType="CustomDTO">
 
 		SELECT * FROM tbl_custom
 		WHERE user_id LIKE #{user_id}
@@ -42,7 +42,8 @@
 	<insert id="insert" parameterType="CustomDTO">
 		INSERT INTO tbl_custom
 		(
-		menu_code, menu_name, user_id, menu_title, menu_option,
+		menu_code, menu_name, user_id, menu_title,
+		menu_option,
 		file_originalName,
 		file_upname)
 		VALUES
@@ -53,6 +54,10 @@
 		#{menu_option},
 		#{file_originalName},
 		#{file_upname} )
+		<selectKey keyProperty="menu_seq" order="AFTER"
+			resultType="Long">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
 
 	<update id="update">

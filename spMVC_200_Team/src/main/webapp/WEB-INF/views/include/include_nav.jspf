@@ -8,7 +8,6 @@
 <c:set
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
-		<script src="https://kit.fontawesome.com/a0b991b540.js" crossorigin="anonymous"></script>
 <style>
 #main_nav ul {
 	display: flex;

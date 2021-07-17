@@ -55,3 +55,9 @@ h3:before {
 		</tr>
 	</table>
 </div>
+<section>
+<%-- 	<c:if test="${SECTION eq 'COMMENT' }">
+		<%@ include file="/WEB-INF/views/include/comment.jsp"%>
+		<%@ include file="/WEB-INF/views/include/comment_input.jsp"%>
+	</c:if> --%>
+</section>

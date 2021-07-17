@@ -15,18 +15,22 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	
 }
-
+body{
+	background-color: whitesmoke;
+}
 fieldset {
 	border: 1px solid transparent;
 }
 
-header {
+#home_header {
 	background-color: #036635;
 	text-align: center;
 	position: fixed;
 	top: 0;
 	padding: 10px;
+	z-index: 100;
 }
 
 h1 {
@@ -38,7 +42,7 @@ h1 {
 	text-shadow: 5px 5px 6px 7px #aaa;
 	height: 20%;
 	font-size: 8rem;
-	color: white;
+	color: whitesmoke;
 }
 
 div.images {
@@ -75,6 +79,9 @@ form {
 			</c:when>
 			<c:when test="${BODY eq 'CUSTOM-LIST'}">
 				<%@ include file="/WEB-INF/views/custom/list.jsp"%>
+			</c:when>
+			<c:when test="${BODY eq 'CUSTOM-MYLIST'}">
+				<%@ include file="/WEB-INF/views/custom/mylist.jsp"%>
 			</c:when>
 			<c:when test="${BODY eq 'CUSTOM-DETAIL'}">
 				<%@ include file="/WEB-INF/views/custom/detail.jsp"%>

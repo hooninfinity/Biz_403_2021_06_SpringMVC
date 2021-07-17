@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.team.starbucks.model.CustomDTO;
 import com.team.starbucks.service.FileService;
 
 import lombok.RequiredArgsConstructor;
@@ -19,12 +20,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Service("fileServiceV1")
 public class FileServiceImplV1 implements FileService {
-	
+
 	protected final String winPath;
 	protected final String macPath;
-	
+
 	protected String fileUpPath;
-	
+
 	@Autowired
 	public void getFilePath(String winPath, String macPath) {
 		/*
@@ -49,19 +50,41 @@ public class FileServiceImplV1 implements FileService {
 		if (path.exists()) {
 			this.fileUpPath = this.macPath;
 		}
-		
+
 		// 다시한번 filePath 가 있는지 검사
 		// winPath일 경우는 폴더를 만들어라
 		path = new File(fileUpPath);
-		if(!path.exists()) {
+		if (!path.exists()) {
 			path.mkdirs();
 		}
-		
+
 		String strUUID = UUID.randomUUID().toString();
 		strUUID += originFileName;
-		
+
 		File uploadPathAndFile = new File(fileUpPath, strUUID);
 		file.transferTo(uploadPathAndFile);
 		return strUUID;
+	}
+
+	public int delete(String imgFileName) {
+		if (imgFileName == null || imgFileName.isEmpty()) {
+			return 1;
+		}
+		//	CustomDTO cusDTO = cusDao.findBySeq(seq);
+		//		cateDao.delete(seq);
+		File delFile = new File(this.fileUpPath, imgFileName);
+
+		if (delFile.exists()) {
+			boolean ok = delFile.delete();
+			if (ok) {
+				log.debug("파일 삭제 완료");
+
+			} else {
+				log.debug("파일삭제 실패");
+				return -1;
+			}
+		}
+		return 1;
+
 	}
 }

@@ -41,7 +41,7 @@ public class UserController {
 		}
 			
 		usService.join(usVO);
-		return "redirect:/user/login";
+		return "redirect:/login";
 	}
 
 	@ResponseBody
