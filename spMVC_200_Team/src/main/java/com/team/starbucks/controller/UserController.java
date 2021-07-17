@@ -37,11 +37,10 @@ public class UserController {
 		if(usVO == null) {
 			log.debug("회원가입실패");
 			model.addAttribute("JOINMSG", "FAIL");
-		 return "redirect:/join";
+		 return "redirect:/user/join";
 		}
-			
 		usService.join(usVO);
-		return "redirect:/login";
+		return "redirect:/user/login";
 	}
 
 	@ResponseBody
