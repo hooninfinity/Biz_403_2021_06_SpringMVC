@@ -15,6 +15,8 @@ public interface FileDao extends GenericDao<FileDTO,String>{
 
 	public int insertOrUpdate(FileDTO fileDTO);
 
+	public void delete(Long file_seq);
+
 
 }
 

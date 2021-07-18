@@ -121,8 +121,8 @@ public class CustomController {
 		if (userVO == null) {
 			return "redirect:/user/login";
 		}
-		Long seq = 0L;
 		
+		Long seq = 0L;
 		try {
 			seq = Long.valueOf(menu_seq);
 			

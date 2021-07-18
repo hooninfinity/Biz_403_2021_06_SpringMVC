@@ -12,8 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.team.starbucks.dao.ext.CategoryDao;
 import com.team.starbucks.dao.ext.CustomDao;
+import com.team.starbucks.dao.ext.FileDao;
 import com.team.starbucks.model.CategoryDTO;
 import com.team.starbucks.model.CustomDTO;
+import com.team.starbucks.model.FileDTO;
 import com.team.starbucks.service.CustomService;
 import com.team.starbucks.service.FileService;
 
@@ -27,6 +29,7 @@ public class CustomServiceImplV1 implements CustomService {
 
 	protected final CategoryDao cateDao;
 	protected final CustomDao cusDao;
+	protected final FileDao fDao;
 
 	@Qualifier("fileServiceV1")
 	protected final FileService fService;
@@ -112,12 +115,34 @@ public class CustomServiceImplV1 implements CustomService {
 
 	@Override
 	public int delete(Long seq) {
+		
+		// Custom 데이터와 fileList 데이터가 같이 포함된 데이터
 		CustomDTO customDTO = cusDao.findById(seq);
 		if (customDTO == null) {
 			return 0;
-
 		}
-
+		
+		List<FileDTO> fileList = customDTO.getFileList();
+		for(FileDTO file : fileList) {
+			// 첨부파일 삭제
+			String attFileName = file.getFile_upname();  // 실제로 저장되어 있는 파일을 찾아서
+			int ret = fService.delete(attFileName);
+			
+			// 데이터 한개씩 삭제
+			if(ret > 0) {
+				fDao.delete(file.getFile_seq());
+			}
+		}
+		// 본문 첨부파일 삭제
+		String imgFileName = customDTO.getFile_upname();
+		int ret = fService.delete(imgFileName);
+		
+		if(ret > 0) {
+			// 본문 데이터 삭제
+			cusDao.delete(seq);
+		} else {
+			log.debug("파일 삭제 실패로 데이터 삭제 안함");
+		}
 		return 0;
 	}
 

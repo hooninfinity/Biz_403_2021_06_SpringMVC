@@ -9,7 +9,7 @@ public interface UserDao extends GenericDao<UserVO, String> {
 
 	public UserVO login(UserVO usVO);
 
-	public void insertOrUpdate(UserVO usVO);
+	public int insertOrUpdate(UserVO usVO);
 	
 	
 	
