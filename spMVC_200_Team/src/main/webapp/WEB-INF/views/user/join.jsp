@@ -146,9 +146,25 @@ if(users_id) {
 document.querySelector("form#join").addEventListener("click",(e)=>{
 	let target = e.target
 	
+	let doc = document
+	let user_id = doc.querySelector("input#user_id")
+	let user_password = doc.querySelector("input#user_password")
+	let user_email = doc.querySelector("input#user_email")
+	
+	
 	if(target.tagName === "BUTTON") {
 		
 		if(target.className.includes("join")){
+			
+			if(user_id.value === "") {
+				alert("ID는 반드시 입력하세요")
+				user_id.focus()
+				return false;
+			} else if(user_password.value === "") {
+				alert("비밀번호는 반드시 입력하세요")
+				user_password.focus()
+				return false;
+			}
 			document.querySelector("form#join").submit()
 			
 		} else if(target.className.includes("home")) {
