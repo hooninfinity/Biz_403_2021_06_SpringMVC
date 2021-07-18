@@ -41,7 +41,7 @@ public class UserController {
 		}
 			
 		usService.join(usVO);
-		return "redirect:/login";
+		return "redirect:/user/login";
 	}
 
 	@ResponseBody
@@ -64,13 +64,6 @@ public class UserController {
 		return "redirect/user/login?url=login";
 		
 	}
-//	@RequestMapping(value = "/login", method=RequestMethod.GET)
-//	public String login2( @RequestParam(name="url", required = false, defaultValue = "NONE")String url,
-//			Model model){
-//		
-//		return "home";
-//		
-//	}
 	
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
