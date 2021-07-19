@@ -20,9 +20,10 @@ table#sList tr {
 table#sList tr td {
 	width: 300px;
 	height: 300px;
-	overflow:hidden;
+	overflow: hidden;
 	margin: 0px auto;
 	position: relative;
+	margin: 0px auto;
 }
 
 table#sList tr td img {
@@ -34,8 +35,8 @@ table#sList tr td img {
 	background-color: whitesmoke;
 }
 
-h2#dot:before{
-	height:100%;
+h2#dot:before {
+	height: 100%;
 	content: ' \205D';
 	bottom: 10;
 	right: 20;
@@ -64,10 +65,10 @@ h2#dot:before{
 				items="${CustomList}"
 				var="CUS">
 				<tr>
-					<td data-seq="${CUS.menu_seq}">
-					<img
-						src="${rootPath}/files/${CUS.file_upname}"><h2 id="dot"></h2></td>
-					
+					<td data-seq="${CUS.menu_seq}"><img
+						src="${rootPath}/files/${CUS.file_upname}">
+						<h2 id="dot"></h2></td>
+
 				</tr>
 			</c:forEach>
 		</c:otherwise>

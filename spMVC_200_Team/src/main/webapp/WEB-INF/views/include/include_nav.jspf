@@ -28,16 +28,16 @@
 	cursor: pointer;
 }
 </style>
-	<nav id="main_nav">
-		<ul>	
-			<li>HOME</li>
-			<li>CUSTOM</li>
-			<li>BOARD</li>
-			<c:if test="${empty LOGIN}">
-				<li>LOGIN</li>
-			</c:if>
-			<c:if test="${not empty LOGIN}">
-				<li>LOGOUT</li>
-			</c:if>
-		</ul>
-	</nav>
+<nav id="main_nav">
+      <ul>   
+         <li>HOME</li>
+         <li>CUSTOM</li>
+         <li>BOARD</li>
+         <c:if test="${empty LOGIN}">
+            <li>LOGIN</li>
+         </c:if>
+         <c:if test="${not empty LOGIN}">
+            <li>LOGOUT</li>
+         </c:if>
+      </ul>
+   </nav>

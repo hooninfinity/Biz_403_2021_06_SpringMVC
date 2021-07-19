@@ -1,7 +1,5 @@
 package com.team.starbucks.model;
 
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +24,5 @@ public class CustomDTO {
 	
 	private String file_originalName;
 	private String file_upname;
-	public List<FileDTO> fileList;
 	
 }

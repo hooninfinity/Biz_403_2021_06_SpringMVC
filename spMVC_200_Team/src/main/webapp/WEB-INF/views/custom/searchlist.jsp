@@ -69,11 +69,20 @@
 					items="${searchList}"
 					var="SEARCH">
 					<tr id="SEARCHTr">
+					<tr>
 						<td><h3 id="SEARCHH3">${SEARCH.user_id}</h3></td>
+					</tr>
+					<tr>
 						<td id="SEARCHimg"><img
 							src="${rootPath}/files/${SEARCH.file_upname}"></td>
+					</tr>
+					<tr>
 						<td>메뉴 제목 : ${SEARCH.menu_title}</td>
+					</tr>
+					<tr>
 						<td>퍼스널 옵션 :${SEARCH.menu_option}</td>
+					</tr>
+					<tr>
 						<td id="SEARCHlast">메뉴종류 : ${SEARCH.menu_name}</td>
 					</tr>
 				</c:forEach>

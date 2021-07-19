@@ -60,14 +60,14 @@ public class CustomController {
 		UserVO userVO = (UserVO) session.getAttribute("LOGIN");
 		if (userVO == null) {
 			return "redirect:/user/login";
-		}
-
+		} else {
 		List<CustomDTO> myList = cuService.findByUser_id(userVO.getUser_id());
 
 		model.addAttribute("USERVO", userVO);
 		model.addAttribute("MYLIST", myList);
 		model.addAttribute("BODY", "CUSTOM-MYLIST");
 		return "home";
+		}
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
@@ -121,8 +121,8 @@ public class CustomController {
 		if (userVO == null) {
 			return "redirect:/user/login";
 		}
-		
 		Long seq = 0L;
+		
 		try {
 			seq = Long.valueOf(menu_seq);
 			

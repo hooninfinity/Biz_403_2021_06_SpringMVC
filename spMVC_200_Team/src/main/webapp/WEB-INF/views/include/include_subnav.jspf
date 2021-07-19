@@ -70,7 +70,6 @@ nav#subnav {
 	        location.href = "${rootPath}/custom/";
 		  } else if(menuText === "내목록"){
 			  
-			  
 	        location.href = "${rootPath}/custom/mylist";
 		  }
 	    }	  

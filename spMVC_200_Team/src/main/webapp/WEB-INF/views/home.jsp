@@ -15,11 +15,12 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	
 }
-body{
+
+body {
 	background-color: whitesmoke;
 }
+
 fieldset {
 	border: 1px solid transparent;
 }
@@ -117,12 +118,12 @@ form {
 		      } else if (menuText === "CUSTOM") {
 		        urlPath += "/custom/input";
 		      } else if (menuText === "BOARD") {
-		        urlPath += "/board";
+		       /*  urlPath += "/board"; */
 		      } else if (menuText === "LOGIN") {
 		        urlPath += "/user/login";
 		      } else if (menuText === "LOGOUT") {
-		        urlPath += "/user/logout";
-		      }
+	            urlPath += "/user/logout";
+	          }
 		      location.href = urlPath;
 		    }
 		  });

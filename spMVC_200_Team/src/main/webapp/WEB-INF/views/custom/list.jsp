@@ -5,22 +5,20 @@
 <%@ taglib
 	uri="http://java.sun.com/jsp/jstl/core"
 	prefix="c"%>
-	<c:set
+<c:set
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
 <style>
 #custom {
-	padding: 0;
-	margin: 20px auto;
 	width: 100%;
+	padding: 0;
+	margin: 0 auto;
 	border: 1px solid transparent;
 }
 
 #customlist {
-	display: flex;
 	margin: 19px auto;
 	padding: 0;
-	justify-content: center;
 }
 
 #customTr {
@@ -28,11 +26,15 @@
 	margin-bottom: 100px;
 }
 
+#customlist tr {
+	margin: 40px auto;
+}
+
 #customlist td {
-	margin: 10px;
-	display: flex;
+	width: 100%;
 	font-size: 50px;
 	font-weight: 400;
+	margin: 10px;
 }
 
 #customlist td:nth-of-type(1) {
@@ -45,10 +47,11 @@
 }
 
 #customlist img {
-	display: inline-block;
+	margin: 0 auto;
 	border-radius: 30px;
 	width: 800px;
-	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
 }
 
 h3:before {
@@ -57,7 +60,7 @@ h3:before {
 	font-size: 100px;
 }
 </style>
-<%@ include file="/WEB-INF/views/include/search.jsp" %>
+<%@ include file="/WEB-INF/views/include/search.jsp"%>
 <fieldset id="custom">
 	<table id="customlist">
 		<c:choose>
@@ -69,11 +72,19 @@ h3:before {
 					items="${CustomList}"
 					var="CUS">
 					<tr id="customTr">
+					<tr>
 						<td><h3>${CUS.user_id}</h3></td>
+					<tr>
 						<td id="img"><img src="${rootPath}/files/${CUS.file_upname}"></td>
-						<td>메뉴 제목 	: ${CUS.menu_title}</td>
-						<td>퍼스널 옵션 :${CUS.menu_option}</td>
-						<td id="last">메뉴종류 : ${CUS.menu_name}</td>
+					</tr>
+					<tr>
+						<td>제목 : ${CUS.menu_title}</td>
+					</tr>
+					<tr>
+						<td>옵션 : ${CUS.menu_option}</td>
+					</tr>
+					<tr>
+						<td id="last">종류 : ${CUS.menu_name}</td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>

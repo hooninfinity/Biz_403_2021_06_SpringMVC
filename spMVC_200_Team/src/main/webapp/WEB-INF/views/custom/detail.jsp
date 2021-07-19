@@ -17,24 +17,35 @@
 }
 
 table#detail {
-	display: flex;
 	margin: 19px auto;
 	padding: 0;
-	justify-content: center;
+}
+
+table#detail tr {
+	
 }
 
 table#detail td {
-	margin: 10px;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 5px auto;
+	padding: 6px 20px;
 	font-size: 50px;
 	font-weight: 400;
 }
 
+#detailImg {
+	margin: 10px auto;
+	width: 100%;
+	justify-content: center;
+	text-align: center;
+}
+
 #detailImg img {
-	display: inline-block;
+	margin: 0 auto;
 	border-radius: 30px;
 	width: 800px;
-	margin: 0 auto;
 }
 
 h3:before {
@@ -47,16 +58,24 @@ h3:before {
 	<table id="detail">
 		<tr>
 			<td><h3 id="detailID">${DETAIL.user_id}</h3></td>
+		</tr>
+		<tr>
 			<td id="detailImg"><img
 				src="${rootPath}/files/${DETAIL.file_upname}"></td>
-			<td id="detailTitle">메뉴 제목 : ${DETAIL.menu_title}</td>
-			<td id="detailOption">퍼스널 옵션 :${DETAIL.menu_option}</td>
-			<td id="detailMenu">메뉴종류 : ${DETAIL.menu_name}</td>
+		</tr>
+		<tr>
+			<td id="detailTitle">${DETAIL.menu_title}</td>
+		</tr>
+		<tr>
+			<td id="detailOption">${DETAIL.menu_option}</td>
+		</tr>
+		<tr>
+			<td id="detailMenu">${DETAIL.menu_name}</td>
 		</tr>
 	</table>
 </div>
 <section>
-<%-- 	<c:if test="${SECTION eq 'COMMENT' }">
+	<%-- <c:if test="${SECTION eq 'COMMENT' }">
 		<%@ include file="/WEB-INF/views/include/comment.jsp"%>
 		<%@ include file="/WEB-INF/views/include/comment_input.jsp"%>
 	</c:if> --%>

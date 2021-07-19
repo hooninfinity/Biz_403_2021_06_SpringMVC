@@ -22,9 +22,9 @@
 
 	<insert id="join" parameterType="UserVO">
 	INSERT INTO tbl_user(
-	user_id, user_password, user_email)
+	user_id, user_password, user_email, user_level)
 	VALUES(
-	#{user_id}, #{user_password}, #{user_email}
+	#{user_id}, #{user_password}, #{user_email}, #{user_level}
 	)
 	</insert>
 	
@@ -50,8 +50,8 @@
  			user_seq BIGINT AUTO_INCREMENT PRIMARY KEY, 
  			user_id VARCHAR(20) UNIQUE,
  			user_password VARCHAR(50) NOT NULL,
- 			user_email VARCHAR(50) NOT NULL,
- 			user_level INT DEFAULT 9
+ 			user_level INT DEFAULT 9,
+ 			user_email VARCHAR(50) NOT NULL
  		)
  	</update>
 

@@ -90,7 +90,10 @@ button.delete:hover {
 }
 </style>
 <fieldset id="MYLISTfieldset">
-	<h3 id="mylistuser">${USERVO.user_id}님안녕하세요!</h3>
+	<h3 id="mylistuser">
+		<p>${USERVO.user_id}님</p>
+		안녕하세요!
+	</h3>
 	<table id="MYLISTtable">
 		<c:choose>
 			<c:when test="${empty MYLIST}">
@@ -100,15 +103,18 @@ button.delete:hover {
 				<c:forEach
 					items="${MYLIST}"
 					var="MYLIST">
-					<tr id="MYLISTTr" data-seq="${MYLIST.menu_seq}">
+					<tr	id="MYLISTTr">
 						<td id="MYLISTimg"><img
 							src="${rootPath}/files/${MYLIST.file_upname}"></td>
+					</tr>
+					<tr>
 						<td>메뉴 제목 : ${MYLIST.menu_title}</td>
+					</tr>
+					<tr>
 						<td>퍼스널 옵션 :${MYLIST.menu_option}</td>
+					</tr>
+					<tr>
 						<td>메뉴종류 : ${MYLIST.menu_name}</td>
-						<td id="MYLISTlast"><button class="custom delete">
-								<h4 id="h4delete"></h4>
-							</button></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
@@ -116,10 +122,4 @@ button.delete:hover {
 	</table>
 </fieldset>
 <script>
-		
-
-
-
-
-
 </script>
