@@ -96,6 +96,12 @@ form {
 			<c:when test="${BODY eq 'JOIN'}">
 				<%@ include file="/WEB-INF/views/user/join.jsp"%>
 			</c:when>
+			<c:when test="${BODY eq 'UPDATE-ID'}">
+				<%@ include file="/WEB-INF/views/user/userupdate.jsp"%>
+			</c:when>
+			<c:when test="${BODY eq 'FAIL_LOGIN'}">
+				<%@ include file="/WEB-INF/views/custom/mylist.jsp"%>
+			</c:when>
 			<c:otherwise>
 				<%@ include file="/WEB-INF/views/custom/smallList.jsp"%>
 			</c:otherwise>

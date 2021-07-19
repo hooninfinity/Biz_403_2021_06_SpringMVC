@@ -8,7 +8,7 @@ import com.team.starbucks.dao.GenericDao;
 import com.team.starbucks.model.CategoryDTO;
 import com.team.starbucks.model.CustomDTO;
 
-public interface CustomDao extends GenericDao<CustomDTO, String> {
+public interface CustomDao extends GenericDao<CustomDTO, Long> {
 
 	public CustomDTO findBySeq(Long menu_seq);
 

@@ -1,6 +1,5 @@
 package com.team.starbucks.model;
 
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

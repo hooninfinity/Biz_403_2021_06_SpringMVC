@@ -37,7 +37,7 @@ public class UserServiceImplV1 implements UserService {
 
 	// 회원가입
 	@Override
-	public UserVO join(UserVO usVO) {
+	public UserVO join(UserVO usVO){
 		List<UserVO> users = usDao.selectAll();
 		log.debug("Users {}", users.toString());
 
@@ -71,5 +71,23 @@ public class UserServiceImplV1 implements UserService {
 
 		return userVO;
 	}
+
+	@Override
+	public void insertOrUpdate(UserVO userVO) throws Exception{
+	 usDao.update(userVO);
+	 log.debug("수정완료");
+	}
+
+	@Override
+	public void update(UserVO userVO) throws Exception {
+		usDao.update(userVO);
+		log.debug("수정완료");
+	}
+	
+	@Override
+	public void delete(Long user_seq) {
+		// TODO Auto-generated method stub
+	}
+
 
 }

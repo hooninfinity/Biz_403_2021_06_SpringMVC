@@ -1,16 +1,12 @@
 package com.team.starbucks.service.impl;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.team.starbucks.model.CustomDTO;
 import com.team.starbucks.service.FileService;
 
 import lombok.RequiredArgsConstructor;
@@ -70,8 +66,6 @@ public class FileServiceImplV1 implements FileService {
 		if (imgFileName == null || imgFileName.isEmpty()) {
 			return 1;
 		}
-		//	CustomDTO cusDTO = cusDao.findBySeq(seq);
-		//		cateDao.delete(seq);
 		File delFile = new File(this.fileUpPath, imgFileName);
 
 		if (delFile.exists()) {

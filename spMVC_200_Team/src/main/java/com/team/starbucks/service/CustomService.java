@@ -22,7 +22,7 @@ public interface CustomService{
 	public CustomDTO findBySearch(String search, String column,Model model);
 	public List<CustomDTO> findByUser_id(String user_id);
 	
-	public int delete(Long seq);
+	public void delete(Long seq, Model model) throws Exception;
 	public void update(Long seq);
 
 }

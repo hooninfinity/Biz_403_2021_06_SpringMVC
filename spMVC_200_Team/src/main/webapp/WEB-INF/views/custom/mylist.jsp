@@ -71,29 +71,15 @@ h3#mylistuser:before {
 	font-size: 100px;
 }
 
-button.delete {
-	border-radius: 30px;
-	position: absolute;
-	right: 10;
-	bottom: 4;
-	border: 1px solid transparent;
-}
-
-button.delete:hover {
-	cursor: pointer;
-}
-
-#h4delete:before {
-	content: ' \2297';
-	font-size: 70px;
-	color: red;
-}
 </style>
 <fieldset id="MYLISTfieldset">
+<form method="POST" action="${rootPath}/user/update?user_id=${USERVO.user_id}">
 	<h3 id="mylistuser">
 		<p>${USERVO.user_id}님</p>
 		안녕하세요!
 	</h3>
+	<button value="${USERVO.user_id}">회원정보수정</button>
+</form>
 	<table id="MYLISTtable">
 		<c:choose>
 			<c:when test="${empty MYLIST}">
@@ -103,18 +89,16 @@ button.delete:hover {
 				<c:forEach
 					items="${MYLIST}"
 					var="MYLIST">
-					<tr	id="MYLISTTr">
+					<tr id="MYLISTTr">
 						<td id="MYLISTimg"><img
-							src="${rootPath}/files/${MYLIST.file_upname}"></td>
-					</tr>
-					<tr>
+							src="${rootPath}/files/${MYLIST.file_upname}">
 						<td>메뉴 제목 : ${MYLIST.menu_title}</td>
-					</tr>
-					<tr>
 						<td>퍼스널 옵션 :${MYLIST.menu_option}</td>
-					</tr>
-					<tr>
-						<td>메뉴종류 : ${MYLIST.menu_name}</td>
+						<td>메뉴종류 : ${MYLIST.menu_name} <input
+								type="button"
+								id="deletemy"
+								value="삭제"
+								data-seq="${MYLIST.menu_seq}"></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>
@@ -122,4 +106,15 @@ button.delete:hover {
 	</table>
 </fieldset>
 <script>
+/* ! 확인하기 ! : mylist.jsp에서 파일 삭제시 가장 위에있는 리스트만 삭제되고 나머지 버튼은 
+먹히지않음 왜그러는지 확인이 필요함*/
+	const deletemy = document.getElementById("deletemy")
+	let menu_seq = deletemy.dataset.seq
+	deletemy.addEventListener("click",()=>{
+		if(confirm("삭제하시겠습니까??")){
+		alert("게시물을 삭제합니다");
+		location.href = "${rootPath}/custom/delete?menu_seq=" + menu_seq;
+		}
+	})
+	
 </script>

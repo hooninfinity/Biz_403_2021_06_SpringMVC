@@ -62,7 +62,6 @@ public class CustomController {
 			return "redirect:/user/login";
 		} else {
 		List<CustomDTO> myList = cuService.findByUser_id(userVO.getUser_id());
-
 		model.addAttribute("USERVO", userVO);
 		model.addAttribute("MYLIST", myList);
 		model.addAttribute("BODY", "CUSTOM-MYLIST");
@@ -116,23 +115,13 @@ public class CustomController {
 		}
 	
 	@RequestMapping(value="/delete",method = RequestMethod.GET)
-	public String customDelete(@RequestParam("menu_seq") String menu_seq,HttpSession session,Model model) {
+	public String customDelete(@RequestParam("menu_seq") Long menu_seq,HttpSession session,Model model) throws Exception {
 		UserVO userVO = (UserVO) session.getAttribute("LOGIN");
 		if (userVO == null) {
 			return "redirect:/user/login";
 		}
-		Long seq = 0L;
-		
-		try {
-			seq = Long.valueOf(menu_seq);
-			
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			log.debug("seq 오류");
-			return "redirect:/";
-		}
-		int ret = cuService.delete(seq);
-	 return "redirect:/custom";	
+		cuService.delete(menu_seq, model);
+	 return "redirect:/custom/mylist";	
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)

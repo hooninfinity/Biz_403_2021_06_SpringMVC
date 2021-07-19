@@ -11,6 +11,8 @@ public interface UserDao extends GenericDao<UserVO, String> {
 
 	public int insertOrUpdate(UserVO usVO);
 	
+	public int update(UserVO userVO);
+	
 	
 	
 	

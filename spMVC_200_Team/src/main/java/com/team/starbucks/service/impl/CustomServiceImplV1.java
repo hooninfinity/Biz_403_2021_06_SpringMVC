@@ -111,15 +111,16 @@ public class CustomServiceImplV1 implements CustomService {
 	}
 
 	@Override
-	public int delete(Long seq) {
-//		/*
-//		CustomDTO customDTO = cusDao.findById(seq);
-//		if (customDTO == null) {
-//			return 0;
-//		
-//		}
-//		
-		return 0;
+	public void delete(Long seq, Model model) throws Exception {
+			CustomDTO customDTO = cusDao.findBySeq(seq);
+		int ret = fService.delete(customDTO.getFile_upname());
+		if(ret > 0) {
+			log.debug("파일삭제완료");
+			cusDao.delete(seq);
+		} else if(ret < 0 ) {
+			log.debug("파일삭제실패 잘못된 파일정보 {} ", customDTO.toString());
+		
+		}
 	}
 
 	@Override

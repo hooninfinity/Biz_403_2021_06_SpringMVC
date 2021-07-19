@@ -2,57 +2,66 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.team.starbucks.dao.ext.UserDao">
 
 	<select id="selectAll" resultType="UserVO">
 		SELECT * FROM tbl_user
 	</select>
-	
+
 	<select id="findById" resultType="UserVO">
 		SELECT * FROM tbl_user
-		WHERE user_id = #{user_id}
+		WHERE
+		user_id = #{user_id}
 	</select>
-	
+
 	<select id="login" resultType="UserVO">
-		SELECT user_id, user_password
+		SELECT user_id, user_password, user_email
 		FROM tbl_user
 		WHERE user_id = #{user_id} AND user_password = #{user_password}
 	</select>
 
 	<insert id="join" parameterType="UserVO">
-	INSERT INTO tbl_user(
-	user_id, user_password, user_email, user_level)
-	VALUES(
-	#{user_id}, #{user_password}, #{user_email}, #{user_level}
-	)
+		INSERT INTO tbl_user(
+		user_id, user_password, user_email, user_level)
+		VALUES(
+		#{user_id}, #{user_password}, #{user_email}, #{user_level}
+		)
 	</insert>
-	
-	<insert id="insertOrUpdate" parameterType="UserVO">
- 		INSERT INTO tbl_user (
- 			user_id, user_password, user_email, user_level
- 		)
- 		VALUES(
- 			#{user_id}, #{user_password}, #{user_email},
- 			#{user_level}
- 		)
- 		ON DUPLICATE KEY UPDATE
-	 		user_password = user_password,
-	 		user_email = user_email,
-	 		user_level = user_level
- 	</insert>
 
-	<update id="update"></update>
- 	<delete id="delete"></delete>
- 	
- 	<update id="create_table">
- 		CREATE TABLE IF NOT EXISTS tbl_user (
- 			user_seq BIGINT AUTO_INCREMENT PRIMARY KEY, 
- 			user_id VARCHAR(20) UNIQUE,
- 			user_password VARCHAR(50) NOT NULL,
- 			user_level INT DEFAULT 9,
- 			user_email VARCHAR(50) NOT NULL
- 		)
- 	</update>
+	<insert id="insertOrUpdate" parameterType="UserVO">
+		INSERT INTO tbl_user(
+		user_id, user_password, user_email, user_level
+		)
+		VALUES(
+		#{user_id}, #{user_password}, #{user_email},
+		#{user_level}
+		)
+		ON DUPLICATE KEY UPDATE
+		user_id = user_id,
+		user_password = user_password,
+		user_email = user_email,
+		user_level = user_level
+	</insert>
+
+	<update id="update" parameterType="UserVO">
+		UPDATE tbl_user SET 
+		 user_password = #{user_password}, 
+		 user_email = #{user_email}
+		WHERE user_seq = #{user_seq}		 
+	</update>
+	
+	
+	<delete id="delete"></delete>
+
+	<update id="create_table">
+		CREATE TABLE IF NOT EXISTS tbl_user (
+		user_seq BIGINT AUTO_INCREMENT PRIMARY KEY,
+		user_id VARCHAR(20) UNIQUE,
+		user_password VARCHAR(50) NOT NULL,
+		user_level INT DEFAULT 9,
+		user_email VARCHAR(50) NOT NULL
+		)
+	</update>
 
 </mapper>
