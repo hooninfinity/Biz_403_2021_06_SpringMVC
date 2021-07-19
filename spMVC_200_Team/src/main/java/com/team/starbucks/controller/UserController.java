@@ -68,15 +68,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(@RequestParam(name = "MSG", required = false) String msg, Model model) {
+	public String login(String msg, Model model) {
 
-		if (msg == null) {
-			model.addAttribute("MSG", "NONE");
-		} else if (msg.equals("LOGIN")) {
-			model.addAttribute("MSG", "권한없음 로그인 수행!!!");
-		} else if (msg.equals("LOGIN_FAIL")) {
-			model.addAttribute("MSG", "아이디 비번 확인 !!!");
-		}
 		model.addAttribute("BODY", "LOGIN");
 		return "home";
 	}
