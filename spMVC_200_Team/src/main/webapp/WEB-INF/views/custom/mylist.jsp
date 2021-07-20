@@ -78,7 +78,7 @@ h3#mylistuser:before {
 		<p>${USERVO.user_id}님</p>
 		안녕하세요!
 	</h3>
-	<button value="${USERVO.user_id}">회원정보수정</button>
+	<%-- <button value="${USERVO.user_id}">회원정보수정</button> --%>
 </form>
 	<table id="MYLISTtable">
 		<c:choose>
