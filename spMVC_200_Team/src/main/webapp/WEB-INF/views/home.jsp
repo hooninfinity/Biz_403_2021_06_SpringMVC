@@ -113,7 +113,6 @@ form {
 	var rootPath = "${rootPath}";
 	document.addEventListener("DOMContentLoaded", () => {
 		  const nav = document.querySelector("nav#main_nav");
-
 		  nav.addEventListener("click", (e) => {
 		    let tagName = e.target.tagName;
 		    let urlPath = `${rootPath}`;
